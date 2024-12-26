@@ -5,46 +5,118 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My GitHub Page</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        /* General Reset */
+        * {
             margin: 0;
             padding: 0;
-            background: #f4f4f4;
-            color: #333;
+            box-sizing: border-box;
         }
+
+        /* Dark Mode Background and Fonts */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #121212;
+            color: #d4d4d4;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header Styling */
         header {
-            background: #0078d7;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
             color: white;
-            padding: 1rem 0;
+            padding: 2rem;
             text-align: center;
+            border-bottom: 4px solid #333;
         }
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.8;
+        }
+
+        /* Main Content */
         main {
             padding: 2rem;
-            max-width: 800px;
-            margin: auto;
+            max-width: 900px;
+            margin: 2rem auto;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid #333;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
+        section {
+            margin-bottom: 2rem;
+        }
+        section h2 {
+            color: #a29bfe;
+            margin-bottom: 1rem;
+        }
+        section p {
+            margin-bottom: 1rem;
+        }
+
+        /* Footer Styling */
         footer {
             text-align: center;
-            padding: 1rem 0;
-            background: #333;
-            color: white;
+            padding: 1.5rem 0;
+            background: #1f1f1f;
+            color: #aaa;
         }
-        a {
-            color: #0078d7;
+        footer a {
+            color: #6a11cb;
             text-decoration: none;
+            font-weight: bold;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Aesthetic Additions */
+        .neon-text {
+            color: #e056fd;
+            text-shadow: 0 0 8px #e056fd, 0 0 16px #a29bfe;
+        }
+
+        a {
+            color: #74b9ff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Welcome to My GitHub Page</h1>
+        <h1 class="neon-text">Welcome to My GitHub Page</h1>
+        <p>Aesthetic Vibes | Dark Mode Developer</p>
     </header>
     <main>
-        <p>Hello! This is my first GitHub Pages website. Here, I'll share my projects, ideas, and more. Stay tuned!</p>
-        <p>Check out my <a href="https://github.com" target="_blank">GitHub Profile</a>.</p>
+        <section>
+            <h2>About Me</h2>
+            <p>Hello! I'm a developer passionate about ethical hacking, scripting, and creating solutions using Python and Termux. I love exploring new ideas and making the most out of mobile development. My work reflects a blend of creativity, functionality, and security.</p>
+        </section>
+        <section>
+            <h2>Projects</h2>
+            <p>Here are a few things I'm currently working on:</p>
+            <ul>
+                <li>A Python-based system monitoring tool</li>
+                <li>Custom scripts for ethical hacking and testing</li>
+                <li>Exploring aesthetic web development</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Get in Touch</h2>
+            <p>Feel free to reach out or check out my other projects on <a href="https://github.com" target="_blank">GitHub</a>. Let's create something amazing together!</p>
+        </section>
     </main>
     <footer>
-        <p>© 2024 My GitHub Page</p>
+        <p>© 2024 Created by <a href="https://github.com" target="_blank">Your Name</a>. Designed with passion and dark mode in mind.</p>
     </footer>
 </body>
-</html>
+    </html
