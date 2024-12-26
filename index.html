@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="="en">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lens's Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* General Reset */
         * {
@@ -12,46 +13,64 @@
             box-sizing: border-box;
         }
 
-        /* Background and Fonts */
+        /* Body and Background */
         body {
             font-family: 'Arial', sans-serif;
-            background-color: #1a1a1a;
+            background: #1a1a1a;
             color: #e0e0e0;
             line-height: 1.6;
-            margin: 0;
-            padding: 0;
+            overflow-x: hidden;
+            transition: background 0.3s, color 0.3s;
+        }
+        body.light {
+            background: #f9f9f9;
+            color: #333;
         }
 
-        /* Header Styling */
+        /* Header */
         header {
-            background: #333;
-            color: #e0e0e0;
-            padding: 2rem;
             text-align: center;
-            border-bottom: 4px solid #444;
+            padding: 2rem;
+            position: relative;
         }
         header h1 {
             font-size: 2.5rem;
             margin-bottom: 0.5rem;
-            opacity: 0;
-            animation: fadeIn 2s forwards;
+            display: inline-block;
+            white-space: nowrap;
+            border-right: 4px solid;
+            animation: typing 3s steps(30, end), blink 0.5s step-end infinite;
+            overflow: hidden;
         }
-        header p {
-            font-size: 1.2rem;
-            opacity: 0.8;
-            opacity: 0;
-            animation: fadeIn 2s forwards 1s;
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        @keyframes blink {
+            from, to { border-color: transparent; }
+            50% { border-color: #4fc3f7; }
+        }
+
+        /* Dark-to-Light Toggle */
+        .toggle-container {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+        }
+        .toggle-container input[type="checkbox"] {
+            display: none;
+        }
+        .toggle-container label {
+            cursor: pointer;
         }
 
         /* Main Content */
         main {
-            padding: 2rem;
             max-width: 900px;
             margin: 2rem auto;
-            background: #2a2a2a;
-            border: 1px solid #444;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
         section {
             margin-bottom: 2rem;
@@ -59,118 +78,142 @@
         section h2 {
             color: #4fc3f7;
             margin-bottom: 1rem;
-            border-bottom: 2px solid #4fc3f7;
-            display: inline-block;
-        }
-        section p {
-            margin-bottom: 1rem;
         }
 
-        /* Progress Bars */
+        /* Skill Ratings */
+        .progress-container {
+            margin-bottom: 1rem;
+        }
         .progress-bar {
+            height: 24px;
+            width: 100%;
             background-color: #444;
             border-radius: 5px;
-            overflow: hidden;
-            margin-bottom: 1rem;
+            position: relative;
         }
         .progress-bar div {
-            height: 24px;
+            height: 100%;
+            background: #4fc3f7;
+            width: 0;
+            transition: width 2s ease-in-out;
             line-height: 24px;
+            padding: 0 10px;
             color: #fff;
             text-align: right;
-            padding-right: 10px;
-            box-sizing: border-box;
-        }
-        .python { width: 87%; background-color: #4fc3f7; }
-        .php { width: 80%; background-color: #4db6ac; }
-        .javascript { width: 70%; background-color: #ffb74d; }
-        .css { width: 40%; background-color: #9575cd; }
-
-        /* Language Section */
-        .language {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-        .language img {
-            width: 40px;
-            height: 40px;
-            margin-right: 10px;
-        }
-        .language span {
-            flex: 1;
         }
 
-        /* Footer Styling */
-        footer {
-            text-align: center;
-            padding: 1.5rem 0;
-            background: #333;
-            color: #aaa;
-        }
-        footer a {
+        /* Hover Effects */
+        a {
             color: #4fc3f7;
             text-decoration: none;
-            font-weight: bold;
+            transition: color 0.3s;
         }
-        footer a:hover {
-            text-decoration: underline;
+        a:hover {
+            color: #e0e0e0;
         }
 
-        /* Keyframes for Animations */
-        @keyframes fadeIn {
-            to { opacity: 1; }
+        /* Background Animation */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0));
+            animation: move 20s linear infinite;
+        }
+        @keyframes move {
+            0% { transform: translate(-10%, -10%); }
+            50% { transform: translate(10%, 10%); }
+            100% { transform: translate(-10%, -10%); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+        }
+
+        /* GitHub Button */
+        .github-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #4fc3f7;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            text-align: center;
+            transition: background 0.3s;
+        }
+        .github-btn:hover {
+            background: #333;
+        }
+        .github-btn i {
+            font-size: 20px;
+            color: white;
         }
     </style>
 </head>
 <body>
     <header>
         <h1>Welcome to Lens's Portfolio</h1>
-        <p>Self-Taught Developer | Mobile Scripts, Tools, and Websites</p>
+        <div class="toggle-container">
+            <input type="checkbox" id="theme-toggle">
+            <label for="theme-toggle">🌗</label>
+        </div>
     </header>
     <main>
         <section>
             <h2>About Me</h2>
-            <p>Hi! I'm Lens (or Lyn), a 15-year-old self-taught developer with a passion for creating scripts, tools, and websites using just my phone. I enjoy pushing the boundaries of mobile development and turning creative ideas into reality. My work is driven by curiosity and a desire to make technology accessible and fun.</p>
+            <p>Hi, I'm Lens (or Lyn), a 15-year-old self-taught developer. I create scripts, tools, and websites entirely on my mobile device. My passion lies in building efficient and innovative solutions. Welcome to my portfolio!</p>
         </section>
         <section>
             <h2>Languages</h2>
-            <div class="language">
-                <img src="python-logo.svg" alt="Python Logo">
-                <span>Python - 87%</span>
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="python" style="width: 87%;">Python - 87%</div>
+                </div>
             </div>
-            <div class="progress-bar">
-                <div class="python">87%</div>
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="php" style="width: 80%;">PHP - 80%</div>
+                </div>
             </div>
-            <div class="language">
-                <img src="php-logo.svg" alt="PHP Logo">
-                <span>PHP - 80%</span>
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="javascript" style="width: 70%;">JavaScript - 70%</div>
+                </div>
             </div>
-            <div class="progress-bar">
-                <div class="php">80%</div>
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="css" style="width: 40%;">CSS - 40%</div>
+                </div>
             </div>
-            <div class="language">
-                <img src="javascript-logo.svg" alt="JavaScript Logo">
-                <span>JavaScript - 70%</span>
-            </div>
-            <div class="progress-bar">
-                <div class="javascript">70%</div>
-            </div>
-            <div class="language">
-                <img src="css-logo.svg" alt="CSS Logo">
-                <span>CSS - 40%</span>
-            </div>
-            <div class="progress-bar">
-                <div class="css">40%</div>
-            </div>
-        </section>
-        <section>
-            <h2>Get in Touch</h2>
-            <p>Feel free to explore my other work on <a href="https://github.com" target="_blank">GitHub</a> or reach out to collaborate on new ideas. Together, we can create something extraordinary!</p>
         </section>
     </main>
-    <footer>
-        <p>© 2024 Created by <a href="https://github.com" target="_blank">Lens</a>. Designed with passion and creativity.</p>
-    </footer>
+    <a href="https://github.com" class="github-btn" target="_blank">
+        <i class="fab fa-github"></i>
+    </a>
+    <script>
+        // Dark-to-Light Toggle
+        const toggle = document.getElementById('theme-toggle');
+        toggle.addEventListener('change', () => {
+            document.body.classList.toggle('light');
+        });
+
+        // Animate Progress Bars on Scroll
+        const progressBars = document.querySelectorAll('.progress-bar div');
+        window.addEventListener('scroll', () => {
+            progressBars.forEach(bar => {
+                bar.style.width = bar.getAttribute('style').match(/\d+%/)[0];
+            });
+        });
+    </script>
 </body>
-</html>
+    </html>
