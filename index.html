@@ -205,13 +205,7 @@
     <button id="mode-toggle" title="Toggle Dark/Light Mode"><i class="fas fa-moon"></i></button>
 
     <!-- Matrix Effect Container -->
-    <div class="matrix" id="matrix-effect">
-        <span class="matrix-code">0</span>
-        <span class="matrix-code">1</span>
-        <span class="matrix-code">2</span>
-        <span class="matrix-code">3</span>
-        <!-- More matrix code spans here -->
-    </div>
+    <div class="matrix" id="matrix-effect"></div>
 
     <!-- Header Section -->
     <header>
@@ -306,10 +300,29 @@
         const matrixButton = document.getElementById("matrix-toggle");
         const matrixEffect = document.getElementById("matrix-effect");
 
+        // Create Matrix animation dynamically
+        const createMatrix = () => {
+            matrixEffect.innerHTML = '';
+            const numColumns = Math.floor(window.innerWidth / 20);
+            for (let i = 0; i < numColumns; i++) {
+                const span = document.createElement("span");
+                span.style.left = `${i * 20}px`;
+                span.innerText = Math.random() > 0.5 ? '0' : '1';
+                matrixEffect.appendChild(span);
+                span.style.animation = `fall ${Math.random() * 3 + 2}s linear infinite`;
+            }
+        }
+
         matrixButton.addEventListener("click", () => {
-            matrixEffect.style.display = matrixEffect.style.display === "block" ? "none" : "block";
-            matrixButton.textContent = matrixEffect.style.display === "block" ? "Deactivate Matrix Effect" : "Activate Matrix Effect";
+            if (matrixEffect.style.display === "block") {
+                matrixEffect.style.display = "none";
+                matrixButton.textContent = "Activate Matrix Effect";
+            } else {
+                matrixEffect.style.display = "block";
+                matrixButton.textContent = "Deactivate Matrix Effect";
+                createMatrix();
+            }
         });
     </script>
 </body>
-                                                                                                                                                                                   </html>
+</html>
