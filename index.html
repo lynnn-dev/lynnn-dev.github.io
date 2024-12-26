@@ -3,176 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lens's Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Lens / Lyn - Portfolio</title>
     <style>
-        /* General Reset */
-        * {
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background: #1a1a1a;
+            color: #f0f0f0;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
         }
 
-        /* Body and Background */
-        body {
-            font-family: 'Arial', sans-serif;
-            background: #1a1a1a;
-            color: #e0e0e0;
-            line-height: 1.6;
-            overflow-x: hidden;
-            transition: background 0.3s, color 0.3s;
-        }
-        body.light {
-            background: #f9f9f9;
-            color: #333;
-        }
-
-        /* Header */
-        header {
+        h2 {
+            color: #4fc3f7;
             text-align: center;
-            padding: 2rem;
-            position: relative;
-        }
-        header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            display: inline-block;
-            white-space: nowrap;
-            border-right: 4px solid;
-            animation: typing 3s steps(30, end), blink 0.5s step-end infinite;
-            overflow: hidden;
-        }
-        @keyframes typing {
-            from { width: 0; }
-            to { width: 100%; }
-        }
-        @keyframes blink {
-            from, to { border-color: transparent; }
-            50% { border-color: #4fc3f7; }
+            margin-top: 20px;
         }
 
-        /* Dark-to-Light Toggle */
-        .toggle-container {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-        }
-        .toggle-container input[type="checkbox"] {
-            display: none;
-        }
-        .toggle-container label {
-            cursor: pointer;
-        }
-
-        /* Main Content */
         main {
-            max-width: 900px;
-            margin: 2rem auto;
-            padding: 2rem;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
+            padding: 20px;
         }
+
         section {
-            margin-bottom: 2rem;
-        }
-        section h2 {
-            color: #4fc3f7;
-            margin-bottom: 1rem;
+            margin-bottom: 50px;
         }
 
-        /* Skill Ratings */
+        /* Progress Bar Styles */
         .progress-container {
-            margin-bottom: 1rem;
+            margin: 10px 0;
         }
+
         .progress-bar {
-            height: 24px;
             width: 100%;
-            background-color: #444;
-            border-radius: 5px;
-            position: relative;
-        }
-        .progress-bar div {
-            height: 100%;
-            background: #4fc3f7;
-            width: 0;
-            transition: width 2s ease-in-out;
-            line-height: 24px;
-            padding: 0 10px;
-            color: #fff;
-            text-align: right;
-        }
-
-        /* Hover Effects */
-        a {
-            color: #4fc3f7;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-        a:hover {
-            color: #e0e0e0;
-        }
-
-        /* Background Animation */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0));
-            animation: move 20s linear infinite;
-        }
-        @keyframes move {
-            0% { transform: translate(-10%, -10%); }
-            50% { transform: translate(10%, 10%); }
-            100% { transform: translate(-10%, -10%); }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            header h1 {
-                font-size: 2rem;
-            }
-        }
-
-        /* GitHub Button */
-        .github-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: #4fc3f7;
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            text-align: center;
-            transition: background 0.3s;
-        }
-        .github-btn:hover {
             background: #333;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 10px;
         }
-        .github-btn i {
-            font-size: 20px;
-            color: white;
+
+        .progress-bar div {
+            height: 25px;
+            line-height: 25px;
+            background: #4fc3f7;
+            text-align: center;
+            color: #fff;
+            font-weight: bold;
+        }
+
+        /* Hobbies Section */
+        section ul {
+            margin-top: 1rem;
+            list-style: disc;
+            padding-left: 1.5rem;
+        }
+
+        section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Blue Boxes (Developer Roles) */
+        .role-box-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .role-box {
+            flex: 1;
+            min-width: 250px;
+            padding: 20px;
+            background: #4fc3f7;
+            color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .role-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to Lens's Portfolio</h1>
-        <div class="toggle-container">
-            <input type="checkbox" id="theme-toggle">
-            <label for="theme-toggle">🌗</label>
-        </div>
-    </header>
     <main>
+        <!-- About Me Section -->
         <section>
             <h2>About Me</h2>
             <p>Hi, I'm Lens (or Lyn), a 15-year-old self-taught developer. I create scripts, tools, and websites entirely on my mobile device. My passion lies in building efficient and innovative solutions. Welcome to my portfolio!</p>
         </section>
+
+        <!-- Languages Section -->
         <section>
             <h2>Languages</h2>
             <div class="progress-container">
@@ -196,24 +119,35 @@
                 </div>
             </div>
         </section>
-    </main>
-    <a href="https://github.com" class="github-btn" target="_blank">
-        <i class="fab fa-github"></i>
-    </a>
-    <script>
-        // Dark-to-Light Toggle
-        const toggle = document.getElementById('theme-toggle');
-        toggle.addEventListener('change', () => {
-            document.body.classList.toggle('light');
-        });
 
-        // Animate Progress Bars on Scroll
-        const progressBars = document.querySelectorAll('.progress-bar div');
-        window.addEventListener('scroll', () => {
-            progressBars.forEach(bar => {
-                bar.style.width = bar.getAttribute('style').match(/\d+%/)[0];
-            });
-        });
-    </script>
+        <!-- Hobbies & Interests Section -->
+        <section>
+            <h2>Hobbies & Interests</h2>
+            <p>When I'm not coding, I enjoy:</p>
+            <ul>
+                <li>Playing video games to unwind and find inspiration for my projects.</li>
+                <li>Exploring new technology and staying updated with industry trends.</li>
+                <li>Learning about ethical hacking and security to enhance my skills.</li>
+            </ul>
+        </section>
+
+        <!-- Developer Roles Section -->
+        <section>
+            <h2>What I Do</h2>
+            <div class="role-box-container">
+                <!-- Software Developer Box -->
+                <div class="role-box">
+                    <h3>Software Developer</h3>
+                    <p>I specialize in creating efficient tools and scripts that automate tasks, improve productivity, and solve complex problems, all using minimal resources.</p>
+                </div>
+                
+                <!-- Website Developer Box -->
+                <div class="role-box">
+                    <h3>Website Developer</h3>
+                    <p>I design and develop responsive, aesthetically pleasing, and user-friendly websites optimized for mobile and desktop platforms.</p>
+                </div>
+            </div>
+        </section>
+    </main>
 </body>
-    </html>
+</html>
