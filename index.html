@@ -8,30 +8,30 @@
     <style>
         /* General Styles */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             background: #1a1a1a;
             color: #f0f0f0;
             margin: 0;
             padding: 0;
             transition: background 0.3s, color 0.3s;
-            position: relative;
         }
 
         h1, h2 {
             color: #4fc3f7;
             text-align: center;
+            margin: 0;
         }
 
         h1 {
+            font-size: 3rem;
             margin-top: 20px;
-            font-size: 2.5rem;
         }
 
         h3 {
-            margin-top: 10px;
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             color: #aaa;
             text-align: center;
+            margin-bottom: 30px;
         }
 
         main {
@@ -56,8 +56,8 @@
         }
 
         .progress-bar div {
-            height: 25px;
-            line-height: 25px;
+            height: 30px;
+            line-height: 30px;
             background: #4fc3f7;
             text-align: center;
             color: #fff;
@@ -132,35 +132,6 @@
             z-index: 10;
         }
 
-        /* Matrix Animation Styles */
-        .matrix {
-            display: none;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            color: #0f0;
-            font-family: monospace;
-            font-size: 20px;
-            white-space: nowrap;
-            overflow: hidden;
-            z-index: 5;
-        }
-
-        .matrix span {
-            position: absolute;
-            top: -100%;
-            animation: fall 1.5s infinite linear;
-        }
-
-        @keyframes fall {
-            to {
-                transform: translateY(100vh);
-            }
-        }
-
         .light-mode body {
             background: #f0f0f0;
             color: #1a1a1a;
@@ -178,39 +149,16 @@
         .light-mode .role-box {
             background: #00796b;
         }
-
-        /* Button Styles */
-        #matrix-toggle {
-            position: fixed;
-            bottom: 20px;
-            left: 20px;
-            background: #4fc3f7;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            z-index: 10;
-        }
-
-        .matrix-button {
-            display: block;
-            text-align: center;
-        }
     </style>
 </head>
 <body>
     <!-- Dark Mode Toggle -->
     <button id="mode-toggle" title="Toggle Dark/Light Mode"><i class="fas fa-moon"></i></button>
 
-    <!-- Matrix Effect Container -->
-    <div class="matrix" id="matrix-effect"></div>
-
     <!-- Header Section -->
     <header>
         <h1>Welcome to My Portfolio</h1>
-        <h3>Developer / Programmer | Scripts, Tools and Simple Websites</h3>
+        <h3>Developer / Programmer | Scripts, Tools, and Simple Websites</h3>
     </header>
 
     <!-- Main Content -->
@@ -218,7 +166,7 @@
         <!-- About Me Section -->
         <section>
             <h2>About Me</h2>
-            <p>Hi, I'm Lens (or Lyn), a 15-year-old self-taught developer. I create scripts, tools, and websites entirely on my mobile device. My passion lies in building efficient and innovative solutions. Welcome to my portfolio!</p>
+            <p>Hey! I'm Lens, or Lyn—I'm a 15-year-old, self-taught developer. I specialize in creating scripts, tools, and websites. I'm passionate about building efficient solutions that help streamline workflows and improve productivity. Take a look at my portfolio to know more about me!</p>
         </section>
 
         <!-- Languages Section -->
@@ -249,11 +197,11 @@
         <!-- Hobbies & Interests Section -->
         <section>
             <h2>Hobbies & Interests</h2>
-            <p>When I'm not coding, I enjoy:</p>
+            <p>When I’m not coding, I love to:</p>
             <ul>
-                <li>Playing video games to unwind and find inspiration for my projects.</li>
-                <li>Exploring new technology and staying updated with industry trends.</li>
-                <li>Learning about ethical hacking and security to enhance my skills.</li>
+                <li>Unwind by scrolling through TikTok, often finding inspiration for new projects along the way.</li>
+                <li>Stay up-to-date with the latest tech trends and explore new technologies.</li>
+                <li>Learn about ethical hacking and cybersecurity to sharpen my technical skills.</li>
             </ul>
         </section>
 
@@ -264,13 +212,13 @@
                 <!-- Software Developer Box -->
                 <div class="role-box">
                     <h3>Software Developer</h3>
-                    <p>I specialize in creating efficient tools and scripts that automate tasks, improve productivity, and solve complex problems, all using minimal resources.</p>
+                    <p>I specialize in creating tools and scripts that automate tasks, optimize workflows, and solve complex problems, all with minimal resources.</p>
                 </div>
                 
                 <!-- Website Developer Box -->
                 <div class="role-box">
                     <h3>Website Developer</h3>
-                    <p>I design and develop responsive, aesthetically pleasing, and user-friendly websites optimized for mobile and desktop platforms.</p>
+                    <p>I design and build responsive, user-friendly websites that look great on both mobile and desktop platforms.</p>
                 </div>
             </div>
         </section>
@@ -282,9 +230,6 @@
         <p>&copy; 2024 Lens / Lyn. All Rights Reserved.</p>
     </footer>
 
-    <!-- Button to toggle Matrix effect -->
-    <button id="matrix-toggle">Activate Matrix Effect</button>
-
     <script>
         // Dark Mode / Light Mode Toggle Functionality
         const modeToggle = document.getElementById("mode-toggle");
@@ -295,34 +240,6 @@
             icon.classList.toggle("fa-sun");
             icon.classList.toggle("fa-moon");
         });
-
-        // Matrix Effect
-        const matrixButton = document.getElementById("matrix-toggle");
-        const matrixEffect = document.getElementById("matrix-effect");
-
-        // Create Matrix animation dynamically
-        const createMatrix = () => {
-            matrixEffect.innerHTML = '';
-            const numColumns = Math.floor(window.innerWidth / 20);
-            for (let i = 0; i < numColumns; i++) {
-                const span = document.createElement("span");
-                span.style.left = `${i * 20}px`;
-                span.innerText = Math.random() > 0.5 ? '0' : '1';
-                matrixEffect.appendChild(span);
-                span.style.animation = `fall ${Math.random() * 3 + 2}s linear infinite`;
-            }
-        }
-
-        matrixButton.addEventListener("click", () => {
-            if (matrixEffect.style.display === "block") {
-                matrixEffect.style.display = "none";
-                matrixButton.textContent = "Activate Matrix Effect";
-            } else {
-                matrixEffect.style.display = "block";
-                matrixButton.textContent = "Deactivate Matrix Effect";
-                createMatrix();
-            }
-        });
     </script>
 </body>
-</html>
+    </html>
