@@ -144,14 +144,16 @@
         #side-panel {
             position: fixed;
             top: 0;
-            left: -250px;
-            width: 250px;
+            left: -300px;
+            width: 300px;
             height: 100%;
             background-color: #333;
             color: #fff;
             padding-top: 60px;
             transition: left 0.3s ease;
             z-index: 9;
+            border-right: 2px solid #4fc3f7;
+            box-shadow: 3px 0 5px rgba(0, 0, 0, 0.3);
         }
 
         #side-panel a {
@@ -161,10 +163,11 @@
             text-decoration: none;
             font-size: 18px;
             border-bottom: 1px solid #444;
+            transition: background-color 0.3s;
         }
 
         #side-panel a:hover {
-            background-color: #555;
+            background-color: #00796b;
         }
 
         /* Dark/Light Mode Styles */
@@ -186,6 +189,28 @@
             background: #00796b;
         }
 
+        /* Language & Mode Buttons Advanced Styles */
+        .menu-option {
+            padding: 10px;
+            margin: 10px 0;
+            background: #4fc3f7;
+            color: #fff;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        .menu-option:hover {
+            background: #00796b;
+            transform: scale(1.05);
+        }
+
+        .menu-option:active {
+            transform: scale(1.02);
+        }
+
         /* Styling for the Footer Icon */
         .fab.fa-github {
             font-size: 30px;
@@ -204,8 +229,8 @@
 
     <!-- Side Panel -->
     <div id="side-panel">
-        <a href="javascript:void(0)" id="theme-toggle">Dark Mode</a>
-        <a href="javascript:void(0)" id="language-toggle">🇺🇸 English</a>
+        <div class="menu-option" id="theme-toggle">🌙 Dark Mode</div>
+        <div class="menu-option" id="language-toggle">🇺🇸 English</div>
     </div>
 
     <!-- Header Section -->
@@ -289,7 +314,7 @@
         const sidePanel = document.getElementById("side-panel");
 
         menuToggle.addEventListener("click", () => {
-            sidePanel.style.left = sidePanel.style.left === "0px" ? "-250px" : "0";
+            sidePanel.style.left = sidePanel.style.left === "0px" ? "-300px" : "0";
         });
 
         // Dark/Light Mode Toggle
@@ -297,7 +322,7 @@
 
         themeToggle.addEventListener("click", () => {
             document.body.classList.toggle("light-mode");
-            themeToggle.textContent = document.body.classList.contains("light-mode") ? "Light Mode" : "Dark Mode";
+            themeToggle.textContent = document.body.classList.contains("light-mode") ? "🌕 Light Mode" : "🌙 Dark Mode";
         });
 
         // Language Toggle
@@ -309,17 +334,4 @@
                 // Switch content to Dutch
                 document.getElementById("about-text").textContent = "Hallo, ik ben Lens (of Lyn), een 15-jarige zelf-geleerde ontwikkelaar. Ik maak scripts, tools en websites volledig op mijn mobiele apparaat. Mijn passie ligt in het bouwen van efficiënte en innovatieve oplossingen. Welkom op mijn portfolio!";
                 document.getElementById("hobbies-text").textContent = "Wanneer ik niet aan het coderen ben, geniet ik van:";
-                document.getElementById("developer-text").textContent = "Ik ben gespecialiseerd in het maken van efficiënte tools en scripts die taken automatiseren, de productiviteit verbeteren en complexe problemen oplossen, allemaal met minimale middelen.";
-                document.getElementById("web-dev-text").textContent = "Ik ontwerp en ontwikkel responsieve, esthetisch aangename en gebruiksvriendelijke websites die geoptimaliseerd zijn voor mobiele en desktopplatforms.";
-            } else {
-                languageToggle.textContent = "🇺🇸 English";
-                // Switch content back to English
-                document.getElementById("about-text").textContent = "Hi, I'm Lens (or Lyn), a 15-year-old self-taught developer. I create scripts, tools, and websites entirely on my mobile device. My passion lies in building efficient and innovative solutions. Welcome to my portfolio!";
-                document.getElementById("hobbies-text").textContent = "When I'm not coding, I enjoy:";
-                document.getElementById("developer-text").textContent = "I specialize in creating efficient tools and scripts that automate tasks, improve productivity, and solve complex problems, all using minimal resources.";
-                document.getElementById("web-dev-text").textContent = "I design and develop responsive, aesthetically pleasing, and user-friendly websites optimized for mobile and desktop platforms.";
-            }
-        });
-    </script>
-</body>
-    </html>
+                document.getElementById("developer-text").textContent = "Ik ben gespecialiseerd in het maken van efficiënte tools en scripts die
