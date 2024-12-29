@@ -117,20 +117,49 @@
             text-decoration: underline;
         }
 
-        /* Dark/Light Mode Switch */
-        #mode-toggle {
+        /* Menu Button Styles */
+        #menu-toggle {
             position: fixed;
             top: 20px;
-            right: 20px;
+            left: 20px;
             background: #4fc3f7;
             border: none;
-            padding: 10px;
-            border-radius: 50%;
+            padding: 15px;
+            border-radius: 5px;
             cursor: pointer;
             font-size: 20px;
             z-index: 10;
+            color: white;
         }
 
+        /* Side Panel Styles */
+        #side-panel {
+            position: fixed;
+            top: 0;
+            left: -250px;
+            width: 250px;
+            height: 100%;
+            background-color: #333;
+            color: #fff;
+            padding-top: 60px;
+            transition: left 0.3s ease;
+            z-index: 9;
+        }
+
+        #side-panel a {
+            display: block;
+            color: #fff;
+            padding: 15px;
+            text-decoration: none;
+            font-size: 18px;
+            border-bottom: 1px solid #444;
+        }
+
+        #side-panel a:hover {
+            background-color: #555;
+        }
+
+        /* Dark/Light Mode Styles */
         .light-mode body {
             background: #f0f0f0;
             color: #1a1a1a;
@@ -151,8 +180,14 @@
     </style>
 </head>
 <body>
-    <!-- Dark Mode Toggle -->
-    <button id="mode-toggle" title="Toggle Dark/Light Mode"><i class="fas fa-moon"></i></button>
+    <!-- Menu Button -->
+    <button id="menu-toggle"><i class="fas fa-bars"></i></button>
+
+    <!-- Side Panel -->
+    <div id="side-panel">
+        <a href="javascript:void(0)" id="theme-toggle">Dark Mode</a>
+        <a href="javascript:void(0)" id="language-toggle">🇺🇸 English</a>
+    </div>
 
     <!-- Header Section -->
     <header>
@@ -165,7 +200,7 @@
         <!-- About Me Section -->
         <section>
             <h2>About Me</h2>
-            <p>Hi, I'm Lens (or Lyn), a 15-year-old self-taught developer. I create scripts, tools, and websites. My passion lies in building efficient and innovative solutions. Welcome to my portfolio!</p>
+            <p id="about-text">Hi, I'm Lens (or Lyn), a 15-year-old self-taught developer. I create scripts, tools, and websites entirely on my mobile device. My passion lies in building efficient and innovative solutions. Welcome to my portfolio!</p>
         </section>
 
         <!-- Languages Section -->
@@ -196,9 +231,9 @@
         <!-- Hobbies & Interests Section -->
         <section>
             <h2>Hobbies & Interests</h2>
-            <p>When I'm not coding, I enjoy:</p>
+            <p id="hobbies-text">When I'm not coding, I enjoy:</p>
             <ul>
-                <li>Scrolling through TikTok to unwind and find inspiration for my projects.</li>
+                <li>Playing video games to unwind and find inspiration for my projects.</li>
                 <li>Exploring new technology and staying updated with industry trends.</li>
                 <li>Learning about ethical hacking and security to enhance my skills.</li>
             </ul>
@@ -211,13 +246,13 @@
                 <!-- Software Developer Box -->
                 <div class="role-box">
                     <h3>Software Developer</h3>
-                    <p>I specialize in creating efficient tools and scripts that automate tasks, improve productivity, and solve complex problems, all using minimal resources.</p>
+                    <p id="developer-text">I specialize in creating efficient tools and scripts that automate tasks, improve productivity, and solve complex problems, all using minimal resources.</p>
                 </div>
                 
                 <!-- Website Developer Box -->
                 <div class="role-box">
                     <h3>Website Developer</h3>
-                    <p>I design and develop responsive, aesthetically pleasing, and user-friendly websites optimized for mobile and desktop platforms.</p>
+                    <p id="web-dev-text">I design and develop responsive, aesthetically pleasing, and user-friendly websites optimized for mobile and desktop platforms.</p>
                 </div>
             </div>
         </section>
@@ -230,15 +265,42 @@
     </footer>
 
     <script>
-        // Dark Mode / Light Mode Toggle Functionality
-        const modeToggle = document.getElementById("mode-toggle");
+        // Menu Button Toggle
+        const menuToggle = document.getElementById("menu-toggle");
+        const sidePanel = document.getElementById("side-panel");
 
-        modeToggle.addEventListener("click", () => {
+        menuToggle.addEventListener("click", () => {
+            sidePanel.style.left = sidePanel.style.left === "0px" ? "-250px" : "0";
+        });
+
+        // Dark/Light Mode Toggle
+        const themeToggle = document.getElementById("theme-toggle");
+
+        themeToggle.addEventListener("click", () => {
             document.body.classList.toggle("light-mode");
-            const icon = modeToggle.querySelector("i");
-            icon.classList.toggle("fa-sun");
-            icon.classList.toggle("fa-moon");
+            themeToggle.textContent = document.body.classList.contains("light-mode") ? "Light Mode" : "Dark Mode";
+        });
+
+        // Language Toggle
+        const languageToggle = document.getElementById("language-toggle");
+
+        languageToggle.addEventListener("click", () => {
+            if (languageToggle.textContent === "🇺🇸 English") {
+                languageToggle.textContent = "🇳🇱 Dutch";
+                // Switch content to Dutch
+                document.getElementById("about-text").textContent = "Hallo, ik ben Lens (of Lyn), een 15-jarige zelf-geleerde ontwikkelaar. Ik maak scripts, tools en websites volledig op mijn mobiele apparaat. Mijn passie ligt in het bouwen van efficiënte en innovatieve oplossingen. Welkom op mijn portfolio!";
+                document.getElementById("hobbies-text").textContent = "Wanneer ik niet aan het coderen ben, geniet ik van:";
+                document.getElementById("developer-text").textContent = "Ik ben gespecialiseerd in het maken van efficiënte tools en scripts die taken automatiseren, de productiviteit verbeteren en complexe problemen oplossen, allemaal met minimale middelen.";
+                document.getElementById("web-dev-text").textContent = "Ik ontwerp en ontwikkel responsieve, esthetisch aangename en gebruiksvriendelijke websites die geoptimaliseerd zijn voor mobiele en desktopplatforms.";
+            } else {
+                languageToggle.textContent = "🇺🇸 English";
+                // Switch content back to English
+                document.getElementById("about-text").textContent = "Hi, I'm Lens (or Lyn), a 15-year-old self-taught developer. I create scripts, tools, and websites entirely on my mobile device. My passion lies in building efficient and innovative solutions. Welcome to my portfolio!";
+                document.getElementById("hobbies-text").textContent = "When I'm not coding, I enjoy:";
+                document.getElementById("developer-text").textContent = "I specialize in creating efficient tools and scripts that automate tasks, improve productivity, and solve complex problems, all using minimal resources.";
+                document.getElementById("web-dev-text").textContent = "I design and develop responsive, aesthetically pleasing, and user-friendly websites optimized for mobile and desktop platforms.";
+            }
         });
     </script>
 </body>
-    </html>
+                    </html>
