@@ -9,7 +9,7 @@
         /* General Styles */
         body {
             font-family: Arial, sans-serif;
-            background: #121212;
+            background: #1a1a1a;
             color: #f0f0f0;
             margin: 0;
             padding: 0;
@@ -19,17 +19,16 @@
         h1, h2 {
             color: #4fc3f7;
             text-align: center;
-            font-weight: bold;
         }
 
         h1 {
             margin-top: 20px;
-            font-size: 3rem;
+            font-size: 2.5rem;
         }
 
         h3 {
             margin-top: 10px;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             color: #aaa;
             text-align: center;
         }
@@ -38,142 +37,94 @@
             padding: 20px;
         }
 
-        section {
-            margin-bottom: 50px;
-        }
-
-        /* Progress Bar Styles */
-        .progress-container {
-            margin: 10px 0;
-        }
-
-        .progress-bar {
-            width: 100%;
-            background: #333;
-            border-radius: 8px;
-            overflow: hidden;
-            margin-bottom: 15px;
-        }
-
-        .progress-bar div {
-            height: 25px;
-            line-height: 25px;
-            background: #4fc3f7;
-            text-align: center;
-            color: #fff;
-            font-weight: bold;
-        }
-
-        /* Hobbies Section */
-        section ul {
-            margin-top: 1rem;
-            list-style: disc;
-            padding-left: 1.5rem;
-        }
-
-        section ul li {
-            margin-bottom: 0.5rem;
-        }
-
-        /* Developer Roles Section */
-        .role-box-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-        }
-
-        .role-box {
-            flex: 1;
-            min-width: 250px;
-            padding: 20px;
-            background: #4fc3f7;
-            color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .role-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Footer Styles */
-        footer {
-            text-align: center;
-            padding: 10px 0;
-            background: #333;
-            color: #aaa;
-            margin-top: 50px;
-        }
-
-        footer a {
-            color: #4fc3f7;
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-
-        /* Menu Button Styles */
-        #menu-toggle {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            background: #4fc3f7;
-            border: none;
-            padding: 12px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 22px;
-            z-index: 10;
-            color: white;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-            transition: background 0.3s, transform 0.3s;
-        }
-
-        #menu-toggle:hover {
-            background: #00796b;
-            transform: scale(1.1);
-        }
-
         /* Side Panel Styles */
         #side-panel {
             position: fixed;
             top: 0;
-            left: -300px;
-            width: 300px;
+            left: -250px;
+            width: 250px;
             height: 100%;
             background-color: #333;
             color: #fff;
-            padding-top: 60px;
-            transition: left 0.3s ease;
-            z-index: 9;
-            border-right: 2px solid #4fc3f7;
-            box-shadow: 3px 0 5px rgba(0, 0, 0, 0.3);
+            transition: 0.3s;
+            padding: 10px;
+            z-index: 1000;
         }
 
-        #side-panel a {
-            display: block;
+        #side-panel.open {
+            left: 0;
+        }
+
+        #side-panel .panel-content {
+            margin-top: 50px;
+        }
+
+        #side-panel button {
+            background: transparent;
             color: #fff;
-            padding: 15px;
-            text-decoration: none;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            width: 100%;
+            text-align: left;
             font-size: 18px;
-            border-bottom: 1px solid #444;
-            transition: background-color 0.3s;
         }
 
-        #side-panel a:hover {
-            background-color: #00796b;
+        #side-panel button:hover {
+            background-color: #4fc3f7;
         }
 
-        /* Dark/Light Mode Styles */
+        /* Theme Toggle Pop-up */
+        .theme-popup, .language-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #333;
+            padding: 20px;
+            border-radius: 8px;
+            color: #fff;
+            text-align: center;
+            z-index: 2000;
+        }
+
+        .theme-popup button, .language-popup button {
+            background: #4fc3f7;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            margin: 10px 0;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .theme-popup button:hover, .language-popup button:hover {
+            background: #00796b;
+        }
+
+        /* 3 Lines Button */
+        #menu-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.6);
+            border: none;
+            padding: 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 9999;
+        }
+
+        #menu-btn i {
+            font-size: 24px;
+            color: #333;
+        }
+
+        /* Theme styles */
         .light-mode body {
             background: #f0f0f0;
-            color: #1a1a1a;
+            color: #333;
         }
 
         .light-mode .progress-bar div {
@@ -188,55 +139,36 @@
         .light-mode .role-box {
             background: #00796b;
         }
-
-        /* Language & Mode Buttons Advanced Styles */
-        .menu-option {
-            padding: 10px;
-            margin: 10px 0;
-            background: #4fc3f7;
-            color: #fff;
-            font-size: 18px;
-            border-radius: 5px;
-            cursor: pointer;
-            text-align: center;
-            transition: background 0.3s, transform 0.3s;
-        }
-
-        .menu-option:hover {
-            background: #00796b;
-            transform: scale(1.05);
-        }
-
-        .menu-option:active {
-            transform: scale(1.02);
-        }
-
-        /* Styling for the Footer Icon */
-        .fab.fa-github {
-            font-size: 30px;
-            color: #4fc3f7;
-            transition: transform 0.3s;
-        }
-
-        .fab.fa-github:hover {
-            transform: scale(1.1);
-        }
     </style>
 </head>
 <body>
-    <!-- Menu Button -->
-    <button id="menu-toggle"><i class="fas fa-bars"></i></button>
+    <!-- 3 Lines Button -->
+    <button id="menu-btn"><i class="fas fa-bars"></i></button>
 
     <!-- Side Panel -->
     <div id="side-panel">
-        <div class="menu-option" id="theme-toggle">🌙 Dark Mode</div>
-        <div class="menu-option" id="language-toggle">🇺🇸 English</div>
+        <div class="panel-content">
+            <button id="theme-toggle-btn">Theme Toggle</button>
+            <button id="language-toggle-btn">Language Changer</button>
+        </div>
+    </div>
+
+    <!-- Theme Toggle Pop-up -->
+    <div class="theme-popup" id="theme-popup">
+        <button id="dark-mode-btn">🌙 Dark Mode</button>
+        <button id="light-mode-btn">☀️ Light Mode</button>
+    </div>
+
+    <!-- Language Toggle Pop-up -->
+    <div class="language-popup" id="language-popup">
+        <button id="english-btn">🇺🇸 English</button>
+        <button id="dutch-btn">🇳🇱 Dutch</button>
     </div>
 
     <!-- Header Section -->
     <header>
         <h1>Welcome to My Portfolio</h1>
-        <h3>Developer / Programmer | Scripts, Tools, and Simple Websites</h3>
+        <h3>Developer / Programmer | Scripts, Tools and Simple Websites</h3>
     </header>
 
     <!-- Main Content -->
@@ -244,7 +176,7 @@
         <!-- About Me Section -->
         <section>
             <h2>About Me</h2>
-            <p id="about-text">Hi, I'm Lens (or Lyn), a 15-year-old self-taught developer. I create scripts, tools, and websites entirely on my mobile device. My passion lies in building efficient and innovative solutions. Welcome to my portfolio!</p>
+            <p>Hi, I'm Lens (or Lyn), a 15-year-old self-taught developer. I create scripts, tools, and websites entirely on my mobile device. My passion lies in building efficient and innovative solutions. Welcome to my portfolio!</p>
         </section>
 
         <!-- Languages Section -->
@@ -272,66 +204,71 @@
             </div>
         </section>
 
-        <!-- Hobbies Section -->
+        <!-- Hobbies & Interests Section -->
         <section>
             <h2>Hobbies & Interests</h2>
-            <p id="hobbies-text">When I'm not coding, I enjoy:</p>
             <ul>
                 <li>Playing video games to unwind and find inspiration for my projects.</li>
                 <li>Exploring new technology and staying updated with industry trends.</li>
                 <li>Learning about ethical hacking and security to enhance my skills.</li>
             </ul>
         </section>
-
-        <!-- Developer Roles Section -->
-        <section>
-            <h2>What I Do</h2>
-            <div class="role-box-container">
-                <!-- Software Developer Box -->
-                <div class="role-box">
-                    <h3>Software Developer</h3>
-                    <p id="developer-text">I specialize in creating efficient tools and scripts that automate tasks, improve productivity, and solve complex problems, all using minimal resources.</p>
-                </div>
-                
-                <!-- Website Developer Box -->
-                <div class="role-box">
-                    <h3>Website Developer</h3>
-                    <p id="web-dev-text">I design and develop responsive, aesthetically pleasing, and user-friendly websites optimized for mobile and desktop platforms.</p>
-                </div>
-            </div>
-        </section>
     </main>
 
-    <!-- GitHub Icon -->
+    <!-- Footer -->
     <footer>
-        <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://github.com" target="_blank"><i class="fab fa-github" style="font-size: 30px; color: #4fc3f7;"></i></a>
         <p>&copy; 2024 Lens / Lyn. All Rights Reserved.</p>
     </footer>
 
     <script>
-        // Menu Button Toggle
-        const menuToggle = document.getElementById("menu-toggle");
+        // 3 Line Menu Button
+        const menuBtn = document.getElementById("menu-btn");
         const sidePanel = document.getElementById("side-panel");
 
-        menuToggle.addEventListener("click", () => {
-            sidePanel.style.left = sidePanel.style.left === "0px" ? "-300px" : "0";
+        menuBtn.addEventListener("click", () => {
+            sidePanel.classList.toggle("open");
         });
 
-        // Dark/Light Mode Toggle
-        const themeToggle = document.getElementById("theme-toggle");
+        // Theme Toggle
+        const themeToggleBtn = document.getElementById("theme-toggle-btn");
+        const themePopup = document.getElementById("theme-popup");
+        const darkModeBtn = document.getElementById("dark-mode-btn");
+        const lightModeBtn = document.getElementById("light-mode-btn");
 
-        themeToggle.addEventListener("click", () => {
-            document.body.classList.toggle("light-mode");
-            themeToggle.textContent = document.body.classList.contains("light-mode") ? "🌕 Light Mode" : "🌙 Dark Mode";
+        themeToggleBtn.addEventListener("click", () => {
+            themePopup.style.display = "block";
         });
 
-        // Language Toggle
-        const languageToggle = document.getElementById("language-toggle");
+        darkModeBtn.addEventListener("click", () => {
+            document.body.classList.add("light-mode");
+            themePopup.style.display = "none";
+        });
 
-        languageToggle.addEventListener("click", () => {
-            if (languageToggle.textContent === "🇺🇸 English") {
-                languageToggle.textContent = "🇳🇱 Dutch";
-                // Switch content to Dutch
-                document.getElementById("about-text").textContent = "Hallo, ik ben Lens (of Lyn), een 15-jarige zelf-geleerde ontwikkelaar. Ik maak scripts, tools en websites volledig op mijn mobiele apparaat. Mijn passie ligt in het bouwen van efficiënte en innovatieve oplossingen. Welkom op mijn portfolio!";
-                document.getElementById("hobbies-text").textContent = "Wanneer ik niet aan het coderen ben, geniet ik van:";
-                document.getElementById("developer-text").textContent = "Ik ben gespecialiseerd in het maken van efficiënte tools en scripts die
+        lightModeBtn.addEventListener("click", () => {
+            document.body.classList.remove("light-mode");
+            themePopup.style.display = "none";
+        });
+
+        // Language Changer
+        const languageToggleBtn = document.getElementById("language-toggle-btn");
+        const languagePopup = document.getElementById("language-popup");
+        const englishBtn = document.getElementById("english-btn");
+        const dutchBtn = document.getElementById("dutch-btn");
+
+        languageToggleBtn.addEventListener("click", () => {
+            languagePopup.style.display = "block";
+        });
+
+        englishBtn.addEventListener("click", () => {
+            alert("You selected English!");
+            languagePopup.style.display = "none";
+        });
+
+        dutchBtn.addEventListener("click", () => {
+            alert("You selected Dutch!");
+            languagePopup.style.display = "none";
+        });
+    </script>
+</body>
+</html>
