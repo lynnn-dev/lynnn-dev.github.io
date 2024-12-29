@@ -9,7 +9,7 @@
         /* General Styles */
         body {
             font-family: Arial, sans-serif;
-            background: #1a1a1a;
+            background: #121212;
             color: #f0f0f0;
             margin: 0;
             padding: 0;
@@ -19,16 +19,17 @@
         h1, h2 {
             color: #4fc3f7;
             text-align: center;
+            font-weight: bold;
         }
 
         h1 {
             margin-top: 20px;
-            font-size: 2.5rem;
+            font-size: 3rem;
         }
 
         h3 {
             margin-top: 10px;
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             color: #aaa;
             text-align: center;
         }
@@ -49,9 +50,9 @@
         .progress-bar {
             width: 100%;
             background: #333;
-            border-radius: 5px;
+            border-radius: 8px;
             overflow: hidden;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
         }
 
         .progress-bar div {
@@ -74,7 +75,7 @@
             margin-bottom: 0.5rem;
         }
 
-        /* Blue Boxes (Developer Roles) */
+        /* Developer Roles Section */
         .role-box-container {
             display: flex;
             flex-wrap: wrap;
@@ -124,12 +125,19 @@
             left: 20px;
             background: #4fc3f7;
             border: none;
-            padding: 15px;
+            padding: 12px;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 20px;
+            font-size: 22px;
             z-index: 10;
             color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s, transform 0.3s;
+        }
+
+        #menu-toggle:hover {
+            background: #00796b;
+            transform: scale(1.1);
         }
 
         /* Side Panel Styles */
@@ -177,6 +185,17 @@
         .light-mode .role-box {
             background: #00796b;
         }
+
+        /* Styling for the Footer Icon */
+        .fab.fa-github {
+            font-size: 30px;
+            color: #4fc3f7;
+            transition: transform 0.3s;
+        }
+
+        .fab.fa-github:hover {
+            transform: scale(1.1);
+        }
     </style>
 </head>
 <body>
@@ -192,7 +211,7 @@
     <!-- Header Section -->
     <header>
         <h1>Welcome to My Portfolio</h1>
-        <h3>Developer / Programmer | Scripts, Tools and Simple Websites</h3>
+        <h3>Developer / Programmer | Scripts, Tools, and Simple Websites</h3>
     </header>
 
     <!-- Main Content -->
@@ -228,7 +247,7 @@
             </div>
         </section>
 
-        <!-- Hobbies & Interests Section -->
+        <!-- Hobbies Section -->
         <section>
             <h2>Hobbies & Interests</h2>
             <p id="hobbies-text">When I'm not coding, I enjoy:</p>
@@ -260,7 +279,7 @@
 
     <!-- GitHub Icon -->
     <footer>
-        <a href="https://github.com" target="_blank"><i class="fab fa-github" style="font-size: 30px; color: #4fc3f7;"></i></a>
+        <a href="https://github.com" target="_blank"><i class="fab fa-github"></i></a>
         <p>&copy; 2024 Lens / Lyn. All Rights Reserved.</p>
     </footer>
 
@@ -297,10 +316,4 @@
                 // Switch content back to English
                 document.getElementById("about-text").textContent = "Hi, I'm Lens (or Lyn), a 15-year-old self-taught developer. I create scripts, tools, and websites entirely on my mobile device. My passion lies in building efficient and innovative solutions. Welcome to my portfolio!";
                 document.getElementById("hobbies-text").textContent = "When I'm not coding, I enjoy:";
-                document.getElementById("developer-text").textContent = "I specialize in creating efficient tools and scripts that automate tasks, improve productivity, and solve complex problems, all using minimal resources.";
-                document.getElementById("web-dev-text").textContent = "I design and develop responsive, aesthetically pleasing, and user-friendly websites optimized for mobile and desktop platforms.";
-            }
-        });
-    </script>
-</body>
-                    </html>
+                document.getElementById("developer-text").textContent = "I specialize in creating efficient tools and scripts that automate tasks, improve productivity, and solve
