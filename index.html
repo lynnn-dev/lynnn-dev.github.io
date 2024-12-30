@@ -270,84 +270,18 @@
 
     <!-- JavaScript for Menu, Theme Toggle, and Language Changer -->
     <script>
-    const hamburger = document.getElementById("hamburger");
-    const menuBox = document.getElementById("menuBox");
-    const themeToggle = document.getElementById("themeToggle");
-    const languageChanger = document.getElementById("languageChanger");
+        const hamburger = document.getElementById("hamburger");
+        const menuBox = document.getElementById("menuBox");
+        const themeToggle = document.getElementById("themeToggle");
+        const languageChanger = document.getElementById("languageChanger");
 
-    // Toggle Menu Box
-    hamburger.addEventListener("click", () => {
-        menuBox.classList.toggle("open");
-    });
-
-    // Toggle Theme / Mode
-    themeToggle.addEventListener("click", () => {
-        const currentMode = document.body.classList.contains("light-mode");
-        if (currentMode) {
-            document.body.classList.remove("light-mode");
-        } else {
-            document.body.classList.add("light-mode");
-        }
-    });
-
-    // Close menu when clicking outside
-    document.addEventListener("click", (event) => {
-        if (!menuBox.contains(event.target) && !hamburger.contains(event.target)) {
-            menuBox.classList.remove("open");
-        }
-    });
-
-    // Language Changer Logic
-    languageChanger.addEventListener("click", () => {
-        // Change to language selection options (without closing the box)
-        menuBox.innerHTML = `
-            <a href="#" id="english">English</a>
-            <a href="#" id="dutch">Dutch</a>
-        `;
-
-        // Select English
-        document.getElementById('english').addEventListener('click', () => {
-            changeLanguage('en');
+        // Toggle Menu Box
+        hamburger.addEventListener("click", () => {
+            menuBox.classList.toggle("open");
         });
 
-        // Select Dutch
-        document.getElementById('dutch').addEventListener('click', () => {
-            changeLanguage('nl');
-        });
-    });
-
-    // Change language
-    function changeLanguage(language) {
-        const currentLang = document.documentElement.lang;
-        if (currentLang !== language) {
-            document.documentElement.lang = language;
-            if (language === 'en') {
-                // Update content for English
-                document.querySelector('h1').innerText = 'Welcome to My Portfolio';
-                document.querySelector('h3').innerText = 'Developer / Programmer | Scripts, Tools and Simple Websites';
-                document.querySelector('p').innerText = 'Hi, I\'m Lens (or Lyn), a 15-year-old self-taught developer...';
-                document.querySelectorAll('section p')[0].innerText = 'Hi, I\'m Lens (or Lyn), a 15-year-old self-taught developer. I create scripts, tools, and websites entirely on my mobile device. My passion lies in building efficient and innovative solutions. Welcome to my portfolio!';
-                document.querySelectorAll('section p')[1].innerText = 'When I\'m not coding, I enjoy:';
-                document.querySelectorAll('section p')[2].innerText = 'I specialize in creating efficient tools and scripts that automate tasks, improve productivity, and solve complex problems, all using minimal resources.';
-            } else if (language === 'nl') {
-                // Update content for Dutch
-                document.querySelector('h1').innerText = 'Welkom op mijn Portfolio';
-                document.querySelector('h3').innerText = 'Ontwikkelaar / Programmeur | Scripts, Tools en Simpele Websites';
-                document.querySelector('p').innerText = 'Hoi, ik ben Lens (of Lyn), een 15-jarige autodidactische ontwikkelaar...';
-                document.querySelectorAll('section p')[0].innerText = 'Hoi, ik ben Lens (of Lyn), een 15-jarige autodidactische ontwikkelaar. Ik maak scripts, tools en websites volledig op mijn mobiele apparaat. Mijn passie ligt in het bouwen van efficiënte en innovatieve oplossingen. Welkom op mijn portfolio!';
-                document.querySelectorAll('section p')[1].innerText = 'Wanneer ik niet aan het coderen ben, geniet ik van:';
-                document.querySelectorAll('section p')[2].innerText = 'Ik ben gespecialiseerd in het maken van efficiënte tools en scripts die taken automatiseren, de productiviteit verbeteren en complexe problemen oplossen, allemaal met minimale middelen.';
-            }
-        }
-
-        // Keep the menu box open and update options
-        menuBox.innerHTML = `
-            <a href="#" id="themeToggle">Theme / Mode Toggle</a>
-            <a href="#" id="languageChanger">Language Changer</a>
-        `;
-
-        // Re-add event listeners for theme and language toggle
-        document.getElementById('themeToggle').addEventListener('click', () => {
+        // Toggle Theme / Mode
+        themeToggle.addEventListener("click", () => {
             const currentMode = document.body.classList.contains("light-mode");
             if (currentMode) {
                 document.body.classList.remove("light-mode");
@@ -356,10 +290,76 @@
             }
         });
 
-        document.getElementById('languageChanger').addEventListener('click', () => {
-            languageChanger.click();
+        // Close menu when clicking outside
+        document.addEventListener("click", (event) => {
+            if (!menuBox.contains(event.target) && !hamburger.contains(event.target)) {
+                menuBox.classList.remove("open");
+            }
         });
-    }
-                               </script>
+
+        // Language Changer Logic
+        languageChanger.addEventListener("click", () => {
+            // Change to language selection options (without closing the box)
+            menuBox.innerHTML = `
+                <a href="#" id="english">English</a>
+                <a href="#" id="dutch">Dutch</a>
+            `;
+
+            // Select English
+            document.getElementById('english').addEventListener('click', () => {
+                changeLanguage('en');
+            });
+
+            // Select Dutch
+            document.getElementById('dutch').addEventListener('click', () => {
+                changeLanguage('nl');
+            });
+        });
+
+        // Change language
+        function changeLanguage(language) {
+            const currentLang = document.documentElement.lang;
+            if (currentLang !== language) {
+                document.documentElement.lang = language;
+                if (language === 'en') {
+                    // Update content for English
+                    document.querySelector('h1').innerText = 'Welcome to My Portfolio';
+                    document.querySelector('h3').innerText = 'Developer / Programmer | Scripts, Tools and Simple Websites';
+                    document.querySelector('p').innerText = 'Hi, I\'m Lens (or Lyn), a 15-year-old self-taught developer...';
+                    document.querySelectorAll('section p')[0].innerText = 'Hi, I\'m Lens (or Lyn), a 15-year-old self-taught developer. I create scripts, tools, and websites entirely on my mobile device. My passion lies in building efficient and innovative solutions. Welcome to my portfolio!';
+                    document.querySelectorAll('section p')[1].innerText = 'When I\'m not coding, I enjoy:';
+                    document.querySelectorAll('section p')[2].innerText = 'I specialize in creating efficient tools and scripts that automate tasks, improve productivity, and solve complex problems, all using minimal resources.';
+                    document.querySelectorAll('section p')[3].innerText = 'I design and develop responsive, aesthetically pleasing, and user-friendly websites optimized for mobile and desktop platforms.';
+                    // etc. for other content
+                } else if (language === 'nl') {
+                    // Update content for Dutch
+                    document.querySelector('h1').innerText = 'Welkom op mijn Portfolio';
+                    document.querySelector('h3').innerText = 'Ontwikkelaar / Programmeur | Scripts, Tools en Eenvoudige Websites';
+                    document.querySelector('p').innerText = 'Hallo, ik ben Lens (of Lyn), een 15-jarige autodidactische ontwikkelaar...';
+                    document.querySelectorAll('section p')[0].innerText = 'Hallo, ik ben Lens (of Lyn), een 15-jarige autodidactische ontwikkelaar. Ik maak scripts, tools en websites volledig op mijn mobiele apparaat. Mijn passie ligt in het bouwen van efficiënte en innovatieve oplossingen. Welkom op mijn portfolio!';
+                    document.querySelectorAll('section p')[1].innerText = 'Wanneer ik niet aan het coderen ben, geniet ik van:';
+                    document.querySelectorAll('section p')[2].innerText = 'Ik ben gespecialiseerd in het maken van efficiënte tools en scripts die taken automatiseren, de productiviteit verbeteren en complexe problemen oplossen, alles met minimale middelen.';
+                    document.querySelectorAll('section p')[3].innerText = 'Ik ontwerp en ontwikkel responsieve, esthetisch aangename en gebruiksvriendelijke websites geoptimaliseerd voor mobiele en desktopplatforms.';
+                    // etc. for other content
+                }
+                // Revert back to main options after changing language
+                languageChanger.innerText = 'Language Changer';
+                // Add back theme toggle
+                const themeToggle = document.createElement('a');
+                themeToggle.href = '#';
+                themeToggle.innerText = 'Theme / Mode Toggle';
+                themeToggle.id = 'themeToggle';
+                themeToggle.addEventListener('click', () => {
+                    const currentMode = document.body.classList.contains("light-mode");
+                    if (currentMode) {
+                        document.body.classList.remove("light-mode");
+                    } else {
+                        document.body.classList.add("light-mode");
+                    }
+                });
+                menuBox.appendChild(themeToggle);
+            }
+        }
+    </script>
 </body>
 </html>
