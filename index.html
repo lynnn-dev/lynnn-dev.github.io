@@ -236,7 +236,6 @@
                     <h3>Software Developer</h3>
                     <p>I specialize in creating efficient tools and scripts that automate tasks, improve productivity, and solve complex problems, all using minimal resources.</p>
                 </div>
-                
                 <div class="role-box">
                     <h3>Website Developer</h3>
                     <p>I design and develop responsive, aesthetically pleasing, and user-friendly websites optimized for mobile and desktop platforms.</p>
@@ -245,7 +244,7 @@
         </section>
     </main>
 
-    <!-- Footer Section -->
+    <!-- GitHub Icon -->
     <footer>
         <a href="https://github.com" target="_blank"><i class="fab fa-github" style="font-size: 30px; color: #4fc3f7;"></i></a>
         <p>&copy; 2024 Lens / Lyn. All Rights Reserved.</p>
@@ -258,6 +257,40 @@
         const themeToggle = document.getElementById("themeToggle");
         const languageChanger = document.getElementById("languageChanger");
 
+        const langData = {
+            en: {
+                welcome: "Welcome to My Portfolio",
+                aboutMe: "Hi, I'm Lens (or Lyn), a 15-year-old self-taught developer. I create scripts, tools, and websites entirely on my mobile device. My passion lies in building efficient and innovative solutions. Welcome to my portfolio!",
+                languages: "Languages",
+                hobbies: "Hobbies & Interests",
+                whatIDo: "What I Do",
+                softwareDev: "Software Developer",
+                websiteDev: "Website Developer",
+                footer: "All Rights Reserved."
+            },
+            nl: {
+                welcome: "Welkom op mijn portfolio",
+                aboutMe: "Hoi, ik ben Lens (of Lyn), een 15-jarige zelfgeleerde ontwikkelaar. Ik maak scripts, tools en websites helemaal op mijn mobiele apparaat. Mijn passie ligt in het bouwen van efficiënte en innovatieve oplossingen. Welkom op mijn portfolio!",
+                languages: "Talen",
+                hobbies: "Hobby's & Interesse",
+                whatIDo: "Wat ik doe",
+                softwareDev: "Software Ontwikkelaar",
+                websiteDev: "Website Ontwikkelaar",
+                footer: "Alle rechten voorbehouden."
+            }
+        };
+
+        let currentLang = 'en';
+
+        function setLanguage(lang) {
+            document.querySelector('h1').textContent = langData[lang].welcome;
+            document.querySelector('h3').textContent = langData[lang].aboutMe;
+            document.querySelector('h2').textContent = langData[lang].languages;
+            document.querySelector('section:nth-child(2) p').textContent = langData[lang].aboutMe;
+            document.querySelector('footer p').textContent = langData[lang].footer;
+            currentLang = lang;
+        }
+
         // Toggle Menu Box
         hamburger.addEventListener("click", () => {
             menuBox.classList.toggle("open");
@@ -265,43 +298,35 @@
 
         // Toggle Theme / Mode
         themeToggle.addEventListener("click", () => {
-            const currentMode = document.body.classList.contains("light-mode");
-            if (currentMode) {
-                document.body.classList.remove("light-mode");
-            } else {
-                document.body.classList.add("light-mode");
-            }
+            // Toggle between light and dark mode
+            document.body.classList.toggle("light-mode");
+            menuBox.classList.remove("open"); // Close menu on selection
         });
 
-        // Close menu when clicking outside
-        document.addEventListener("click", (event) => {
-            if (!menuBox.contains(event.target) && !hamburger.contains(event.target)) {
-                menuBox.classList.remove("open");
-            }
-        });
-
-        // Language Changer (Switch between English and Dutch)
+        // Language Changer
         languageChanger.addEventListener("click", () => {
-            // Toggle language options
-            const currentLang = document.body.getAttribute("lang");
-            if (currentLang === "en") {
-                document.body.setAttribute("lang", "nl");
-                document.getElementById("languageChanger").innerText = "Taal Wijzigen";
-                document.querySelector("h1").innerText = "Welkom op mijn portfolio";
-                document.querySelector("h3").innerText = "Ontwikkelaar / Programmeur | Scripts, Tools en Eenvoudige Websites";
-                document.querySelector("h2").innerText = "Over Mij";
-                document.querySelector("p").innerText = "Hallo, ik ben Lens (of Lyn), een zelfgeschoolde ontwikkelaar van 15 jaar oud. Ik maak scripts, tools en websites volledig op mijn mobiele apparaat. Mijn passie ligt in het bouwen van efficiënte en innovatieve oplossingen. Welkom op mijn portfolio!";
-                // Continue translating other text here
-            } else {
-                document.body.setAttribute("lang", "en");
-                document.getElementById("languageChanger").innerText = "Language Changer";
-                document.querySelector("h1").innerText = "Welcome to My Portfolio";
-                document.querySelector("h3").innerText = "Developer / Programmer | Scripts, Tools and Simple Websites";
-                document.querySelector("h2").innerText = "About Me";
-                document.querySelector("p").innerText = "Hi, I'm Lens (or Lyn), a 15-year-old self-taught developer. I create scripts, tools, and websites entirely on my mobile device. My passion lies in building efficient and innovative solutions. Welcome to my portfolio!";
-                // Continue translating back to English
+            const languageMenu = document.createElement('div');
+            languageMenu.classList.add('submenu');
+            languageMenu.innerHTML = `
+                <a href="#" class="submenu-item" onclick="setLanguage('en')">English / Engels</a>
+                <a href="#" class="submenu-item" onclick="setLanguage('nl')">Dutch / Nederlands</a>
+            `;
+            menuBox.innerHTML = `
+                <a href="#" id="themeToggle">Theme / Mode Toggle</a>
+                <a href="#" id="languageChanger">Language Changer</a>
+            `;
+            menuBox.appendChild(languageMenu);
+        });
+
+        // Close Menu when clicking outside
+        window.addEventListener('click', (e) => {
+            if (!menuBox.contains(e.target) && !hamburger.contains(e.target)) {
+                menuBox.classList.remove('open');
             }
         });
+
+        // Set default language as English
+        setLanguage('en');
     </script>
 </body>
 </html>
