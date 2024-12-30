@@ -149,6 +149,25 @@
             background: #00796b;
         }
 
+        /* Hamburger Menu Styles */
+        #hamburger {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 1000;
+        }
+
+        #hamburger div {
+            width: 30px;
+            height: 4px;
+            background-color: #fff;
+            margin: 6px 0;
+            transition: 0.4s;
+        }
+
         /* Language Modal Styles */
         .language-modal {
             display: none;
@@ -192,8 +211,17 @@
     </style>
 </head>
 <body>
-    <!-- Dark Mode Toggle -->
-    <button id="mode-toggle" title="Toggle Dark/Light Mode"><i class="fas fa-moon"></i></button>
+    <!-- Hamburger Menu Button -->
+    <button id="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+    </button>
+
+    <!-- Dark Mode Toggle (Moon Icon) -->
+    <button id="mode-toggle" title="Toggle Dark/Light Mode">
+        <i class="fas fa-moon"></i>
+    </button>
 
     <!-- Header Section -->
     <header>
@@ -282,7 +310,7 @@
     <script>
         const hamburger = document.getElementById("hamburger");
         const menuBox = document.getElementById("menuBox");
-        const themeToggle = document.getElementById("themeToggle");
+        const themeToggle = document.getElementById("mode-toggle");
         const languageChanger = document.getElementById("languageChanger");
         const languageModal = document.getElementById("languageModal");
         const englishBtn = document.getElementById("englishBtn");
@@ -342,4 +370,4 @@
         });
     </script>
 </body>
-    </html>
+</html>
