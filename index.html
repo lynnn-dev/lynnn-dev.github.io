@@ -161,6 +161,25 @@
         footer a:hover {
             text-decoration: underline;
         }
+
+        /* Light Mode Styles */
+        .light-mode {
+            background: #fff;
+            color: #000;
+        }
+
+        .light-mode .progress-bar div {
+            background: #00796b;
+        }
+
+        .light-mode .role-box {
+            background: #00796b;
+        }
+
+        .light-mode footer {
+            background: #f0f0f0;
+            color: #333;
+        }
     </style>
 </head>
 <body>
@@ -249,10 +268,12 @@
         <p>&copy; 2024 Lens / Lyn. All Rights Reserved.</p>
     </footer>
 
+    <!-- JavaScript for Menu, Theme Toggle, and Language Changer -->
     <script>
         const hamburger = document.getElementById("hamburger");
         const menuBox = document.getElementById("menuBox");
         const themeToggle = document.getElementById("themeToggle");
+        const languageChanger = document.getElementById("languageChanger");
 
         // Toggle Menu Box
         hamburger.addEventListener("click", () => {
@@ -261,7 +282,12 @@
 
         // Toggle Theme / Mode
         themeToggle.addEventListener("click", () => {
-            document.body.classList.toggle("light-mode");
+            const currentMode = document.body.classList.contains("light-mode");
+            if (currentMode) {
+                document.body.classList.remove("light-mode");
+            } else {
+                document.body.classList.add("light-mode");
+            }
         });
 
         // Close menu when clicking outside
@@ -270,6 +296,11 @@
                 menuBox.classList.remove("open");
             }
         });
+
+        // Language Changer (Basic Example - just prints a message for now)
+        languageChanger.addEventListener("click", () => {
+            alert("Language changer functionality will be added soon.");
+        });
     </script>
 </body>
-                </html>
+</html>
