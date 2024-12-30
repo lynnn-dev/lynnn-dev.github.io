@@ -198,21 +198,21 @@
 
     <!-- Header Section -->
     <header>
-        <h1 id="title">Welcome to My Portfolio</h1>
-        <h3 id="subtitle">Developer / Programmer | Scripts, Tools and Simple Websites</h3>
+        <h1>Welcome to My Portfolio</h1>
+        <h3>Developer / Programmer | Scripts, Tools and Simple Websites</h3>
     </header>
 
     <!-- Main Content -->
     <main>
         <!-- About Me Section -->
         <section>
-            <h2 id="aboutTitle">About Me</h2>
-            <p id="aboutText">Hi, I'm Lens (or Lyn), a 15-year-old self-taught developer. I create scripts, tools, and websites entirely on my mobile device. My passion lies in building efficient and innovative solutions. Welcome to my portfolio!</p>
+            <h2>About Me</h2>
+            <p>Hi, I'm Lens (or Lyn), a 15-year-old self-taught developer. I create scripts, tools, and websites entirely on my mobile device. My passion lies in building efficient and innovative solutions. Welcome to my portfolio!</p>
         </section>
 
         <!-- Languages Section -->
         <section>
-            <h2 id="languagesTitle">Languages</h2>
+            <h2>Languages</h2>
             <div class="progress-container">
                 <div class="progress-bar">
                     <div class="python" style="width: 87%;">Python - 87%</div>
@@ -237,26 +237,26 @@
 
         <!-- Hobbies & Interests Section -->
         <section>
-            <h2 id="hobbiesTitle">Hobbies & Interests</h2>
-            <p id="hobbiesText">When I'm not coding, I enjoy:</p>
+            <h2>Hobbies & Interests</h2>
+            <p>When I'm not coding, I enjoy:</p>
             <ul>
-                <li id="hobby1">Playing video games to unwind and find inspiration for my projects.</li>
-                <li id="hobby2">Exploring new technology and staying updated with industry trends.</li>
-                <li id="hobby3">Learning about ethical hacking and security to enhance my skills.</li>
+                <li>Playing video games to unwind and find inspiration for my projects.</li>
+                <li>Exploring new technology and staying updated with industry trends.</li>
+                <li>Learning about ethical hacking and security to enhance my skills.</li>
             </ul>
         </section>
 
         <!-- Developer Roles Section -->
         <section>
-            <h2 id="rolesTitle">What I Do</h2>
+            <h2>What I Do</h2>
             <div class="role-box-container">
                 <div class="role-box">
-                    <h3 id="role1Title">Software Developer</h3>
-                    <p id="role1Text">I specialize in creating efficient tools and scripts that automate tasks, improve productivity, and solve complex problems, all using minimal resources.</p>
+                    <h3>Software Developer</h3>
+                    <p>I specialize in creating efficient tools and scripts that automate tasks, improve productivity, and solve complex problems, all using minimal resources.</p>
                 </div>
                 <div class="role-box">
-                    <h3 id="role2Title">Website Developer</h3>
-                    <p id="role2Text">I design and develop responsive, aesthetically pleasing, and user-friendly websites optimized for mobile and desktop platforms.</p>
+                    <h3>Website Developer</h3>
+                    <p>I design and develop responsive, aesthetically pleasing, and user-friendly websites optimized for mobile and desktop platforms.</p>
                 </div>
             </div>
         </section>
@@ -290,59 +290,38 @@
             }
         });
 
-        // Language Changer (English and Dutch)
+        // Language Changer (Update the menu box content)
         languageChanger.addEventListener("click", () => {
-            const currentLanguage = document.body.getAttribute("lang");
+            const menuContent = `
+                <a href="#" id="englishOption">English / Engels</a>
+                <a href="#" id="dutchOption">Dutch / Nederlands</a>
+            `;
+            menuBox.innerHTML = menuContent;
 
-            // Switch between English and Dutch
-            if (currentLanguage === "en") {
-                document.body.setAttribute("lang", "nl");
-                translatePage("nl");
-            } else {
-                document.body.setAttribute("lang", "en");
-                translatePage("en");
-            }
+            // Change language functionality
+            document.getElementById("englishOption").addEventListener("click", () => {
+                document.body.lang = "en";
+                // Change text to English (optional)
+                document.querySelector("h1").textContent = "Welcome to My Portfolio";
+                document.querySelector("h3").textContent = "Developer / Programmer | Scripts, Tools and Simple Websites";
+                document.querySelector("p").textContent = "Hi, I'm Lens (or Lyn), a 15-year-old self-taught developer...";
+            });
+
+            document.getElementById("dutchOption").addEventListener("click", () => {
+                document.body.lang = "nl";
+                // Change text to Dutch (optional)
+                document.querySelector("h1").textContent = "Welkom op mijn portfolio";
+                document.querySelector("h3").textContent = "Ontwikkelaar / Programmeur | Scripts, Tools en Eenvoudige Websites";
+                document.querySelector("p").textContent = "Hallo, ik ben Lens (of Lyn), een 15-jarige autodidactische ontwikkelaar...";
+            });
         });
 
-        // Translate the page content
-        function translatePage(language) {
-            if (language === "nl") {
-                document.getElementById("title").textContent = "Welkom op mijn Portfolio";
-                document.getElementById("subtitle").textContent = "Ontwikkelaar / Programmeur | Scripts, Tools en Eenvoudige Websites";
-                document.getElementById("aboutTitle").textContent = "Over Mij";
-                document.getElementById("aboutText").textContent = "Hallo, ik ben Lens (of Lyn), een 15-jarige zelfgeleerde ontwikkelaar. Ik maak scripts, tools en websites volledig op mijn mobiele apparaat. Mijn passie ligt in het bouwen van efficiënte en innovatieve oplossingen. Welkom op mijn portfolio!";
-                document.getElementById("languagesTitle").textContent = "Talen";
-                document.getElementById("hobbiesTitle").textContent = "Hobby's & Interesse";
-                document.getElementById("hobbiesText").textContent = "Wanneer ik niet aan het coderen ben, geniet ik van:";
-                document.getElementById("hobby1").textContent = "Videospellen spelen om te ontspannen en inspiratie voor mijn projecten te vinden.";
-                document.getElementById("hobby2").textContent = "Nieuwe technologie verkennen en op de hoogte blijven van trends in de industrie.";
-                document.getElementById("hobby3").textContent = "Leren over ethisch hacken en beveiliging om mijn vaardigheden te verbeteren.";
-                document.getElementById("rolesTitle").textContent = "Wat ik Doe";
-                document.getElementById("role1Title").textContent = "Softwareontwikkelaar";
-                document.getElementById("role1Text").textContent = "Ik ben gespecialiseerd in het maken van efficiënte tools en scripts die taken automatiseren, de productiviteit verbeteren en complexe problemen oplossen, allemaal met minimale middelen.";
-                document.getElementById("role2Title").textContent = "Website Ontwikkelaar";
-                document.getElementById("role2Text").textContent = "Ik ontwerp en ontwikkel responsieve, esthetisch aantrekkelijke en gebruiksvriendelijke websites die geoptimaliseerd zijn voor zowel mobiele als desktopplatforms.";
-            } else {
-                document.getElementById("title").textContent = "Welcome to My Portfolio";
-                document.getElementById("subtitle").textContent = "Developer / Programmer | Scripts, Tools and Simple Websites";
-                document.getElementById("aboutTitle").textContent = "About Me";
-                document.getElementById("aboutText").textContent = "Hi, I'm Lens (or Lyn), a 15-year-old self-taught developer. I create scripts, tools, and websites entirely on my mobile device. My passion lies in building efficient and innovative solutions. Welcome to my portfolio!";
-                document.getElementById("languagesTitle").textContent = "Languages";
-                document.getElementById("hobbiesTitle").textContent = "Hobbies & Interests";
-                document.getElementById("hobbiesText").textContent = "When I'm not coding, I enjoy:";
-                document.getElementById("hobby1").textContent = "Playing video games to unwind and find inspiration for my projects.";
-                document.getElementById("hobby2").textContent = "Exploring new technology and staying updated with industry trends.";
-                document.getElementById("hobby3").textContent = "Learning about ethical hacking and security to enhance my skills.";
-                document.getElementById("rolesTitle").textContent = "What I Do";
-                document.getElementById("role1Title").textContent = "Software Developer";
-                document.getElementById("role1Text").textContent = "I specialize in creating efficient tools and scripts that automate tasks, improve productivity, and solve complex problems, all using minimal resources.";
-                document.getElementById("role2Title").textContent = "Website Developer";
-                document.getElementById("role2Text").textContent = "I design and develop responsive, aesthetically pleasing, and user-friendly websites optimized for mobile and desktop platforms.";
+        // Close menu when clicking outside
+        document.addEventListener("click", (event) => {
+            if (!menuBox.contains(event.target) && !hamburger.contains(event.target)) {
+                menuBox.classList.remove("open");
             }
-        }
-
-        // Initial language setup (default is English)
-        document.body.setAttribute("lang", "en");
+        });
     </script>
 </body>
 </html>
