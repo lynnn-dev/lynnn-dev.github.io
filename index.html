@@ -63,18 +63,7 @@
             font-weight: bold;
         }
 
-        /* Hobbies Section */
-        section ul {
-            margin-top: 1rem;
-            list-style: disc;
-            padding-left: 1.5rem;
-        }
-
-        section ul li {
-            margin-bottom: 0.5rem;
-        }
-
-        /* Blue Boxes (Developer Roles) */
+        /* Rectangle Box Styles */
         .role-box-container {
             display: flex;
             flex-wrap: wrap;
@@ -99,6 +88,62 @@
             box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
         }
 
+        /* Hamburger Menu Styles */
+        .hamburger {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 20px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .hamburger div {
+            width: 100%;
+            height: 3px;
+            background: #f0f0f0;
+            transition: all 0.3s ease;
+        }
+
+        /* Menu Box */
+        .menu-box {
+            position: fixed;
+            top: 60px;
+            right: 20px;
+            width: 200px;
+            background: #333;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            display: none;
+            flex-direction: column;
+            padding: 10px;
+            z-index: 9;
+        }
+
+        .menu-box.open {
+            display: flex;
+        }
+
+        .menu-box a {
+            color: #f0f0f0;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+        }
+
+        .menu-box a:hover {
+            background: #4fc3f7;
+        }
+
         /* Footer Styles */
         footer {
             text-align: center;
@@ -117,26 +162,17 @@
             text-decoration: underline;
         }
 
-        /* Dark/Light Mode Switch */
-        #mode-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: #4fc3f7;
-            border: none;
-            padding: 10px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 20px;
-            z-index: 10;
-        }
-
-        .light-mode body {
-            background: #f0f0f0;
-            color: #1a1a1a;
+        /* Light Mode Styles */
+        .light-mode {
+            background: #fff;
+            color: #000;
         }
 
         .light-mode .progress-bar div {
+            background: #00796b;
+        }
+
+        .light-mode .role-box {
             background: #00796b;
         }
 
@@ -144,84 +180,21 @@
             background: #f0f0f0;
             color: #333;
         }
-
-        .light-mode .role-box {
-            background: #00796b;
-        }
-
-        /* Hamburger Menu Styles */
-        #hamburger {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            z-index: 1000;
-        }
-
-        #hamburger div {
-            width: 30px;
-            height: 4px;
-            background-color: #fff;
-            margin: 6px 0;
-            transition: 0.4s;
-        }
-
-        /* Language Modal Styles */
-        .language-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-
-        .language-modal-content {
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            text-align: center;
-            width: 300px;
-        }
-
-        .language-modal-content h3 {
-            margin-bottom: 15px;
-        }
-
-        .language-modal-content button {
-            background: #4fc3f7;
-            color: white;
-            border: none;
-            padding: 10px;
-            margin: 5px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .language-modal-content button:hover {
-            background: #00796b;
-        }
-
     </style>
 </head>
 <body>
-    <!-- Hamburger Menu Button -->
-    <button id="hamburger">
+    <!-- Hamburger Button -->
+    <button class="hamburger" id="hamburger">
         <div></div>
         <div></div>
         <div></div>
     </button>
 
-    <!-- Dark Mode Toggle (Moon Icon) -->
-    <button id="mode-toggle" title="Toggle Dark/Light Mode">
-        <i class="fas fa-moon"></i>
-    </button>
+    <!-- Menu Box -->
+    <div class="menu-box" id="menuBox">
+        <a href="#" id="themeToggle">Theme / Mode Toggle</a>
+        <a href="#" id="languageChanger">Language Changer</a>
+    </div>
 
     <!-- Header Section -->
     <header>
@@ -234,7 +207,7 @@
         <!-- About Me Section -->
         <section>
             <h2>About Me</h2>
-            <p id="aboutText">Hi, I'm Lens (or Lyn), a 15-year-old self-taught developer. I create scripts, tools, and websites entirely on my mobile device. My passion lies in building efficient and innovative solutions. Welcome to my portfolio!</p>
+            <p>Hi, I'm Lens (or Lyn), a 15-year-old self-taught developer. I create scripts, tools, and websites entirely on my mobile device. My passion lies in building efficient and innovative solutions. Welcome to my portfolio!</p>
         </section>
 
         <!-- Languages Section -->
@@ -265,11 +238,11 @@
         <!-- Hobbies & Interests Section -->
         <section>
             <h2>Hobbies & Interests</h2>
-            <p id="hobbiesText">When I'm not coding, I enjoy:</p>
+            <p>When I'm not coding, I enjoy:</p>
             <ul>
-                <li id="hobby1">Playing video games to unwind and find inspiration for my projects.</li>
-                <li id="hobby2">Exploring new technology and staying updated with industry trends.</li>
-                <li id="hobby3">Learning about ethical hacking and security to enhance my skills.</li>
+                <li>Playing video games to unwind and find inspiration for my projects.</li>
+                <li>Exploring new technology and staying updated with industry trends.</li>
+                <li>Learning about ethical hacking and security to enhance my skills.</li>
             </ul>
         </section>
 
@@ -277,13 +250,10 @@
         <section>
             <h2>What I Do</h2>
             <div class="role-box-container">
-                <!-- Software Developer Box -->
                 <div class="role-box">
                     <h3>Software Developer</h3>
                     <p>I specialize in creating efficient tools and scripts that automate tasks, improve productivity, and solve complex problems, all using minimal resources.</p>
                 </div>
-                
-                <!-- Website Developer Box -->
                 <div class="role-box">
                     <h3>Website Developer</h3>
                     <p>I design and develop responsive, aesthetically pleasing, and user-friendly websites optimized for mobile and desktop platforms.</p>
@@ -292,34 +262,80 @@
         </section>
     </main>
 
-    <!-- Language Modal -->
-    <div class="language-modal" id="languageModal">
-        <div class="language-modal-content">
-            <h3>Select an available language:</h3>
-            <button id="englishBtn">English / Engels</button>
-            <button id="dutchBtn">Dutch / Nederlands</button>
-        </div>
-    </div>
-
     <!-- GitHub Icon -->
     <footer>
         <a href="https://github.com" target="_blank"><i class="fab fa-github" style="font-size: 30px; color: #4fc3f7;"></i></a>
         <p>&copy; 2024 Lens / Lyn. All Rights Reserved.</p>
     </footer>
 
+    <!-- JavaScript for Menu, Theme Toggle, and Language Changer -->
     <script>
         const hamburger = document.getElementById("hamburger");
         const menuBox = document.getElementById("menuBox");
-        const themeToggle = document.getElementById("mode-toggle");
+        const themeToggle = document.getElementById("themeToggle");
         const languageChanger = document.getElementById("languageChanger");
-        const languageModal = document.getElementById("languageModal");
-        const englishBtn = document.getElementById("englishBtn");
-        const dutchBtn = document.getElementById("dutchBtn");
-        const aboutText = document.getElementById("aboutText");
-        const hobbiesText = document.getElementById("hobbiesText");
-        const hobby1 = document.getElementById("hobby1");
-        const hobby2 = document.getElementById("hobby2");
-        const hobby3 = document.getElementById("hobby3");
+
+        // Translation Object
+        const translations = {
+            english: {
+                header: {
+                    title: "Welcome to My Portfolio",
+                    subtitle: "Developer / Programmer | Scripts, Tools and Simple Websites"
+                },
+                aboutMe: {
+                    title: "About Me",
+                    content: "Hi, I'm Lens (or Lyn), a 15-year-old self-taught developer. I create scripts, tools, and websites entirely on my mobile device. My passion lies in building efficient and innovative solutions. Welcome to my portfolio!"
+                },
+                languages: {
+                    title: "Languages",
+                    python: "Python - 87%",
+                    php: "PHP - 80%",
+                    javascript: "JavaScript - 70%",
+                    css: "CSS - 40%"
+                },
+                hobbies: {
+                    title: "Hobbies & Interests",
+                    content: "When I'm not coding, I enjoy:"
+                },
+                roles: {
+                    title: "What I Do",
+                    softwareDev: "Software Developer",
+                    websiteDev: "Website Developer"
+                },
+                footer: {
+                    text: "&copy; 2024 Lens / Lyn. All Rights Reserved."
+                }
+            },
+            dutch: {
+                header: {
+                    title: "Welkom op mijn Portfolio",
+                    subtitle: "Ontwikkelaar / Programmeur | Scripts, Tools en Simpele Websites"
+                },
+                aboutMe: {
+                    title: "Over Mij",
+                    content: "Hallo, ik ben Lens (of Lyn), een 15-jarige autodidactische ontwikkelaar. Ik maak scripts, tools en websites helemaal op mijn mobiele apparaat. Mijn passie ligt in het bouwen van efficiënte en innovatieve oplossingen. Welkom op mijn portfolio!"
+                },
+                languages: {
+                    title: "Talen",
+                    python: "Python - 87%",
+                    php: "PHP - 80%",
+                    javascript: "JavaScript - 70%",
+                    css: "CSS - 40%"
+                },
+                hobbies: {
+                    title: "Hobby's en Interesse",
+                    content: "Wanneer ik niet aan het coderen ben, geniet ik van:"
+                },
+                roles: {
+                    title: "Wat Ik Doe",
+                    softwareDev: "Software Ontwikkelaar",
+                    websiteDev: "Website Ontwikkelaar"
+                },
+                footer: {
+                    text: "&copy; 2024 Lens / Lyn. Alle rechten voorbehouden."
+                }
+            }
+        };
 
         // Toggle Menu Box
         hamburger.addEventListener("click", () => {
@@ -336,38 +352,66 @@
             }
         });
 
-        // Language Changer (Open modal)
-        languageChanger.addEventListener("click", () => {
-            languageModal.style.display = "flex";
-        });
-
-        // Close modal when selecting a language
-        englishBtn.addEventListener("click", () => {
-            // Set content for English
-            aboutText.textContent = "Hi, I'm Lens (or Lyn), a 15-year-old self-taught developer. I create scripts, tools, and websites entirely on my mobile device. My passion lies in building efficient and innovative solutions. Welcome to my portfolio!";
-            hobbiesText.textContent = "When I'm not coding, I enjoy:";
-            hobby1.textContent = "Playing video games to unwind and find inspiration for my projects.";
-            hobby2.textContent = "Exploring new technology and staying updated with industry trends.";
-            hobby3.textContent = "Learning about ethical hacking and security to enhance my skills.";
-            languageModal.style.display = "none";
-        });
-
-        dutchBtn.addEventListener("click", () => {
-            // Set content for Dutch
-            aboutText.textContent = "Hallo, ik ben Lens (of Lyn), een 15-jarige zelfgeleerde ontwikkelaar. Ik maak scripts, tools en websites volledig op mijn mobiele apparaat. Mijn passie ligt in het bouwen van efficiënte en innovatieve oplossingen. Welkom op mijn portfolio!";
-            hobbiesText.textContent = "Wanneer ik niet aan het coderen ben, geniet ik van:";
-            hobby1.textContent = "Videospellen spelen om tot rust te komen en inspiratie op te doen voor mijn projecten.";
-            hobby2.textContent = "Nieuwe technologie verkennen en op de hoogte blijven van trends in de industrie.";
-            hobby3.textContent = "Leren over ethisch hacken en beveiliging om mijn vaardigheden te verbeteren.";
-            languageModal.style.display = "none";
-        });
-
         // Close menu when clicking outside
         document.addEventListener("click", (event) => {
             if (!menuBox.contains(event.target) && !hamburger.contains(event.target)) {
                 menuBox.classList.remove("open");
             }
         });
+
+        // Language Changer
+        languageChanger.addEventListener("click", () => {
+            const languageMenu = `
+                <div id="languageMenu" style="background: #333; padding: 10px; border-radius: 8px; position: absolute; top: 60px; right: 20px;">
+                    <button id="englishBtn" style="width: 100%; background: #4fc3f7; padding: 10px; border: none; color: white; border-radius: 5px; margin-bottom: 5px;">English</button>
+                    <button id="dutchBtn" style="width: 100%; background: #4fc3f7; padding: 10px; border: none; color: white; border-radius: 5px;">Nederlands</button>
+                </div>
+            `;
+            document.body.insertAdjacentHTML('beforeend', languageMenu);
+
+            // Handle language selection
+            document.getElementById("englishBtn").addEventListener("click", () => {
+                changeLanguage("english");
+            });
+
+            document.getElementById("dutchBtn").addEventListener("click", () => {
+                changeLanguage("dutch");
+            });
+        });
+
+        // Function to change language
+        function changeLanguage(language) {
+            const translation = translations[language];
+
+            // Header
+            document.querySelector("header h1").textContent = translation.header.title;
+            document.querySelector("header h3").textContent = translation.header.subtitle;
+
+            // About Me
+            document.querySelector("section h2").textContent = translation.aboutMe.title;
+            document.querySelector("section p").textContent = translation.aboutMe.content;
+
+            // Languages
+            document.querySelectorAll(".progress-container .progress-bar div")[0].textContent = translation.languages.python;
+            document.querySelectorAll(".progress-container .progress-bar div")[1].textContent = translation.languages.php;
+            document.querySelectorAll(".progress-container .progress-bar div")[2].textContent = translation.languages.javascript;
+            document.querySelectorAll(".progress-container .progress-bar div")[3].textContent = translation.languages.css;
+
+            // Hobbies & Interests
+            document.querySelectorAll("section")[2].querySelector("h2").textContent = translation.hobbies.title;
+            document.querySelectorAll("section")[2].querySelector("p").textContent = translation.hobbies.content;
+
+            // Roles
+            document.querySelectorAll("section")[3].querySelector("h2").textContent = translation.roles.title;
+            document.querySelectorAll(".role-box")[0].querySelector("h3").textContent = translation.roles.softwareDev;
+            document.querySelectorAll(".role-box")[1].querySelector("h3").textContent = translation.roles.websiteDev;
+
+            // Footer
+            document.querySelector("footer p").innerHTML = translation.footer.text;
+
+            // Remove language menu after selection
+            document.getElementById("languageMenu").remove();
+        }
     </script>
 </body>
 </html>
