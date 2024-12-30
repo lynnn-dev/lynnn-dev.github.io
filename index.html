@@ -41,26 +41,29 @@
             margin-bottom: 50px;
         }
 
-        /* Progress Bar Styles */
-        .progress-container {
-            margin: 10px 0;
+        /* Rectangle Box Styles */
+        .role-box-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
         }
 
-        .progress-bar {
-            width: 100%;
-            background: #333;
-            border-radius: 5px;
-            overflow: hidden;
-            margin-bottom: 10px;
-        }
-
-        .progress-bar div {
-            height: 25px;
-            line-height: 25px;
+        .role-box {
+            flex: 1;
+            min-width: 250px;
+            padding: 20px;
             background: #4fc3f7;
-            text-align: center;
             color: #fff;
-            font-weight: bold;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .role-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
         }
 
         /* Hamburger Menu Styles */
@@ -230,13 +233,10 @@
         <section>
             <h2>What I Do</h2>
             <div class="role-box-container">
-                <!-- Software Developer Box -->
                 <div class="role-box">
                     <h3>Software Developer</h3>
                     <p>I specialize in creating efficient tools and scripts that automate tasks, improve productivity, and solve complex problems, all using minimal resources.</p>
                 </div>
-                
-                <!-- Website Developer Box -->
                 <div class="role-box">
                     <h3>Website Developer</h3>
                     <p>I design and develop responsive, aesthetically pleasing, and user-friendly websites optimized for mobile and desktop platforms.</p>
