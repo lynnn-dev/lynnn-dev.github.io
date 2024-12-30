@@ -37,94 +37,103 @@
             padding: 20px;
         }
 
-        /* Side Panel Styles */
-        #side-panel {
-            position: fixed;
-            top: 0;
-            left: -250px;
-            width: 250px;
-            height: 100%;
-            background-color: #333;
+        section {
+            margin-bottom: 50px;
+        }
+
+        /* Progress Bar Styles */
+        .progress-container {
+            margin: 10px 0;
+        }
+
+        .progress-bar {
+            width: 100%;
+            background: #333;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .progress-bar div {
+            height: 25px;
+            line-height: 25px;
+            background: #4fc3f7;
+            text-align: center;
             color: #fff;
-            transition: 0.3s;
-            padding: 10px;
-            z-index: 1000;
+            font-weight: bold;
         }
 
-        #side-panel.open {
-            left: 0;
+        /* Hobbies Section */
+        section ul {
+            margin-top: 1rem;
+            list-style: disc;
+            padding-left: 1.5rem;
         }
 
-        #side-panel .panel-content {
+        section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Blue Boxes (Developer Roles) */
+        .role-box-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .role-box {
+            flex: 1;
+            min-width: 250px;
+            padding: 20px;
+            background: #4fc3f7;
+            color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .role-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Footer Styles */
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background: #333;
+            color: #aaa;
             margin-top: 50px;
         }
 
-        #side-panel button {
-            background: transparent;
-            color: #fff;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-            width: 100%;
-            text-align: left;
-            font-size: 18px;
+        footer a {
+            color: #4fc3f7;
+            text-decoration: none;
         }
 
-        #side-panel button:hover {
-            background-color: #4fc3f7;
+        footer a:hover {
+            text-decoration: underline;
         }
 
-        /* Theme Toggle Pop-up */
-        .theme-popup, .language-popup {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #333;
-            padding: 20px;
-            border-radius: 8px;
-            color: #fff;
-            text-align: center;
-            z-index: 2000;
-        }
-
-        .theme-popup button, .language-popup button {
-            background: #4fc3f7;
-            color: #fff;
-            border: none;
-            padding: 10px;
-            margin: 10px 0;
-            cursor: pointer;
-            width: 100%;
-        }
-
-        .theme-popup button:hover, .language-popup button:hover {
-            background: #00796b;
-        }
-
-        /* 3 Lines Button */
-        #menu-btn {
+        /* Dark/Light Mode Switch */
+        #mode-toggle {
             position: fixed;
             top: 20px;
-            left: 20px;
-            background: rgba(255, 255, 255, 0.6);
+            right: 20px;
+            background: #4fc3f7;
             border: none;
-            padding: 12px;
-            border-radius: 5px;
+            padding: 10px;
+            border-radius: 50%;
             cursor: pointer;
-            z-index: 9999;
+            font-size: 20px;
+            z-index: 10;
         }
 
-        #menu-btn i {
-            font-size: 24px;
-            color: #333;
-        }
-
-        /* Theme styles */
         .light-mode body {
             background: #f0f0f0;
-            color: #333;
+            color: #1a1a1a;
         }
 
         .light-mode .progress-bar div {
@@ -142,28 +151,8 @@
     </style>
 </head>
 <body>
-    <!-- 3 Lines Button -->
-    <button id="menu-btn"><i class="fas fa-bars"></i></button>
-
-    <!-- Side Panel -->
-    <div id="side-panel">
-        <div class="panel-content">
-            <button id="theme-toggle-btn">Theme Toggle</button>
-            <button id="language-toggle-btn">Language Changer</button>
-        </div>
-    </div>
-
-    <!-- Theme Toggle Pop-up -->
-    <div class="theme-popup" id="theme-popup">
-        <button id="dark-mode-btn">🌙 Dark Mode</button>
-        <button id="light-mode-btn">☀️ Light Mode</button>
-    </div>
-
-    <!-- Language Toggle Pop-up -->
-    <div class="language-popup" id="language-popup">
-        <button id="english-btn">🇺🇸 English</button>
-        <button id="dutch-btn">🇳🇱 Dutch</button>
-    </div>
+    <!-- Dark Mode Toggle -->
+    <button id="mode-toggle" title="Toggle Dark/Light Mode"><i class="fas fa-moon"></i></button>
 
     <!-- Header Section -->
     <header>
@@ -207,67 +196,48 @@
         <!-- Hobbies & Interests Section -->
         <section>
             <h2>Hobbies & Interests</h2>
+            <p>When I'm not coding, I enjoy:</p>
             <ul>
                 <li>Playing video games to unwind and find inspiration for my projects.</li>
                 <li>Exploring new technology and staying updated with industry trends.</li>
                 <li>Learning about ethical hacking and security to enhance my skills.</li>
             </ul>
         </section>
+
+        <!-- Developer Roles Section -->
+        <section>
+            <h2>What I Do</h2>
+            <div class="role-box-container">
+                <!-- Software Developer Box -->
+                <div class="role-box">
+                    <h3>Software Developer</h3>
+                    <p>I specialize in creating efficient tools and scripts that automate tasks, improve productivity, and solve complex problems, all using minimal resources.</p>
+                </div>
+                
+                <!-- Website Developer Box -->
+                <div class="role-box">
+                    <h3>Website Developer</h3>
+                    <p>I design and develop responsive, aesthetically pleasing, and user-friendly websites optimized for mobile and desktop platforms.</p>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <!-- Footer -->
+    <!-- GitHub Icon -->
     <footer>
         <a href="https://github.com" target="_blank"><i class="fab fa-github" style="font-size: 30px; color: #4fc3f7;"></i></a>
         <p>&copy; 2024 Lens / Lyn. All Rights Reserved.</p>
     </footer>
 
     <script>
-        // 3 Line Menu Button
-        const menuBtn = document.getElementById("menu-btn");
-        const sidePanel = document.getElementById("side-panel");
+        // Dark Mode / Light Mode Toggle Functionality
+        const modeToggle = document.getElementById("mode-toggle");
 
-        menuBtn.addEventListener("click", () => {
-            sidePanel.classList.toggle("open");
-        });
-
-        // Theme Toggle
-        const themeToggleBtn = document.getElementById("theme-toggle-btn");
-        const themePopup = document.getElementById("theme-popup");
-        const darkModeBtn = document.getElementById("dark-mode-btn");
-        const lightModeBtn = document.getElementById("light-mode-btn");
-
-        themeToggleBtn.addEventListener("click", () => {
-            themePopup.style.display = "block";
-        });
-
-        darkModeBtn.addEventListener("click", () => {
-            document.body.classList.add("light-mode");
-            themePopup.style.display = "none";
-        });
-
-        lightModeBtn.addEventListener("click", () => {
-            document.body.classList.remove("light-mode");
-            themePopup.style.display = "none";
-        });
-
-        // Language Changer
-        const languageToggleBtn = document.getElementById("language-toggle-btn");
-        const languagePopup = document.getElementById("language-popup");
-        const englishBtn = document.getElementById("english-btn");
-        const dutchBtn = document.getElementById("dutch-btn");
-
-        languageToggleBtn.addEventListener("click", () => {
-            languagePopup.style.display = "block";
-        });
-
-        englishBtn.addEventListener("click", () => {
-            alert("You selected English!");
-            languagePopup.style.display = "none";
-        });
-
-        dutchBtn.addEventListener("click", () => {
-            alert("You selected Dutch!");
-            languagePopup.style.display = "none";
+        modeToggle.addEventListener("click", () => {
+            document.body.classList.toggle("light-mode");
+            const icon = modeToggle.querySelector("i");
+            icon.classList.toggle("fa-sun");
+            icon.classList.toggle("fa-moon");
         });
     </script>
 </body>
