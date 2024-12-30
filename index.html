@@ -180,19 +180,6 @@
             background: #f0f0f0;
             color: #333;
         }
-
-        /* Language Option Styles */
-        .language-options {
-            display: none;
-            flex-direction: column;
-        }
-
-        .language-options a {
-            background: #444;
-            padding: 8px;
-            border-radius: 5px;
-            margin: 5px 0;
-        }
     </style>
 </head>
 <body>
@@ -207,27 +194,25 @@
     <div class="menu-box" id="menuBox">
         <a href="#" id="themeToggle">Theme / Mode Toggle</a>
         <a href="#" id="languageChanger">Language Changer</a>
-        <div class="language-options" id="languageOptions">
-            <a href="#" id="englishOption">English / Engels</a>
-            <a href="#" id="dutchOption">Dutch / Nederlands</a>
-        </div>
     </div>
 
     <!-- Header Section -->
     <header>
-        <h1 id="headerTitle">Welcome to My Portfolio</h1>
-        <h3 id="headerSubTitle">Developer / Programmer | Scripts, Tools and Simple Websites</h3>
+        <h1>Welcome to My Portfolio</h1>
+        <h3>Developer / Programmer | Scripts, Tools and Simple Websites</h3>
     </header>
 
     <!-- Main Content -->
     <main>
+        <!-- About Me Section -->
         <section>
-            <h2 id="aboutTitle">About Me</h2>
-            <p id="aboutText">Hi, I'm Lens (or Lyn), a 15-year-old self-taught developer. I create scripts, tools, and websites entirely on my mobile device. My passion lies in building efficient and innovative solutions. Welcome to my portfolio!</p>
+            <h2>About Me</h2>
+            <p>Hi, I'm Lens (or Lyn), a 15-year-old self-taught developer. I create scripts, tools, and websites entirely on my mobile device. My passion lies in building efficient and innovative solutions. Welcome to my portfolio!</p>
         </section>
 
+        <!-- Languages Section -->
         <section>
-            <h2 id="languagesTitle">Languages</h2>
+            <h2>Languages</h2>
             <div class="progress-container">
                 <div class="progress-bar">
                     <div class="python" style="width: 87%;">Python - 87%</div>
@@ -250,135 +235,122 @@
             </div>
         </section>
 
+        <!-- Hobbies & Interests Section -->
         <section>
-            <h2 id="hobbiesTitle">Hobbies & Interests</h2>
-            <p id="hobbiesText">When I'm not coding, I enjoy:</p>
+            <h2>Hobbies & Interests</h2>
+            <p>When I'm not coding, I enjoy:</p>
             <ul>
-                <li id="hobbiesList1">Playing video games to unwind and find inspiration for my projects.</li>
-                <li id="hobbiesList2">Exploring new technology and staying updated with industry trends.</li>
-                <li id="hobbiesList3">Learning about ethical hacking and security to enhance my skills.</li>
+                <li>Playing video games to unwind and find inspiration for my projects.</li>
+                <li>Exploring new technology and staying updated with industry trends.</li>
+                <li>Learning about ethical hacking and security to enhance my skills.</li>
             </ul>
         </section>
 
+        <!-- Developer Roles Section -->
         <section>
-            <h2 id="whatIDoTitle">What I Do</h2>
+            <h2>What I Do</h2>
             <div class="role-box-container">
                 <div class="role-box">
-                    <h3 id="roleBox1Title">Software Developer</h3>
-                    <p id="roleBox1Text">I specialize in creating efficient tools and scripts that automate tasks, improve productivity, and solve complex problems, all using minimal resources.</p>
+                    <h3>Software Developer</h3>
+                    <p>I specialize in creating efficient tools and scripts that automate tasks, improve productivity, and solve complex problems, all using minimal resources.</p>
                 </div>
-                <div class="role-box">
-                    <h3 id="roleBox2Title">Website Developer</h3>
-                    <p id="roleBox2Text">I design and develop responsive, aesthetically pleasing, and user-friendly websites optimized for mobile and desktop platforms.</p>
+<div class="role-box">
+                    <h3>Website Developer</h3>
+                    <p>I design and develop responsive, aesthetically pleasing, and user-friendly websites optimized for mobile and desktop platforms.</p>
                 </div>
             </div>
         </section>
     </main>
 
+    <!-- GitHub Icon -->
     <footer>
         <a href="https://github.com" target="_blank"><i class="fab fa-github" style="font-size: 30px; color: #4fc3f7;"></i></a>
         <p>&copy; 2024 Lens / Lyn. All Rights Reserved.</p>
     </footer>
 
+    <!-- JavaScript for Menu, Theme Toggle, and Language Changer -->
     <script>
         const hamburger = document.getElementById("hamburger");
         const menuBox = document.getElementById("menuBox");
         const themeToggle = document.getElementById("themeToggle");
         const languageChanger = document.getElementById("languageChanger");
-        const languageOptions = document.getElementById("languageOptions");
-        const englishOption = document.getElementById("englishOption");
-        const dutchOption = document.getElementById("dutchOption");
 
-        // Language content for English
-        const englishContent = {
-            headerTitle: "Welcome to My Portfolio",
-            headerSubTitle: "Developer / Programmer | Scripts, Tools and Simple Websites",
-            aboutTitle: "About Me",
-            aboutText: "Hi, I'm Lens (or Lyn), a 15-year-old self-taught developer. I create scripts, tools, and websites entirely on my mobile device. My passion lies in building efficient and innovative solutions. Welcome to my portfolio!",
-            languagesTitle: "Languages",
-            hobbiesTitle: "Hobbies & Interests",
-            hobbiesText: "When I'm not coding, I enjoy:",
-            hobbiesList1: "Playing video games to unwind and find inspiration for my projects.",
-            hobbiesList2: "Exploring new technology and staying updated with industry trends.",
-            hobbiesList3: "Learning about ethical hacking and security to enhance my skills.",
-            whatIDoTitle: "What I Do",
-            roleBox1Title: "Software Developer",
-            roleBox1Text: "I specialize in creating efficient tools and scripts that automate tasks, improve productivity, and solve complex problems, all using minimal resources.",
-            roleBox2Title: "Website Developer",
-            roleBox2Text: "I design and develop responsive, aesthetically pleasing, and user-friendly websites optimized for mobile and desktop platforms."
+        let currentMenu = "main";
+
+        // Update Menu Items
+        const updateMenu = (options) => {
+            menuBox.innerHTML = "";
+            options.forEach(option => {
+                const link = document.createElement("a");
+                link.href = "#";
+                link.textContent = option.text;
+                link.onclick = option.onclick;
+                menuBox.appendChild(link);
+            });
         };
 
-        // Language content for Dutch
-        const dutchContent = {
-            headerTitle: "Welkom op mijn Portfolio",
-            headerSubTitle: "Ontwikkelaar / Programmeur | Scripts, Tools en Eenvoudige Websites",
-            aboutTitle: "Over Mij",
-            aboutText: "Hallo, ik ben Lens (of Lyn), een 15-jarige autodidactische ontwikkelaar. Ik maak scripts, tools en websites geheel op mijn mobiele apparaat. Mijn passie ligt in het bouwen van efficiënte en innovatieve oplossingen. Welkom op mijn portfolio!",
-            languagesTitle: "Talen",
-            hobbiesTitle: "Hobby's & Interesse",
-            hobbiesText: "Wanneer ik niet aan het coderen ben, geniet ik van:",
-            hobbiesList1: "Video-games spelen om te ontspannen en inspiratie op te doen voor mijn projecten.",
-            hobbiesList2: "Nieuwe technologie verkennen en op de hoogte blijven van de laatste trends in de industrie.",
-            hobbiesList3: "Leren over ethisch hacken en beveiliging om mijn vaardigheden te verbeteren.",
-            whatIDoTitle: "Wat ik Doe",
-            roleBox1Title: "Software Ontwikkelaar",
-            roleBox1Text: "Ik ben gespecialiseerd in het maken van efficiënte tools en scripts die taken automatiseren, de productiviteit verbeteren en complexe problemen oplossen, allemaal met minimale middelen.",
-            roleBox2Title: "Website Ontwikkelaar",
-            roleBox2Text: "Ik ontwerp en ontwikkel responsieve, esthetisch aantrekkelijke en gebruiksvriendelijke websites die geoptimaliseerd zijn voor mobiele en desktopplatforms."
+        // Show Main Menu
+        const showMainMenu = () => {
+            currentMenu = "main";
+            updateMenu([
+                { text: "Theme / Mode Toggle", onclick: showThemeOptions },
+                { text: "Language Changer", onclick: showLanguageOptions }
+            ]);
+        };
+
+        // Show Theme Options
+        const showThemeOptions = () => {
+            currentMenu = "theme";
+            updateMenu([
+                { text: "Light Mode", onclick: () => toggleTheme("light") },
+                { text: "Dark Mode", onclick: () => toggleTheme("dark") },
+                { text: "Back", onclick: showMainMenu }
+            ]);
+        };
+
+        // Show Language Options
+        const showLanguageOptions = () => {
+            currentMenu = "language";
+            updateMenu([
+                { text: "English", onclick: () => setLanguage("en") },
+                { text: "Dutch", onclick: () => setLanguage("nl") },
+                { text: "Back", onclick: showMainMenu }
+            ]);
+        };
+
+        // Toggle Theme
+        const toggleTheme = (mode) => {
+            document.body.classList.toggle("light-mode", mode === "light");
+            showMainMenu();
+        };
+
+        // Set Language
+        const setLanguage = (lang) => {
+            const translations = {
+                en: {
+                    aboutMe: "Hi, I'm Lens (or Lyn), a 15-year-old self-taught developer. I create scripts, tools, and websites entirely on my mobile device. My passion lies in building efficient and innovative solutions. Welcome to my portfolio!",
+                    hobbies: "When I'm not coding, I enjoy:",
+                    whatIDo: "What I Do"
+                },
+                nl: {
+                    aboutMe: "Hallo, ik ben Lens (of Lyn), een 15-jarige autodidactische ontwikkelaar. Ik maak scripts, tools en websites volledig op mijn mobiele apparaat. Mijn passie ligt in het bouwen van efficiënte en innovatieve oplossingen. Welkom bij mijn portfolio!",
+                    hobbies: "Als ik niet aan het coderen ben, geniet ik van:",
+                    whatIDo: "Wat ik doe"
+                }
+            };
+            document.querySelector("section:nth-child(2) p").textContent = translations[lang].aboutMe;
+            document.querySelector("section:nth-child(3) p").textContent = translations[lang].hobbies;
+            document.querySelector("section:nth-child(5) h2").textContent = translations[lang].whatIDo;
+            showMainMenu();
         };
 
         // Toggle Menu Box
         hamburger.addEventListener("click", () => {
+            if (!menuBox.classList.contains("open")) {
+                currentMenu === "main" ? showMainMenu() : null;
+            }
             menuBox.classList.toggle("open");
         });
-
-        // Toggle Theme / Mode
-        themeToggle.addEventListener("click", () => {
-            const currentMode = document.body.classList.contains("light-mode");
-            if (currentMode) {
-                document.body.classList.remove("light-mode");
-            } else {
-                document.body.classList.add("light-mode");
-            }
-        });
-
-        // Language Changer
-        languageChanger.addEventListener("click", () => {
-            languageOptions.style.display = languageOptions.style.display === "flex" ? "none" : "flex";
-        });
-
-        // Change language to English
-        englishOption.addEventListener("click", () => {
-            document.documentElement.lang = "en";
-            changeContent(englishContent);
-            languageOptions.style.display = "none";  // Hide options after selection
-        });
-
-        // Change language to Dutch
-        dutchOption.addEventListener("click", () => {
-            document.documentElement.lang = "nl";
-            changeContent(dutchContent);
-            languageOptions.style.display = "none";  // Hide options after selection
-        });
-
-        // Function to change content based on selected language
-        function changeContent(content) {
-            document.getElementById("headerTitle").textContent = content.headerTitle;
-            document.getElementById("headerSubTitle").textContent = content.headerSubTitle;
-            document.getElementById("aboutTitle").textContent = content.aboutTitle;
-            document.getElementById("aboutText").textContent = content.aboutText;
-            document.getElementById("languagesTitle").textContent = content.languagesTitle;
-            document.getElementById("hobbiesTitle").textContent = content.hobbiesTitle;
-            document.getElementById("hobbiesText").textContent = content.hobbiesText;
-            document.getElementById("hobbiesList1").textContent = content.hobbiesList1;
-            document.getElementById("hobbiesList2").textContent = content.hobbiesList2;
-            document.getElementById("hobbiesList3").textContent = content.hobbiesList3;
-            document.getElementById("whatIDoTitle").textContent = content.whatIDoTitle;
-            document.getElementById("roleBox1Title").textContent = content.roleBox1Title;
-            document.getElementById("roleBox1Text").textContent = content.roleBox1Text;
-            document.getElementById("roleBox2Title").textContent = content.roleBox2Title;
-            document.getElementById("roleBox2Text").textContent = content.roleBox2Text;
-        }
 
         // Close menu when clicking outside
         document.addEventListener("click", (event) => {
