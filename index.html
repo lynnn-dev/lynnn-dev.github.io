@@ -41,28 +41,6 @@
             margin-bottom: 50px;
         }
 
-        /* Progress Bar Styles */
-        .progress-container {
-            margin: 10px 0;
-        }
-
-        .progress-bar {
-            width: 100%;
-            background: #333;
-            border-radius: 5px;
-            overflow: hidden;
-            margin-bottom: 10px;
-        }
-
-        .progress-bar div {
-            height: 25px;
-            line-height: 25px;
-            background: #4fc3f7;
-            text-align: center;
-            color: #fff;
-            font-weight: bold;
-        }
-
         /* Rectangle Box Styles */
         .role-box-container {
             display: flex;
@@ -130,18 +108,28 @@
             display: flex;
         }
 
-        .menu-box a {
+        .menu-box button {
+            background: none;
+            border: none;
             color: #f0f0f0;
-            text-decoration: none;
+            text-align: left;
             padding: 10px;
             border-radius: 5px;
-            text-align: center;
             font-size: 1rem;
             transition: background 0.3s ease;
+            cursor: pointer;
         }
 
-        .menu-box a:hover {
+        .menu-box button:hover {
             background: #4fc3f7;
+        }
+
+        .menu-box .dropdown {
+            margin-left: 10px;
+        }
+
+        .menu-box .dropdown button {
+            padding-left: 20px;
         }
 
         /* Light Mode Styles */
@@ -150,17 +138,26 @@
             color: #000;
         }
 
-        .light-mode .progress-bar div {
-            background: #00796b;
-        }
-
         .light-mode .role-box {
             background: #00796b;
         }
 
-        .light-mode footer {
-            background: #f0f0f0;
-            color: #333;
+        /* Copyright Styles */
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            color: #888;
+        }
+
+        /* Hobbies Section Styles */
+        .hobbies-section {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .hobbies-section p {
+            font-size: 1.1rem;
+            color: #bbb;
         }
     </style>
 </head>
@@ -174,159 +171,114 @@
 
     <!-- Menu Box -->
     <div class="menu-box" id="menuBox">
-        <a href="#" id="themeToggle">Theme / Mode Toggle</a>
-        <a href="#" id="languageChanger">Language Changer</a>
+        <button id="themeToggle">Theme / Mode Toggle</button>
+        <div class="dropdown" id="themeDropdown" style="display: none;">
+            <button id="darkMode">Dark Mode</button>
+            <button id="lightMode">Light Mode</button>
+        </div>
+        <button id="languageChanger">Language Changer</button>
+        <div class="dropdown" id="languageDropdown" style="display: none;">
+            <button id="english">English / Engels</button>
+            <button id="dutch">Dutch / Nederlands</button>
+        </div>
     </div>
 
     <!-- Header Section -->
     <header>
-        <h1>Welcome to My Portfolio</h1>
-        <h3>Developer / Programmer | Scripts, Tools and Simple Websites</h3>
+        <h1 data-en="Welcome to My Portfolio" data-nl="Welkom op mijn portfolio">Welcome to My Portfolio</h1>
+        <h3 data-en="Developer / Programmer | Scripts, Tools and Simple Websites" data-nl="Ontwikkelaar / Programmeur | Scripts, Tools en Eenvoudige Websites">Developer / Programmer | Scripts, Tools and Simple Websites</h3>
     </header>
 
     <!-- Main Content -->
     <main>
-        <!-- About Me Section -->
         <section>
-            <h2>About Me</h2>
-            <p>Hi, I'm Lens (or Lyn), a 15-year-old self-taught developer. I create scripts, tools, and websites entirely on my mobile device. My passion lies in building efficient and innovative solutions. Welcome to my portfolio!</p>
-        </section>
-
-        <!-- Languages Section -->
-        <section>
-            <h2>Languages</h2>
-            <div class="progress-container">
-                <div class="progress-bar">
-                    <div class="python" style="width: 87%;">Python - 87%</div>
-                </div>
-            </div>
-            <div class="progress-container">
-                <div class="progress-bar">
-                    <div class="php" style="width: 80%;">PHP - 80%</div>
-                </div>
-            </div>
-            <div class="progress-container">
-                <div class="progress-bar">
-                    <div class="javascript" style="width: 70%;">JavaScript - 70%</div>
-                </div>
-            </div>
-            <div class="progress-container">
-                <div class="progress-bar">
-                    <div class="css" style="width: 40%;">CSS - 40%</div>
-                </div>
-            </div>
+            <h2 data-en="About Me" data-nl="Over Mij">About Me</h2>
+            <p data-en="Hi, I'm Lens (or Lyn), a 15-year-old self-taught developer. I create scripts, tools, and websites entirely on my mobile device. My passion lies in building efficient and innovative solutions. Welcome to my portfolio!"
+                data-nl="Hallo, ik ben Lens (of Lyn), een 15-jarige autodidactische ontwikkelaar. Ik maak scripts, tools en websites volledig op mijn mobiele apparaat. Mijn passie ligt in het bouwen van efficiënte en innovatieve oplossingen. Welkom op mijn portfolio!">
+                Hi, I'm Lens (or Lyn), a 15-year-old self-taught developer. I create scripts, tools, and websites entirely on my mobile device. My passion lies in building efficient and innovative solutions. Welcome to my portfolio!
+            </p>
         </section>
 
         <!-- Hobbies & Interests Section -->
-        <section>
-            <h2>Hobbies & Interests</h2>
-            <p>When I'm not coding, I enjoy:</p>
+        <section class="hobbies-section">
+            <h2 data-en="Hobbies & Interests" data-nl="Hobby's & Interesses">Hobbies & Interests</h2>
+            <p data-en="When I'm not coding I enjoy:" data-nl="Wanneer ik niet aan het coderen ben, geniet ik van:">When I'm not coding I enjoy:</p>
             <ul>
-                <li>Playing video games to unwind and find inspiration for my projects.</li>
-                <li>Exploring new technology and staying updated with industry trends.</li>
-                <li>Learning about ethical hacking and security to enhance my skills.</li>
+                <li data-en="Playing video games to unwind." data-nl="Video games spelen om tot rust te komen.">Playing video games to unwind.</li>
+                <li data-en="Exploring new technology and staying updated with industry trends." data-nl="Nieuwe technologie verkennen en op de hoogte blijven van trends in de industrie.">Exploring new technology and staying updated with industry trends.</li>
+                <li data-en="Learning about ethical hacking and security to enhance my skills." data-nl="Leren over ethisch hacken en beveiliging om mijn vaardigheden te verbeteren.">Learning about ethical hacking and security to enhance my skills.</li>
             </ul>
         </section>
 
-        <!-- Developer Roles Section -->
+        <!-- Developer Role Boxes -->
         <section>
-            <h2>What I Do</h2>
+            <h2 data-en="Roles" data-nl="Rollen">Roles</h2>
             <div class="role-box-container">
                 <div class="role-box">
-                    <h3>Software Developer</h3>
-                    <p>I specialize in creating efficient tools and scripts that automate tasks, improve productivity, and solve complex problems, all using minimal resources.</p>
+                    <h3 data-en="Software Developer" data-nl="Software Ontwikkelaar">Software Developer</h3>
+                    <p data-en="Building innovative software solutions for various platforms." data-nl="Het bouwen van innovatieve software-oplossingen voor verschillende platforms.">Building innovative software solutions for various platforms.</p>
                 </div>
                 <div class="role-box">
-                    <h3>Website Developer</h3>
-                    <p>I design and develop responsive, aesthetically pleasing, and user-friendly websites optimized for mobile and desktop platforms.</p>
+                    <h3 data-en="Website Developer" data-nl="Website Ontwikkelaar">Website Developer</h3>
+                    <p data-en="Creating responsive, user-friendly websites with modern technologies." data-nl="Het maken van responsieve, gebruiksvriendelijke websites met moderne technologieën.">Creating responsive, user-friendly websites with modern technologies.</p>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- GitHub Icon -->
+    <!-- Footer Section -->
     <footer>
-        <a href="https://github.com" target="_blank"><i class="fab fa-github" style="font-size: 30px; color: #4fc3f7;"></i></a>
-        <p>&copy; 2024 Lens / Lyn. All Rights Reserved.</p>
+        <p data-en="© 2024 Lens / Lyn. All Rights Reserved." data-nl="© 2024 Lens / Lyn. Alle Rechten Voorbehouden.">© 2024 Lens / Lyn. All Rights Reserved.</p>
     </footer>
 
-    <!-- JavaScript for Menu, Theme Toggle, and Language Changer -->
+    <!-- JavaScript -->
     <script>
         const hamburger = document.getElementById("hamburger");
         const menuBox = document.getElementById("menuBox");
         const themeToggle = document.getElementById("themeToggle");
+        const themeDropdown = document.getElementById("themeDropdown");
         const languageChanger = document.getElementById("languageChanger");
+        const languageDropdown = document.getElementById("languageDropdown");
 
-        const langData = {
-            en: {
-                welcome: "Welcome to My Portfolio",
-                aboutMe: "Hi, I'm Lens (or Lyn), a 15-year-old self-taught developer. I create scripts, tools, and websites entirely on my mobile device. My passion lies in building efficient and innovative solutions. Welcome to my portfolio!",
-                languages: "Languages",
-                hobbies: "Hobbies & Interests",
-                whatIDo: "What I Do",
-                softwareDev: "Software Developer",
-                websiteDev: "Website Developer",
-                footer: "All Rights Reserved."
-            },
-            nl: {
-                welcome: "Welkom op mijn portfolio",
-                aboutMe: "Hoi, ik ben Lens (of Lyn), een 15-jarige zelfgeleerde ontwikkelaar. Ik maak scripts, tools en websites helemaal op mijn mobiele apparaat. Mijn passie ligt in het bouwen van efficiënte en innovatieve oplossingen. Welkom op mijn portfolio!",
-                languages: "Talen",
-                hobbies: "Hobby's & Interesse",
-                whatIDo: "Wat ik doe",
-                softwareDev: "Software Ontwikkelaar",
-                websiteDev: "Website Ontwikkelaar",
-                footer: "Alle rechten voorbehouden."
-            }
-        };
-
-        let currentLang = 'en';
-
-        function setLanguage(lang) {
-            document.querySelector('h1').textContent = langData[lang].welcome;
-            document.querySelector('h3').textContent = langData[lang].aboutMe;
-            document.querySelector('h2').textContent = langData[lang].languages;
-            document.querySelector('section:nth-child(2) p').textContent = langData[lang].aboutMe;
-            document.querySelector('footer p').textContent = langData[lang].footer;
-            currentLang = lang;
-        }
-
-        // Toggle Menu Box
+        // Hamburger toggle
         hamburger.addEventListener("click", () => {
             menuBox.classList.toggle("open");
         });
 
-        // Toggle Theme / Mode
+        // Theme toggle dropdown
         themeToggle.addEventListener("click", () => {
-            // Toggle between light and dark mode
-            document.body.classList.toggle("light-mode");
-            menuBox.classList.remove("open"); // Close menu on selection
+            themeDropdown.style.display = themeDropdown.style.display === "none" ? "block" : "none";
+            languageDropdown.style.display = "none";
         });
 
-        // Language Changer
+        // Language changer dropdown
         languageChanger.addEventListener("click", () => {
-            const languageMenu = document.createElement('div');
-            languageMenu.classList.add('submenu');
-            languageMenu.innerHTML = `
-                <a href="#" class="submenu-item" onclick="setLanguage('en')">English / Engels</a>
-                <a href="#" class="submenu-item" onclick="setLanguage('nl')">Dutch / Nederlands</a>
-            `;
-            menuBox.innerHTML = `
-                <a href="#" id="themeToggle">Theme / Mode Toggle</a>
-                <a href="#" id="languageChanger">Language Changer</a>
-            `;
-            menuBox.appendChild(languageMenu);
+            languageDropdown.style.display = languageDropdown.style.display === "none" ? "block" : "none";
+            themeDropdown.style.display = "none";
         });
 
-        // Close Menu when clicking outside
-        window.addEventListener('click', (e) => {
-            if (!menuBox.contains(e.target) && !hamburger.contains(e.target)) {
-                menuBox.classList.remove('open');
-            }
+        // Language switch
+        document.querySelectorAll("#languageDropdown button").forEach(button => {
+            button.addEventListener("click", () => {
+                const lang = button.id === "english" ? "en" : "nl";
+                document.querySelectorAll("[data-en]").forEach(el => {
+                    el.textContent = el.dataset[lang];
+                });
+                languageDropdown.style.display = "none";
+            });
         });
 
-        // Set default language as English
-        setLanguage('en');
+        // Theme switch
+        document.querySelectorAll("#themeDropdown button").forEach(button => {
+            button.addEventListener("click", () => {
+                if (button.id === "darkMode") {
+                    document.body.classList.remove("light-mode");
+                } else {
+                    document.body.classList.add("light-mode");
+                }
+                themeDropdown.style.display = "none";
+            });
+        });
     </script>
 </body>
 </html>
