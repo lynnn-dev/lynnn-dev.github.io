@@ -198,24 +198,24 @@
 
     <!-- Header Section -->
     <header>
-        <h1>Welcome to My Portfolio</h1>
-        <h3>Developer / Programmer | Scripts, Tools and Simple Websites</h3>
+        <h1 id="headerTitle">Welcome to My Portfolio</h1>
+        <h3 id="headerSubtitle">Developer / Programmer | Scripts, Tools and Simple Websites</h3>
     </header>
 
     <!-- Main Content -->
     <main>
         <!-- About Me Section -->
         <section>
-            <h2>About Me</h2>
-            <p>Hi, I'm Lens (or Lyn), a 15-year-old self-taught developer. I create scripts, tools, and websites entirely on my mobile device. My passion lies in building efficient and innovative solutions. Welcome to my portfolio!</p>
+            <h2 id="aboutTitle">About Me</h2>
+            <p id="aboutText">Hi, I'm Lens (or Lyn), a 15-year-old self-taught developer. I create scripts, tools, and websites entirely on my mobile device. My passion lies in building efficient and innovative solutions. Welcome to my portfolio!</p>
         </section>
 
         <!-- Languages Section -->
         <section>
-            <h2>Languages</h2>
+            <h2 id="languagesTitle">Languages</h2>
             <div class="progress-container">
                 <div class="progress-bar">
-                    <div class="python" style="width: 87%;">Python - 87%</div>
+                    <div class="python" style="width: 85%;">Python - 85%</div>
                 </div>
             </div>
             <div class="progress-container">
@@ -225,38 +225,43 @@
             </div>
             <div class="progress-container">
                 <div class="progress-bar">
-                    <div class="javascript" style="width: 70%;">JavaScript - 70%</div>
+                    <div class="html" style="width: 75%;">HTML - 75%</div>
                 </div>
             </div>
             <div class="progress-container">
                 <div class="progress-bar">
-                    <div class="css" style="width: 40%;">CSS - 40%</div>
+                    <div class="javascript" style="width: 75%;">JavaScript - 75%</div>
+                </div>
+            </div>
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="css" style="width: 50%;">CSS - 50%</div>
                 </div>
             </div>
         </section>
 
         <!-- Hobbies & Interests Section -->
         <section>
-            <h2>Hobbies & Interests</h2>
-            <p>When I'm not coding, I enjoy:</p>
+            <h2 id="hobbiesTitle">Hobbies & Interests</h2>
+            <p id="hobbiesText">When I'm not coding, I enjoy:</p>
             <ul>
-                <li>Playing video games to unwind and find inspiration for my projects.</li>
-                <li>Exploring new technology and staying updated with industry trends.</li>
-                <li>Learning about ethical hacking and security to enhance my skills.</li>
+                <li id="hobby1">Playing video games to unwind and find inspiration for my projects.</li>
+                <li id="hobby2">Exploring new technology and staying updated with industry trends.</li>
+                <li id="hobby3">Learning about ethical hacking and security to enhance my skills.</li>
             </ul>
         </section>
 
         <!-- Developer Roles Section -->
         <section>
-            <h2>What I Do</h2>
+            <h2 id="rolesTitle">What I Do</h2>
             <div class="role-box-container">
                 <div class="role-box">
-                    <h3>Software Developer</h3>
-                    <p>I specialize in creating efficient tools and scripts that automate tasks, improve productivity, and solve complex problems, all using minimal resources.</p>
+                    <h3 id="role1Title">Software Developer</h3>
+                    <p id="role1Text">I specialize in creating efficient tools and scripts that automate tasks, improve productivity, and solve complex problems, all using minimal resources.</p>
                 </div>
-<div class="role-box">
-                    <h3>Website Developer</h3>
-                    <p>I design and develop responsive, aesthetically pleasing, and user-friendly websites optimized for mobile and desktop platforms.</p>
+                <div class="role-box">
+                    <h3 id="role2Title">Website Developer</h3>
+                    <p id="role2Text">I design and develop responsive, aesthetically pleasing, and user-friendly websites optimized for mobile and desktop platforms.</p>
                 </div>
             </div>
         </section>
@@ -267,97 +272,5 @@
         <a href="https://github.com" target="_blank"><i class="fab fa-github" style="font-size: 30px; color: #4fc3f7;"></i></a>
         <p>&copy; 2024 Lens / Lyn. All Rights Reserved.</p>
     </footer>
-
-    <!-- JavaScript for Menu, Theme Toggle, and Language Changer -->
-    <script>
-        const hamburger = document.getElementById("hamburger");
-        const menuBox = document.getElementById("menuBox");
-        const themeToggle = document.getElementById("themeToggle");
-        const languageChanger = document.getElementById("languageChanger");
-
-        let currentMenu = "main";
-
-        // Update Menu Items
-        const updateMenu = (options) => {
-            menuBox.innerHTML = "";
-            options.forEach(option => {
-                const link = document.createElement("a");
-                link.href = "#";
-                link.textContent = option.text;
-                link.onclick = option.onclick;
-                menuBox.appendChild(link);
-            });
-        };
-
-        // Show Main Menu
-        const showMainMenu = () => {
-            currentMenu = "main";
-            updateMenu([
-                { text: "Theme / Mode Toggle", onclick: showThemeOptions },
-                { text: "Language Changer", onclick: showLanguageOptions }
-            ]);
-        };
-
-        // Show Theme Options
-        const showThemeOptions = () => {
-            currentMenu = "theme";
-            updateMenu([
-                { text: "Light Mode", onclick: () => toggleTheme("light") },
-                { text: "Dark Mode", onclick: () => toggleTheme("dark") },
-                { text: "Back", onclick: showMainMenu }
-            ]);
-        };
-
-        // Show Language Options
-        const showLanguageOptions = () => {
-            currentMenu = "language";
-            updateMenu([
-                { text: "English", onclick: () => setLanguage("en") },
-                { text: "Dutch", onclick: () => setLanguage("nl") },
-                { text: "Back", onclick: showMainMenu }
-            ]);
-        };
-
-        // Toggle Theme
-        const toggleTheme = (mode) => {
-            document.body.classList.toggle("light-mode", mode === "light");
-            showMainMenu();
-        };
-
-        // Set Language
-        const setLanguage = (lang) => {
-            const translations = {
-                en: {
-                    aboutMe: "Hi, I'm Lens (or Lyn), a 15-year-old self-taught developer. I create scripts, tools, and websites entirely on my mobile device. My passion lies in building efficient and innovative solutions. Welcome to my portfolio!",
-                    hobbies: "When I'm not coding, I enjoy:",
-                    whatIDo: "What I Do"
-                },
-                nl: {
-                    aboutMe: "Hallo, ik ben Lens (of Lyn), een 15-jarige autodidactische ontwikkelaar. Ik maak scripts, tools en websites volledig op mijn mobiele apparaat. Mijn passie ligt in het bouwen van efficiënte en innovatieve oplossingen. Welkom bij mijn portfolio!",
-                    hobbies: "Als ik niet aan het coderen ben, geniet ik van:",
-                    whatIDo: "Wat ik doe"
-                }
-            };
-            document.querySelector("section:nth-child(2) p").textContent = translations[lang].aboutMe;
-            document.querySelector("section:nth-child(3) p").textContent = translations[lang].hobbies;
-            document.querySelector("section:nth-child(5) h2").textContent = translations[lang].whatIDo;
-            showMainMenu();
-        };
-
-        // Toggle Menu Box
-        hamburger.addEventListener("click", () => {
-            if (!menuBox.classList.contains("open")) {
-                currentMenu === "main" ? showMainMenu() : null;
-            }
-            menuBox.classList.toggle("open");
-        });
-
-        // Close menu when clicking outside
-        document.addEventListener("click", (event) => {
-            if (!menuBox.contains(event.target) && !hamburger.contains(event.target)) {
-                menuBox.classList.remove("open");
-            }
-        });
-    </script>
 </body>
-</html>
+                </html>
