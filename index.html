@@ -307,44 +307,22 @@
     <main>
         <section>
             <h2 data-en="About Me" data-nl="Over Mij">About Me</h2>
-            <p data-en="Hi, I'm Lens (or Lyn), a 15-year-old self-taught developer. I create scripts, tools, and websites entirely on my mobile device. My skills primarily involve programming in Python, HTML, CSS, and PHP." data-nl="Hoi, ik ben Lens (of Lyn), een 15-jarige zelfgeleerde ontwikkelaar. Ik maak scripts, tools en websites volledig op mijn mobiele apparaat. Mijn vaardigheden bestaan voornamelijk uit programmeren in Python, HTML, CSS en PHP.">
-                Hi, I'm Lens (or Lyn), a 15-year-old self-taught developer. I create scripts, tools, and websites entirely on my mobile device. My skills primarily involve programming in Python, HTML, CSS, and PHP.
-            </p>
+            <p data-en="Hi, I'm Lens (or Lyn), a 15-year-old self-taught developer. I create scripts, tools, and websites entirely on my mobile device. My passion lies in building efficient and innovative solutions. Welcome to my portfolio!"
+                data-nl="Hallo, ik ben Lens (of Lyn), een 15-jarige autodidactische ontwikkelaar. Ik maak scripts, tools en websites volledig op mijn mobiele apparaat. Mijn passie ligt in het bouwen van efficiënte en innovatieve oplossingen. Welkom op mijn portfolio!">
+                Hi, I'm Lens (or Lyn), a 15-year-old self-taught developer. I create scripts, tools, and websites entirely on my mobile device. My passion lies in building efficient and innovative solutions. Welcome to my portfolio!</p>
         </section>
 
-        <!-- Role Boxes -->
-        <section>
-            <h2 data-en="My Roles" data-nl="Mijn Rollen">My Roles</h2>
-            <div class="role-box-container">
-                <div class="role-box">
-                    <i class="fas fa-code"></i>
-                    <h3>Software Developer</h3>
-                    <p>Design and develop software applications.</p>
-                </div>
-                <div class="role-box">
-                    <i class="fas fa-globe"></i>
-                    <h3>Website Developer</h3>
-                    <p>Create and maintain websites.</p>
-                </div>
-                <div class="role-box">
-                    <i class="fas fa-cogs"></i>
-                    <h3>System Programmer</h3>
-                    <p>Write programs to interact with systems and hardware.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Hobbies Section -->
+        <!-- Hobbies and Programming Skills -->
         <section class="hobbies-section">
-            <h2 data-en="Hobbies" data-nl="Hobby's">Hobbies</h2>
-            <p data-en="I enjoy coding, playing video games, and exploring new technologies in my spare time." data-nl="In mijn vrije tijd hou ik van coderen, videogames spelen en nieuwe technologieën ontdekken.">
-                I enjoy coding, playing video games, and exploring new technologies in my spare time.
+            <h2 data-en="My Hobbies" data-nl="Mijn Hobby's">My Hobbies</h2>
+            <p data-en="I enjoy experimenting with different programming languages and technologies. I spend a lot of time learning new skills and working on personal projects. I am also passionate about ethical hacking and cybersecurity."
+                data-nl="Ik geniet ervan om te experimenteren met verschillende programmeertalen en technologieën. Ik breng veel tijd door met het leren van nieuwe vaardigheden en het werken aan persoonlijke projecten. Ik ben ook gepassioneerd over ethisch hacken en cyberbeveiliging.">
+                I enjoy experimenting with different programming languages and technologies. I spend a lot of time learning new skills and working on personal projects. I am also passionate about ethical hacking and cybersecurity.
             </p>
         </section>
 
-        <!-- Languages and Skills Section -->
         <section class="languages-section">
-            <h2 data-en="Programming Skills" data-nl="Programmeervaardigheden">Programming Skills</h2>
+            <h2 data-en="Programming Skills" data-nl="Programmeer Vaardigheden">Programming Skills</h2>
             <div class="progress-container">
                 <div class="progress-bar" style="width: 85%;">Python (85%)</div>
             </div>
@@ -362,92 +340,102 @@
             </div>
         </section>
 
-        <!-- Social Media Buttons -->
-        <section class="social-buttons">
-            <a href="https://www.tiktok.com/@yourusername" target="_blank">
-                <i class="fab fa-tiktok"></i>
-            </a>
-            <a href="https://github.com/yourusername" target="_blank">
-                <i class="fab fa-github"></i>
-            </a>
-            <a href="https://www.youtube.com/channel/yourchannel" target="_blank">
-                <i class="fab fa-youtube"></i>
-            </a>
+        <!-- My Roles Section -->
+        <section>
+            <h2 data-en="My Roles" data-nl="Mijn Rollen">My Roles</h2>
+            <div class="role-box-container">
+                <div class="role-box">
+                    <i class="fas fa-cogs"></i>
+                    <h3>Software Developer</h3>
+                    <p>Developing and creating efficient software solutions.</p>
+                </div>
+                <div class="role-box">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>Website Developer</h3>
+                    <p>Designing and building responsive websites.</p>
+                </div>
+                <div class="role-box">
+                    <i class="fas fa-terminal"></i>
+                    <h3>System Programmer</h3>
+                    <p>Programming system tools and working with lower-level code.</p>
+                </div>
+            </div>
         </section>
+
+        <!-- Social Media Buttons -->
+        <section>
+            <h2 data-en="Find Me on Social Media" data-nl="Vind Mij op Sociale Media">Find Me on Social Media</h2>
+            <div class="social-buttons">
+                <a href="https://www.tiktok.com" target="_blank" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="https://github.com" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.youtube.com" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            </div>
+        </section>
+
     </main>
 
-    <!-- Footer Section -->
+    <!-- Footer -->
     <footer>
-        <p data-en="Copyright © 2024 Lens / Lyn" data-nl="Copyright © 2024 Lens / Lyn">Copyright © 2024 Lens / Lyn</p>
+        <p>&copy; 2024 Lens / Lyn. All rights reserved.</p>
     </footer>
 
-    <!-- Scripts -->
     <script>
-        // Hamburger Menu Toggle
-        document.getElementById('hamburger').addEventListener('click', function() {
-            document.getElementById('menuBox').classList.toggle('open');
+        // Toggle menu functionality
+        const hamburger = document.getElementById("hamburger");
+        const menuBox = document.getElementById("menuBox");
+        hamburger.addEventListener("click", () => {
+            menuBox.classList.toggle("open");
         });
 
-        // Theme Toggle
-        document.getElementById('themeToggle').addEventListener('click', function() {
-            let themeDropdown = document.getElementById('themeDropdown');
-            themeDropdown.style.display = (themeDropdown.style.display === 'none') ? 'block' : 'none';
+        // Theme toggle functionality
+        const themeToggle = document.getElementById("themeToggle");
+        const body = document.querySelector("body");
+        themeToggle.addEventListener("click", () => {
+            const themeDropdown = document.getElementById("themeDropdown");
+            themeDropdown.style.display = themeDropdown.style.display === "none" ? "block" : "none";
         });
 
-        document.getElementById('darkMode').addEventListener('click', function() {
-            document.body.classList.remove('light-mode');
-            document.body.classList.add('dark-mode');
-            localStorage.setItem('theme', 'dark');
+        const darkMode = document.getElementById("darkMode");
+        const lightMode = document.getElementById("lightMode");
+        darkMode.addEventListener("click", () => {
+            body.classList.remove("light-mode");
+        });
+        lightMode.addEventListener("click", () => {
+            body.classList.add("light-mode");
         });
 
-        document.getElementById('lightMode').addEventListener('click', function() {
-            document.body.classList.remove('dark-mode');
-            document.body.classList.add('light-mode');
-            localStorage.setItem('theme', 'light');
+        // Language changer functionality
+        const languageChanger = document.getElementById("languageChanger");
+        languageChanger.addEventListener("click", () => {
+            const languageDropdown = document.getElementById("languageDropdown");
+            languageDropdown.style.display = languageDropdown.style.display === "none" ? "block" : "none";
         });
 
-        // Language Toggle
-        document.getElementById('languageChanger').addEventListener('click', function() {
-            let languageDropdown = document.getElementById('languageDropdown');
-            languageDropdown.style.display = (languageDropdown.style.display === 'none') ? 'block' : 'none';
+        const english = document.getElementById("english");
+        const dutch = document.getElementById("dutch");
+        english.addEventListener("click", () => {
+            document.querySelector("h1").textContent = "Welcome to My Portfolio";
+            document.querySelector("h3").textContent = "Developer / Programmer | Scripts, Tools and Simple Websites";
+            document.querySelector(".hobbies-section h2").textContent = "My Hobbies";
+            document.querySelector(".languages-section h2").textContent = "Programming Skills";
+            document.querySelector(".role-box-container h3:nth-child(1)").textContent = "Software Developer";
+            document.querySelector(".role-box-container h3:nth-child(2)").textContent = "Website Developer";
+            document.querySelector(".role-box-container h3:nth-child(3)").textContent = "System Programmer";
+            document.querySelector(".social-buttons a:nth-child(1)").setAttribute("aria-label", "TikTok");
+            document.querySelector(".social-buttons a:nth-child(2)").setAttribute("aria-label", "GitHub");
+            document.querySelector(".social-buttons a:nth-child(3)").setAttribute("aria-label", "YouTube");
         });
-
-        document.getElementById('english').addEventListener('click', function() {
-            setLanguage('en');
-        });
-
-        document.getElementById('dutch').addEventListener('click', function() {
-            setLanguage('nl');
-        });
-
-        function setLanguage(language) {
-            // Change the language of text in the page
-            const elements = document.querySelectorAll('[data-en], [data-nl]');
-            elements.forEach((element) => {
-                const enText = element.getAttribute('data-en');
-                const nlText = element.getAttribute('data-nl');
-                element.textContent = (language === 'nl') ? nlText : enText;
-            });
-        }
-
-        // Check stored theme preference
-        if (localStorage.getItem('theme') === 'light') {
-            document.body.classList.add('light-mode');
-        } else {
-            document.body.classList.add('dark-mode');
-        }
-
-        // Set language based on local storage or default to English
-        const savedLanguage = localStorage.getItem('language') || 'en';
-        setLanguage(savedLanguage);
-
-        // Save selected language in localStorage
-        document.getElementById('english').addEventListener('click', function() {
-            localStorage.setItem('language', 'en');
-        });
-
-        document.getElementById('dutch').addEventListener('click', function() {
-            localStorage.setItem('language', 'nl');
+        dutch.addEventListener("click", () => {
+            document.querySelector("h1").textContent = "Welkom op mijn portfolio";
+            document.querySelector("h3").textContent = "Ontwikkelaar / Programmeur | Scripts, Tools en Eenvoudige Websites";
+            document.querySelector(".hobbies-section h2").textContent = "Mijn Hobby's";
+            document.querySelector(".languages-section h2").textContent = "Programmeer Vaardigheden";
+            document.querySelector(".role-box-container h3:nth-child(1)").textContent = "Software Ontwikkelaar";
+            document.querySelector(".role-box-container h3:nth-child(2)").textContent = "Website Ontwikkelaar";
+            document.querySelector(".role-box-container h3:nth-child(3)").textContent = "Systeem Programmeur";
+            document.querySelector(".social-buttons a:nth-child(1)").setAttribute("aria-label", "TikTok");
+            document.querySelector(".social-buttons a:nth-child(2)").setAttribute("aria-label", "GitHub");
+            document.querySelector(".social-buttons a:nth-child(3)").setAttribute("aria-label", "YouTube");
         });
     </script>
 </body>
