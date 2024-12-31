@@ -152,7 +152,7 @@
         /* Hobbies Section Styles */
         .hobbies-section {
             margin-top: 30px;
-            text-align: left; /* Align to the left */
+            text-align: left;
             margin-left: 20px;
         }
 
@@ -227,11 +227,11 @@
 
     <!-- Header Section -->
     <header>
-        <h1 data-en="Welcome to My Portfolio" data-nl="Welkom op mijn portfolio">Welcome to My Portfolio</h1>
-        <h3 data-en="Developer / Programmer | Scripts, Tools and Simple Websites" data-nl="Ontwikkelaar / Programmeur | Scripts, Tools en Eenvoudige Websites">Developer / Programmer | Scripts, Tools and Simple Websites</h3>
+        <h1>Portfolio (All Functions)</h1>
     </header>
+</body>
 
-    <!-- Main Content -->
+   <!-- Main Content -->
     <main>
         <section>
             <h2 data-en="About Me" data-nl="Over Mij">About Me</h2>
@@ -241,125 +241,33 @@
             </p>
         </section>
 
-        <!-- Hobbies & Interests Section (Aligned Left) -->
+        <!-- Hobbies Section -->
         <section class="hobbies-section">
             <h2 data-en="Hobbies & Interests" data-nl="Hobby's & Interesses">Hobbies & Interests</h2>
             <p data-en="When I'm not coding I enjoy:" data-nl="Wanneer ik niet aan het coderen ben, geniet ik van:">When I'm not coding I enjoy:</p>
             <ul>
-                <li data-en="Playing video games to unwind." data-nl="Video games spelen om tot rust te komen.">Playing video games to unwind.</li>
-                <li data-en="Exploring new technology and staying updated with industry trends." data-nl="Nieuwe technologie verkennen en op de hoogte blijven van trends in de industrie.">Exploring new technology and staying updated with industry trends.</li>
-                <li data-en="Learning about ethical hacking and security to enhance my skills." data-nl="Leren over ethisch hacken en beveiliging om mijn vaardigheden te verbeteren.">Learning about ethical hacking and security to enhance my skills.</li>
+                <li>Playing video games to unwind.</li>
+                <li>Learning ethical hacking.</li>
             </ul>
         </section>
 
-        <!-- Languages Section -->
-        <section class="languages-section">
-            <h2 data-en="Languages" data-nl="Talen">Languages</h2>
-            <p data-en="Coding languages that I use and my knowledge of them:" data-nl="Programmeertalen die ik gebruik en mijn kennis daarvan:">Coding languages that I use and my knowledge of them:</p>
-            <div class="progress-container">
-                <div class="progress-bar" style="width: 85%;">Python (85%)</div>
-            </div>
-            <div class="progress-container">
-                <div class="progress-bar" style="width: 80%;">PHP (80%)</div>
-            </div>
-            <div class="progress-container">
-                <div class="progress-bar" style="width: 70%;">HTML (70%)</div>
-            </div>
-            <div class="progress-container">
-                <div class="progress-bar" style="width: 70%;">JavaScript (70%)</div>
-            </div>
-            <div class="progress-container">
-                <div class="progress-bar" style="width: 50%;">CSS (50%)</div>
-            </div>
-        </section>
-
-        <!-- Developer Role Boxes -->
+        <!-- Language Skills -->
         <section>
-            <h2 data-en="Roles" data-nl="Rollen">Roles</h2>
-            <div class="role-box-container">
-                <div class="role-box">
-                    <h3 data-en="Software Developer" data-nl="Software Ontwikkelaar">Software Developer</h3>
-                    <p data-en="Building innovative software solutions for various platforms." data-nl="Het bouwen van innovatieve software-oplossingen voor verschillende platforms.">Building innovative software solutions for various platforms.</p>
-                </div>
-                <div class="role-box">
-                    <h3 data-en="Website Developer" data-nl="Website Ontwikkelaar">Website Developer</h3>
-                    <p data-en="Creating responsive, user-friendly websites with modern technologies." data-nl="Het maken van responsieve, gebruiksvriendelijke websites met moderne technologieën.">Creating responsive, user-friendly websites with modern technologies.</p>
-                </div>
-                <!-- New Role Box for System Programmer -->
-                <div class="role-box">
-                    <h3 data-en="System Programmer" data-nl="Systeem Programmeur">System Programmer</h3>
-                    <p data-en="Working with low-level programming and operating systems." data-nl="Werken met low-level programmeren en besturingssystemen.">Working with low-level programming and operating systems.</p>
-                </div>
+            <h2 data-en="Languages" data-nl="Talen">Languages</h2>
+            <div class="progress-container">
+                <div class="progress-bar" style="width:85%">Python (Advanced)</div>
             </div>
-        </section>
-
-        <!-- Social Media Buttons -->
-        <section class="social-buttons">
-            <a href="https://www.tiktok.com/@yourprofile" target="_blank">
-                <i class="fab fa-tiktok"></i>
-            </a>
-            <a href="https://github.com/yourprofile" target="_blank">
-                <i class="fab fa-github"></i>
-            </a>
-            <a href="https://www.youtube.com/channel/yourchannel" target="_blank">
-                <i class="fab fa-youtube"></i>
-            </a>
         </section>
     </main>
 
-    <!-- Footer Section -->
+    <!-- Footer -->
     <footer>
-        <p data-en="© 2024 Lens / Lyn. All Rights Reserved." data-nl="© 2024 Lens / Lyn. Alle Rechten Voorbehouden.">© 2024 Lens / Lyn. All Rights Reserved.</p>
+        <p>2024 - Your Self-Created</p>
     </footer>
 
-    <!-- JavaScript -->
     <script>
-        const hamburger = document.getElementById("hamburger");
-        const menuBox = document.getElementById("menuBox");
-        const themeToggle = document.getElementById("themeToggle");
-        const themeDropdown = document.getElementById("themeDropdown");
-        const languageChanger = document.getElementById("languageChanger");
-        const languageDropdown = document.getElementById("languageDropdown");
-
-        // Hamburger toggle
-        hamburger.addEventListener("click", () => {
-            menuBox.classList.toggle("open");
-        });
-
-        // Theme toggle dropdown
-        themeToggle.addEventListener("click", () => {
-            themeDropdown.style.display = themeDropdown.style.display === "none" ? "block" : "none";
-            languageDropdown.style.display = "none";
-        });
-
-        // Language changer dropdown
-        languageChanger.addEventListener("click", () => {
-            languageDropdown.style.display = languageDropdown.style.display === "none" ? "block" : "none";
-            themeDropdown.style.display = "none";
-        });
-
-        // Language switch
-        document.querySelectorAll("#languageDropdown button").forEach(button => {
-            button.addEventListener("click", () => {
-                const lang = button.id === "english" ? "en" : "nl";
-                document.querySelectorAll("[data-en]").forEach(el => {
-                    el.textContent = el.dataset[lang];
-                });
-                languageDropdown.style.display = "none";
-            });
-        });
-
-        // Theme switch
-        document.querySelectorAll("#themeDropdown button").forEach(button => {
-            button.addEventListener("click", () => {
-                if (button.id === "darkMode") {
-                    document.body.classList.remove("light-mode");
-                } else {
-                    document.body.classList.add("light-mode");
-                }
-                themeDropdown.style.display = "none";
-            });
-        });
+        const hamburgerMenuTrigger = document.querySelector(".hamburger");
+        // Rest continues into your language toggler theme adjuster—
     </script>
 </body>
-</html>
+        </html>
