@@ -75,12 +75,6 @@
             animation: slideIn 1s ease-in-out forwards;
         }
 
-        .role-box i {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            color: #fff;
-        }
-
         .role-box:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 12px rgba(0, 0, 0, 0.3);
@@ -140,12 +134,6 @@
             font-size: 1rem;
             transition: background 0.3s ease;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-        }
-
-        .menu-box button i {
-            margin-right: 10px;
         }
 
         .menu-box button:hover {
@@ -181,7 +169,7 @@
         /* Hobbies Section Styles */
         .hobbies-section {
             margin-top: 30px;
-            text-align: left;
+            text-align: left; /* Align to the left */
             margin-left: 20px;
             animation: fadeUp 2s ease-in-out forwards;
         }
@@ -297,19 +285,15 @@
 
     <!-- Menu Box -->
     <div class="menu-box" id="menuBox">
-        <button id="themeToggle">
-            <i class="fas fa-adjust"></i> Theme / Mode Toggle
-        </button>
+        <button id="themeToggle">Theme / Mode Toggle</button>
         <div class="dropdown" id="themeDropdown" style="display: none;">
-            <button id="darkMode"><i class="fas fa-moon"></i> Dark Mode</button>
-            <button id="lightMode"><i class="fas fa-sun"></i> Light Mode</button>
+            <button id="darkMode">Dark Mode</button>
+            <button id="lightMode">Light Mode</button>
         </div>
-        <button id="languageChanger">
-            <i class="fas fa-language"></i> Language Changer
-        </button>
+        <button id="languageChanger">Language Changer</button>
         <div class="dropdown" id="languageDropdown" style="display: none;">
-            <button id="english"><i class="fas fa-flag-usa"></i> English / Engels</button>
-            <button id="dutch"><i class="fas fa-flag"></i> Dutch / Nederlands</button>
+            <button id="english">English / Engels</button>
+            <button id="dutch">Dutch / Nederlands</button>
         </div>
     </div>
 
@@ -323,103 +307,148 @@
     <main>
         <section>
             <h2 data-en="About Me" data-nl="Over Mij">About Me</h2>
-            <p data-en="Hi, I'm Lens (or Lyn), a 15-year-old self-taught developer. I create scripts, tools, and websites entirely on my mobile device. My passion lies in building efficient and innovative solutions. Welcome to my portfolio!"
-                data-nl="Hallo, ik ben Lens (of Lyn), een 15-jarige autodidactische ontwikkelaar. Ik maak scripts, tools en websites volledig op mijn mobiele apparaat. Mijn passie ligt in het bouwen van efficiënte en innovatieve oplossingen. Welkom op mijn portfolio!">
-                Hi, I'm Lens (or Lyn), a 15-year-old self-taught developer. I create scripts, tools, and websites entirely on my mobile device. My passion lies in building efficient and innovative solutions. Welcome to my portfolio!
+            <p data-en="Hi, I'm Lens (or Lyn), a 15-year-old self-taught developer. I create scripts, tools, and websites entirely on my mobile device. My skills primarily involve programming in Python, HTML, CSS, and PHP." data-nl="Hoi, ik ben Lens (of Lyn), een 15-jarige zelfgeleerde ontwikkelaar. Ik maak scripts, tools en websites volledig op mijn mobiele apparaat. Mijn vaardigheden bestaan voornamelijk uit programmeren in Python, HTML, CSS en PHP.">
+                Hi, I'm Lens (or Lyn), a 15-year-old self-taught developer. I create scripts, tools, and websites entirely on my mobile device. My skills primarily involve programming in Python, HTML, CSS, and PHP.
             </p>
         </section>
 
-        <!-- Hobbies & Interests Section (Aligned Left) -->
+        <!-- Role Boxes -->
+        <section>
+            <h2 data-en="My Roles" data-nl="Mijn Rollen">My Roles</h2>
+            <div class="role-box-container">
+                <div class="role-box">
+                    <i class="fas fa-code"></i>
+                    <h3>Software Developer</h3>
+                    <p>Design and develop software applications.</p>
+                </div>
+                <div class="role-box">
+                    <i class="fas fa-globe"></i>
+                    <h3>Website Developer</h3>
+                    <p>Create and maintain websites.</p>
+                </div>
+                <div class="role-box">
+                    <i class="fas fa-cogs"></i>
+                    <h3>System Programmer</h3>
+                    <p>Write programs to interact with systems and hardware.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hobbies Section -->
         <section class="hobbies-section">
-            <h2 data-en="Hobbies & Interests" data-nl="Hobby's & Interesses">Hobbies & Interests</h2>
-            <p data-en="When I'm not coding I enjoy:" data-nl="Wanneer ik niet aan het coderen ben, geniet ik van:">When I'm not coding I enjoy:</p>
-            <ul>
-                <li data-en="Playing video games to unwind." data-nl="Video games spelen om tot rust te komen.">Playing video games to unwind.</li>
-                <li data-en="Exploring new technology and staying updated with industry trends." data-nl="Nieuwe technologie verkennen en op de hoogte blijven van trends in de industrie.">Exploring new technology and staying updated with industry trends.</li>
-                <li data-en="Learning and experimenting with creative coding projects." data-nl="Leren en experimenteren met creatieve codeerprojecten.">Learning and experimenting with creative coding projects.</li>
-            </ul>
+            <h2 data-en="Hobbies" data-nl="Hobby's">Hobbies</h2>
+            <p data-en="I enjoy coding, playing video games, and exploring new technologies in my spare time." data-nl="In mijn vrije tijd hou ik van coderen, videogames spelen en nieuwe technologieën ontdekken.">
+                I enjoy coding, playing video games, and exploring new technologies in my spare time.
+            </p>
         </section>
 
         <!-- Languages and Skills Section -->
         <section class="languages-section">
-            <h2 data-en="Languages & Skills" data-nl="Talen & Vaardigheden">Languages & Skills</h2>
+            <h2 data-en="Programming Skills" data-nl="Programmeervaardigheden">Programming Skills</h2>
             <div class="progress-container">
-                <div class="progress-bar" style="width: 85%;" data-en="Python: 85%" data-nl="Python: 85%">Python: 85%</div>
+                <div class="progress-bar" style="width: 85%;">Python (85%)</div>
             </div>
             <div class="progress-container">
-                <div class="progress-bar" style="width: 80%;" data-en="PHP: 80%" data-nl="PHP: 80%">PHP: 80%</div>
+                <div class="progress-bar" style="width: 80%;">PHP (80%)</div>
             </div>
             <div class="progress-container">
-                <div class="progress-bar" style="width: 75%;" data-en="HTML: 75%" data-nl="HTML: 75%">HTML: 75%</div>
+                <div class="progress-bar" style="width: 75%;">HTML (75%)</div>
             </div>
             <div class="progress-container">
-                <div class="progress-bar" style="width: 75%;" data-en="JavaScript: 75%" data-nl="JavaScript: 75%">JavaScript: 75%</div>
+                <div class="progress-bar" style="width: 75%;">JavaScript (75%)</div>
             </div>
             <div class="progress-container">
-                <div class="progress-bar" style="width: 50%;" data-en="CSS: 50%" data-nl="CSS: 50%">CSS: 50%</div>
+                <div class="progress-bar" style="width: 50%;">CSS (50%)</div>
             </div>
         </section>
 
-        <!-- Role Boxes Section -->
-        <section>
-            <h2 data-en="Roles in Projects" data-nl="Rollen in Projecten">Roles in Projects</h2>
-            <div class="role-box-container">
-                <div class="role-box">
-                    <i class="fas fa-crown"></i>
-                    <h3 data-en="Project Leader" data-nl="Projectleider">Project Leader</h3>
-                </div>
-                <div class="role-box">
-                    <i class="fas fa-code"></i>
-                    <h3 data-en="Developer" data-nl="Ontwikkelaar">Developer</h3>
-                </div>
-                <div class="role-box">
-                    <i class="fas fa-database"></i>
-                    <h3 data-en="Database Manager" data-nl="Databasebeheerder">Database Manager</h3>
-                </div>
-            </div>
+        <!-- Social Media Buttons -->
+        <section class="social-buttons">
+            <a href="https://www.tiktok.com/@yourusername" target="_blank">
+                <i class="fab fa-tiktok"></i>
+            </a>
+            <a href="https://github.com/yourusername" target="_blank">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://www.youtube.com/channel/yourchannel" target="_blank">
+                <i class="fab fa-youtube"></i>
+            </a>
         </section>
     </main>
 
-    <!-- Footer -->
+    <!-- Footer Section -->
     <footer>
-        <p data-en="© 2024 Lens / Lyn. All Rights Reserved." data-nl="© 2024 Lens / Lyn. Alle rechten voorbehouden.">© 2024 Lens / Lyn. All Rights Reserved.</p>
+        <p data-en="Copyright © 2024 Lens / Lyn" data-nl="Copyright © 2024 Lens / Lyn">Copyright © 2024 Lens / Lyn</p>
     </footer>
 
-    <!-- JavaScript -->
+    <!-- Scripts -->
     <script>
         // Hamburger Menu Toggle
-        const hamburger = document.getElementById('hamburger');
-        const menuBox = document.getElementById('menuBox');
-        hamburger.addEventListener('click', () => {
-            menuBox.classList.toggle('open');
+        document.getElementById('hamburger').addEventListener('click', function() {
+            document.getElementById('menuBox').classList.toggle('open');
         });
 
         // Theme Toggle
-        const themeToggle = document.getElementById('themeToggle');
-        const darkMode = document.getElementById('darkMode');
-        const lightMode = document.getElementById('lightMode');
-        themeToggle.addEventListener('click', () => {
-            const dropdown = document.getElementById('themeDropdown');
-            dropdown.style.display = dropdown.style.display === 'none' || !dropdown.style.display ? 'block' : 'none';
+        document.getElementById('themeToggle').addEventListener('click', function() {
+            let themeDropdown = document.getElementById('themeDropdown');
+            themeDropdown.style.display = (themeDropdown.style.display === 'none') ? 'block' : 'none';
         });
-        darkMode.addEventListener('click', () => document.body.classList.remove('light-mode'));
-        lightMode.addEventListener('click', () => document.body.classList.add('light-mode'));
+
+        document.getElementById('darkMode').addEventListener('click', function() {
+            document.body.classList.remove('light-mode');
+            document.body.classList.add('dark-mode');
+            localStorage.setItem('theme', 'dark');
+        });
+
+        document.getElementById('lightMode').addEventListener('click', function() {
+            document.body.classList.remove('dark-mode');
+            document.body.classList.add('light-mode');
+            localStorage.setItem('theme', 'light');
+        });
 
         // Language Toggle
-        const languageChanger = document.getElementById('languageChanger');
-        languageChanger.addEventListener('click', () => {
-            const dropdown = document.getElementById('languageDropdown');
-            dropdown.style.display = dropdown.style.display === 'none' || !dropdown.style.display ? 'block' : 'none';
+        document.getElementById('languageChanger').addEventListener('click', function() {
+            let languageDropdown = document.getElementById('languageDropdown');
+            languageDropdown.style.display = (languageDropdown.style.display === 'none') ? 'block' : 'none';
         });
 
-        const toggleLanguage = (lang) => {
-            document.querySelectorAll('[data-en]').forEach(el => {
-                el.innerText = lang === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-nl');
-            });
-        };
+        document.getElementById('english').addEventListener('click', function() {
+            setLanguage('en');
+        });
 
-        document.getElementById('english').addEventListener('click', () => toggleLanguage('en'));
-        document.getElementById('dutch').addEventListener('click', () => toggleLanguage('nl'));
+        document.getElementById('dutch').addEventListener('click', function() {
+            setLanguage('nl');
+        });
+
+        function setLanguage(language) {
+            // Change the language of text in the page
+            const elements = document.querySelectorAll('[data-en], [data-nl]');
+            elements.forEach((element) => {
+                const enText = element.getAttribute('data-en');
+                const nlText = element.getAttribute('data-nl');
+                element.textContent = (language === 'nl') ? nlText : enText;
+            });
+        }
+
+        // Check stored theme preference
+        if (localStorage.getItem('theme') === 'light') {
+            document.body.classList.add('light-mode');
+        } else {
+            document.body.classList.add('dark-mode');
+        }
+
+        // Set language based on local storage or default to English
+        const savedLanguage = localStorage.getItem('language') || 'en';
+        setLanguage(savedLanguage);
+
+        // Save selected language in localStorage
+        document.getElementById('english').addEventListener('click', function() {
+            localStorage.setItem('language', 'en');
+        });
+
+        document.getElementById('dutch').addEventListener('click', function() {
+            localStorage.setItem('language', 'nl');
+        });
     </script>
 </body>
-</html>
+    </html>
