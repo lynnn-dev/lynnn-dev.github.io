@@ -1,126 +1,140 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Valentine's Day</title>
-    <style>
-        /* General Reset */
-        body {
-            margin: 0;
-            font-family: 'Arial', sans-serif;
-            background-color: #ffe6e6; /* Soft pink for a romantic background */
-            color: #4d0000; /* Dark red for text */
-            overflow: hidden;
-            position: relative;
-        }
-
-        /* Hearts falling animation */
-        .heart {
-            position: absolute;
-            top: -50px;
-            font-size: 2rem;
-            color: #e60000;
-            opacity: 0;
-            animation: fall 5s infinite;
-            pointer-events: none;
-        }
-
-        /* Heart falling animation */
-        @keyframes fall {
-            0% {
-                transform: translateX(0) translateY(0);
-                opacity: 1;
-            }
-            100% {
-                transform: translateX(100px) translateY(800px);
-                opacity: 0;
-            }
-        }
-
-        /* Title and content styling */
-        .container {
-            text-align: center;
-            padding: 50px;
-        }
-
-        .title {
-            font-size: 3rem;
-            color: #e60000;
-            margin-bottom: 20px;
-        }
-
-        .message {
-            font-size: 1.5rem;
-            line-height: 1.8;
-            margin: 20px auto;
-            width: 80%;
-            max-width: 600px;
-        }
-
-        /* Button styling */
-        .btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 15px 30px;
-            font-size: 1.2rem;
-            color: white;
-            background-color: #e60000;
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .btn:hover {
-            background-color: #990000;
-        }
-
-        footer {
-            margin-top: 50px;
-            font-size: 1rem;
-            color: #800000;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1 class="title">Happy Valentine's Day, My Love!</h1>
-        <p class="message">
-            Every day with you feels like a dream, but today is extra special.  
-            I just wanted to remind you how much you mean to me.  
-            You're the light of my life, and I’m so lucky to have you.  
-            This is for you, my beautiful hibiscus. 🌺
-        </p>
-        <a class="btn" href="#">Click Here for a Surprise</a>
+  <!-- Settings Icon -->
+  <div id="settings-icon">
+    <i class="fas fa-cog"></i> <!-- Settings Icon -->
+  </div>
+
+  <!-- Settings Sidebar -->
+  <div id="settings-sidebar">
+    <h3>Settings</h3>
+    <ul>
+      <li>
+        <label for="language-switcher">Language:</label>
+        <select id="language-switcher">
+          <option value="en">English</option>
+          <option value="es">Español</option>
+          <option value="fr">Français</option>
+        </select>
+      </li>
+      <li>
+        <label for="theme-toggle">Theme:</label>
+        <button id="theme-toggle">Dark Mode</button>
+      </li>
+      <li>
+        <button id="website-info">Website Information</button>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <h1>My Portfolio</h1>
+  </header>
+
+  <!-- About Me Section -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p>Hi, I'm [Your Name], a passionate developer with expertise in software development, web development, and system programming. I love building things that make a difference!</p>
+  </section>
+
+  <!-- Programming Languages Section -->
+  <section id="languages">
+    <h2>Programming Languages</h2>
+    <ul class="skills-list">
+      <li>
+        <div class="skill-item">
+          <i class="fab fa-php"></i> <!-- PHP Icon -->
+          <span>PHP</span>
+          <div class="progress-bar">
+            <div class="progress" style="width: 100%;"></div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="skill-item">
+          <i class="fab fa-python"></i> <!-- Python Icon -->
+          <span>Python</span>
+          <div class="progress-bar">
+            <div class="progress" style="width: 90%;"></div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="skill-item">
+          <i class="fab fa-js"></i> <!-- JavaScript Icon -->
+          <span>JavaScript</span>
+          <div class="progress-bar">
+            <div class="progress" style="width: 95%;"></div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="skill-item">
+          <i class="fab fa-html5"></i> <!-- HTML Icon -->
+          <span>HTML</span>
+          <div class="progress-bar">
+            <div class="progress" style="width: 95%;"></div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="skill-item">
+          <i class="fab fa-css3"></i> <!-- CSS Icon -->
+          <span>CSS</span>
+          <div class="progress-bar">
+            <div class="progress" style="width: 70%;"></div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Roles Section -->
+  <section id="roles">
+    <h2>Roles</h2>
+    <div class="roles-container">
+      <div class="role">
+        <i class="fas fa-laptop-code"></i> <!-- Software Developer Icon -->
+        <h3>Software Developer</h3>
+        <p>Building scalable and efficient software solutions.</p>
+      </div>
+      <div class="role">
+        <i class="fas fa-code"></i> <!-- Website Developer Icon -->
+        <h3>Website Developer</h3>
+        <p>Creating responsive and modern websites.</p>
+      </div>
+      <div class="role">
+        <i class="fas fa-cogs"></i> <!-- System Programmer Icon -->
+        <h3>System Programmer</h3>
+        <p>Developing low-level system applications.</p>
+      </div>
     </div>
+  </section>
 
-    <footer>
-        Made with ❤️ by [Your Name]
-    </footer>
+  <!-- Social Icons -->
+  <section id="social">
+    <h2>Connect With Me</h2>
+    <div class="icons">
+      <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://tiktok.com/yourusername" target="_blank"><i class="fab fa-tiktok"></i></a>
+    </div>
+  </section>
 
-    <!-- JavaScript to generate falling hearts -->
-    <script>
-        function createHeart() {
-            const heart = document.createElement('div');
-            heart.classList.add('heart');
-            heart.innerHTML = '❤️';
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 [Your Name]. All rights reserved.</p>
+  </footer>
 
-            // Set a random starting position and size for the heart
-            heart.style.left = Math.random() * 100 + 'vw'; // Random horizontal position
-            heart.style.animationDuration = (Math.random() * 5 + 3) + 's'; // Random duration
-
-            document.body.appendChild(heart);
-
-            // Remove heart from the DOM after it falls
-            setTimeout(() => {
-                heart.remove();
-            }, 5000); // Same as animation duration
-        }
-
-        // Generate a new heart every 200ms
-        setInterval(createHeart, 200);
-    </script>
+  <!-- JavaScript -->
+  <script src="script.js"></script>
 </body>
-</html>
+              </html>
