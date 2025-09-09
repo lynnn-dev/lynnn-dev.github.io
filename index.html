@@ -3,138 +3,226 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Portfolio</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-  <link rel="stylesheet" href="styles.css">
+  <title>Lensly | Developer</title>
+  <style>
+    /* === Global === */
+    body {
+      margin: 0;
+      font-family: 'Courier New', monospace;
+      background: #000;
+      color: #fff;
+    }
+    a { color: #0ff; text-decoration: none; }
+
+    /* === Header === */
+    header {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      background: rgba(20,20,20,0.7);
+      backdrop-filter: blur(8px);
+      padding: 15px 0;
+      text-align: center;
+      font-size: 1.5rem;
+      font-weight: bold;
+      z-index: 1000;
+    }
+    .title-highlight { color: #0ff; }
+
+    /* === Layout === */
+    main {
+      margin-top: 100px;
+      padding: 20px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .section {
+      background: #111;
+      border-radius: 12px;
+      box-shadow: 0 0 10px #0ff;
+      padding: 20px;
+      margin-bottom: 30px;
+    }
+    h2 {
+      margin-top: 0;
+      text-align: center;
+      color: #0ff;
+    }
+
+    /* === About === */
+    .about-text { text-align: center; font-size: 1rem; }
+
+    /* === Languages === */
+    .language { margin: 15px 0; }
+    .lang-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    .lang-label img { width: 22px; }
+    .progress-bar {
+      width: 100%;
+      height: 10px;
+      background: #333;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: #0ff;
+      width: 0;
+      transition: width 1s ease-in-out;
+    }
+
+    /* === Roles === */
+    .roles { display: flex; flex-direction: column; gap: 15px; }
+    .role-box {
+      background: #1a1a1a;
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 0 5px #0ff inset;
+    }
+    .role-box img { width: 30px; margin-bottom: 10px; }
+
+    /* === Footer === */
+    footer {
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+      background: #111;
+      border-top: 2px solid #0ff;
+    }
+    .socials { margin-bottom: 10px; }
+    .socials img {
+      width: 30px;
+      margin: 0 10px;
+      filter: invert(100%) drop-shadow(0 0 4px #0ff);
+      transition: transform 0.2s;
+    }
+    .socials img:hover { transform: scale(1.2); }
+
+    /* === Cats === */
+    .cat {
+      font-size: 2rem;
+      opacity: 0.6;
+      position: fixed;
+      pointer-events: none;
+    }
+    .cat.top-left { top: 10px; left: 10px; }
+    .cat.bottom-right { bottom: 10px; right: 10px; }
+  </style>
 </head>
 <body>
-  <!-- Settings Icon -->
-  <div id="settings-icon">
-    <i class="fas fa-cog"></i> <!-- Settings Icon -->
-  </div>
-
-  <!-- Settings Sidebar -->
-  <div id="settings-sidebar">
-    <h3>Settings</h3>
-    <ul>
-      <li>
-        <label for="language-switcher">Language:</label>
-        <select id="language-switcher">
-          <option value="en">English</option>
-          <option value="es">Español</option>
-          <option value="fr">Français</option>
-        </select>
-      </li>
-      <li>
-        <label for="theme-toggle">Theme:</label>
-        <button id="theme-toggle">Dark Mode</button>
-      </li>
-      <li>
-        <button id="website-info">Website Information</button>
-      </li>
-    </ul>
-  </div>
-
   <!-- Header -->
   <header>
-    <h1>My Portfolio</h1>
+    Lensly | <span id="title-word" class="title-highlight">Developer</span>
   </header>
 
-  <!-- About Me Section -->
-  <section id="about">
-    <h2>About Me</h2>
-    <p>Hi, I'm [Your Name], a passionate developer with expertise in software development, web development, and system programming. I love building things that make a difference!</p>
-  </section>
+  <!-- Cat Emojis for Retro Theme -->
+  <div class="cat top-left">🐱</div>
+  <div class="cat bottom-right">😺</div>
 
-  <!-- Programming Languages Section -->
-  <section id="languages">
-    <h2>Programming Languages</h2>
-    <ul class="skills-list">
-      <li>
-        <div class="skill-item">
-          <i class="fab fa-php"></i> <!-- PHP Icon -->
-          <span>PHP</span>
-          <div class="progress-bar">
-            <div class="progress" style="width: 100%;"></div>
-          </div>
-        </div>
-      </li>
-      <li>
-        <div class="skill-item">
-          <i class="fab fa-python"></i> <!-- Python Icon -->
-          <span>Python</span>
-          <div class="progress-bar">
-            <div class="progress" style="width: 90%;"></div>
-          </div>
-        </div>
-      </li>
-      <li>
-        <div class="skill-item">
-          <i class="fab fa-js"></i> <!-- JavaScript Icon -->
-          <span>JavaScript</span>
-          <div class="progress-bar">
-            <div class="progress" style="width: 95%;"></div>
-          </div>
-        </div>
-      </li>
-      <li>
-        <div class="skill-item">
-          <i class="fab fa-html5"></i> <!-- HTML Icon -->
-          <span>HTML</span>
-          <div class="progress-bar">
-            <div class="progress" style="width: 95%;"></div>
-          </div>
-        </div>
-      </li>
-      <li>
-        <div class="skill-item">
-          <i class="fab fa-css3"></i> <!-- CSS Icon -->
-          <span>CSS</span>
-          <div class="progress-bar">
-            <div class="progress" style="width: 70%;"></div>
-          </div>
-        </div>
-      </li>
-    </ul>
-  </section>
+  <!-- Main -->
+  <main>
+    <!-- About -->
+    <div class="section">
+      <h2>About</h2>
+      <p class="about-text">
+        Uhh, I'm a 15 year old dumbass that somehow knows how to code and make Scripts, Tools, Frameworks, Simple Games and Websites. 
+        (I also like cats, idk if that's important).
+      </p>
+    </div>
 
-  <!-- Roles Section -->
-  <section id="roles">
-    <h2>Roles</h2>
-    <div class="roles-container">
-      <div class="role">
-        <i class="fas fa-laptop-code"></i> <!-- Software Developer Icon -->
-        <h3>Software Developer</h3>
-        <p>Building scalable and efficient software solutions.</p>
+    <!-- Programming Languages -->
+    <div class="section">
+      <h2>Programming Languages</h2>
+
+      <div class="language">
+        <div class="lang-label"><img src="https://img.icons8.com/color/48/000000/javascript.png"/> JavaScript</div>
+        <div class="progress-bar"><div class="progress-fill" data-width="100%"></div></div>
       </div>
-      <div class="role">
-        <i class="fas fa-code"></i> <!-- Website Developer Icon -->
-        <h3>Website Developer</h3>
-        <p>Creating responsive and modern websites.</p>
+
+      <div class="language">
+        <div class="lang-label"><img src="https://img.icons8.com/color/48/000000/python.png"/> Python</div>
+        <div class="progress-bar"><div class="progress-fill" data-width="100%"></div></div>
       </div>
-      <div class="role">
-        <i class="fas fa-cogs"></i> <!-- System Programmer Icon -->
-        <h3>System Programmer</h3>
-        <p>Developing low-level system applications.</p>
+
+      <div class="language">
+        <div class="lang-label"><img src="https://img.icons8.com/officel/40/000000/php-logo.png"/> PHP</div>
+        <div class="progress-bar"><div class="progress-fill" data-width="80%"></div></div>
+      </div>
+
+      <div class="language">
+        <div class="lang-label"><img src="https://img.icons8.com/color/48/000000/html-5.png"/> HTML</div>
+        <div class="progress-bar"><div class="progress-fill" data-width="75%"></div></div>
+      </div>
+
+      <div class="language">
+        <div class="lang-label"><img src="https://img.icons8.com/color/48/000000/css3.png"/> CSS</div>
+        <div class="progress-bar"><div class="progress-fill" data-width="60%"></div></div>
       </div>
     </div>
-  </section>
 
-  <!-- Social Icons -->
-  <section id="social">
-    <h2>Connect With Me</h2>
-    <div class="icons">
-      <a href="https://github.com/yourusername" target="_blank"><i class="fab fa-github"></i></a>
-      <a href="https://tiktok.com/yourusername" target="_blank"><i class="fab fa-tiktok"></i></a>
+    <!-- Roles -->
+    <div class="section">
+      <h2>Roles</h2>
+      <div class="roles">
+        <div class="role-box">
+          <img src="https://img.icons8.com/ios-filled/50/00ffff/code.png"/>
+          <h3>Software Developer</h3>
+          <p>Creating tools, apps and programs for real-world use.</p>
+        </div>
+        <div class="role-box">
+          <img src="https://img.icons8.com/ios-filled/50/00ffff/domain.png"/>
+          <h3>Website Developer</h3>
+          <p>Building websites that look cool and actually work.</p>
+        </div>
+        <div class="role-box">
+          <img src="https://img.icons8.com/ios-filled/50/00ffff/computer.png"/>
+          <h3>System Programmer</h3>
+          <p>Digging into the guts of systems and making them tick.</p>
+        </div>
+      </div>
     </div>
-  </section>
+  </main>
 
   <!-- Footer -->
   <footer>
-    <p>&copy; 2025 [Your Name]. All rights reserved.</p>
+    <div class="socials">
+      <a href="https://www.tiktok.com/" target="_blank">
+        <img src="https://img.icons8.com/ios-filled/50/ffffff/tiktok.png"/>
+      </a>
+      <a href="https://github.com/" target="_blank">
+        <img src="https://img.icons8.com/ios-glyphs/50/ffffff/github.png"/>
+      </a>
+    </div>
+    <p>@ 2025 Lensly. All rights reserved.</p>
   </footer>
 
-  <!-- JavaScript -->
-  <script src="script.js"></script>
+  <!-- JS -->
+  <script>
+    // Title word rotation
+    const words = ["Developer", "Programmer", "Scripter"];
+    let idx = 0;
+    setInterval(() => {
+      idx = (idx + 1) % words.length;
+      document.getElementById("title-word").textContent = words[idx];
+    }, 3000);
+
+    // Animate progress bars when visible
+    const fills = document.querySelectorAll(".progress-fill");
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.width = entry.target.getAttribute("data-width");
+        }
+      });
+    }, { threshold: 0.5 });
+    fills.forEach(fill => observer.observe(fill));
+  </script>
 </body>
-              </html>
+                                                                                </html>
