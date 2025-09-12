@@ -1,228 +1,598 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lensly | Developer</title>
-  <style>
-    /* === Global === */
-    body {
-      margin: 0;
-      font-family: 'Courier New', monospace;
-      background: #000;
-      color: #fff;
-    }
-    a { color: #0ff; text-decoration: none; }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Lensly | Developer</title>
+<style>
+  /* ---------- Theme colors & global ---------- */
+  :root{
+    --bg:#000;
+    --card:#0f0f0f;
+    --muted:#bfc4c8; /* subtle white */
+    --neon: #00eeff;
+    --glass: rgba(255,255,255,0.05);
+    --glass-strong: rgba(255,255,255,0.07);
+    --accent-shadow: 0 0 18px rgba(0,238,255,0.12), inset 0 0 10px rgba(0,238,255,0.03);
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Courier New", monospace;
+    background:var(--bg);
+    color:white;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    overflow-x:hidden;
+    line-height:1.3;
+  }
 
-    /* === Header === */
-    header {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%;
-      background: rgba(20,20,20,0.7);
-      backdrop-filter: blur(8px);
-      padding: 15px 0;
-      text-align: center;
-      font-size: 1.5rem;
-      font-weight: bold;
-      z-index: 1000;
-    }
-    .title-highlight { color: #0ff; }
+  /* ---------- header + typewriter ---------- */
+  header{
+    position:fixed;
+    left:0; right:0; top:16px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:10px 18px;
+    z-index:60;
+  }
+  .title-wrap{
+    display:inline-flex;
+    align-items:center;
+    gap:14px;
+    background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
+    border:1px solid rgba(255,255,255,0.06);
+    backdrop-filter: blur(8px);
+    padding:10px 18px;
+    border-radius:14px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.7), var(--accent-shadow);
+    min-width:260px;
+  }
+  .title-left{
+    font-size:13px;
+    color: #fff;
+    opacity:0.95;
+    font-weight:700;
+    letter-spacing:0.6px;
+  }
+  .title-right{
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .title-rot {
+    color:var(--neon);
+    font-weight:800;
+    font-family: ui-monospace, monospace;
+    font-size:16px;
+    min-width:110px;
+    white-space:nowrap;
+    overflow:hidden;
+  }
+  /* blink caret */
+  .caret{
+    width:2px;
+    height:18px;
+    background:var(--neon);
+    margin-left:6px;
+    animation: blink 1s steps(2,end) infinite;
+    opacity:0.95;
+  }
+  @keyframes blink{50%{opacity:0}}
 
-    /* === Layout === */
-    main {
-      margin-top: 100px;
-      padding: 20px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-    .section {
-      background: #111;
-      border-radius: 12px;
-      box-shadow: 0 0 10px #0ff;
-      padding: 20px;
-      margin-bottom: 30px;
-    }
-    h2 {
-      margin-top: 0;
-      text-align: center;
-      color: #0ff;
-    }
+  /* ---------- page layout ---------- */
+  main{
+    max-width:1060px;
+    margin:0 auto;
+    padding:120px 20px 96px;
+  }
+  .banner{
+    background: linear-gradient(180deg, rgba(0,0,0,0.65), rgba(0,0,0,0.6));
+    border-radius:14px;
+    padding:18px;
+    margin-bottom:28px;
+    border:1px solid rgba(255,255,255,0.04);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.8), 0 0 20px rgba(0,238,255,0.05);
+    position:relative;
+    overflow:hidden;
+  }
+  .banner-inner{
+    display:flex;
+    gap:20px;
+    align-items:center;
+  }
+  .banner-left{
+    flex:1;
+  }
+  .banner-right{
+    width:220px;
+    height:120px;
+    display:grid;
+    place-items:center;
+  }
+  .banner h1{
+    margin:0;
+    font-size:26px;
+    color:#fff;
+  }
+  .banner p{
+    margin:8px 0 0;
+    color:var(--muted);
+  }
 
-    /* === About === */
-    .about-text { text-align: center; font-size: 1rem; }
+  /* retro pixel-cat scene (SVG scaled) */
+  .scene{
+    width:100%;
+    height:140px;
+    display:block;
+    transform-origin:center;
+  }
 
-    /* === Languages === */
-    .language { margin: 15px 0; }
-    .lang-label {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 5px;
-      font-weight: bold;
-    }
-    .lang-label img { width: 22px; }
-    .progress-bar {
-      width: 100%;
-      height: 10px;
-      background: #333;
-      border-radius: 6px;
-      overflow: hidden;
-    }
-    .progress-fill {
-      height: 100%;
-      background: #0ff;
-      width: 0;
-      transition: width 1s ease-in-out;
-    }
+  /* ---------- floating retro cats ---------- */
+  .floating-cat{
+    position:fixed;
+    width:72px;
+    height:72px;
+    z-index:30;
+    pointer-events:none;
+    opacity:0.9;
+    filter: drop-shadow(0 6px 10px rgba(0,0,0,0.6));
+  }
+  .cat-1{left:22px; top:160px; animation: bob1 4.2s ease-in-out infinite;}
+  .cat-2{right:24px; top:220px; animation: bob2 3.6s ease-in-out infinite;}
+  .cat-3{left:40%; top:480px; animation: bob3 5.4s ease-in-out infinite; width:56px;height:56px}
+  @keyframes bob1{0%{transform:translateY(0)}50%{transform:translateY(-10px)}100%{transform:translateY(0)}}
+  @keyframes bob2{0%{transform:translateY(0) rotate(0.5deg)}50%{transform:translateY(-12px) rotate(-0.5deg)}100%{transform:translateY(0) rotate(0.5deg)}}
+  @keyframes bob3{0%{transform:translateY(0) rotate(0)}50%{transform:translateY(-8px) rotate(3deg)}100%{transform:translateY(0) rotate(0)}}
 
-    /* === Roles === */
-    .roles { display: flex; flex-direction: column; gap: 15px; }
-    .role-box {
-      background: #1a1a1a;
-      border-radius: 10px;
-      padding: 15px;
-      text-align: center;
-      box-shadow: 0 0 5px #0ff inset;
-    }
-    .role-box img { width: 30px; margin-bottom: 10px; }
+  /* ---------- cards grid ---------- */
+  .grid{
+    display:grid;
+    grid-template-columns: repeat(12,1fr);
+    gap:18px;
+  }
+  .card{
+    grid-column: span 4;
+    background:var(--card);
+    border-radius:12px;
+    border:1px solid rgba(255,255,255,0.04);
+    padding:16px;
+    min-height:120px;
+    position:relative;
+    transform-style:preserve-3d;
+    transition: transform .45s cubic-bezier(.2,.9,.3,1), box-shadow .2s;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.6);
+    cursor:pointer;
+  }
+  .card:hover{ transform: translateY(-8px) scale(1.01); box-shadow:0 18px 40px rgba(0,238,255,0.06)}
+  .card-front, .card-back{
+    backface-visibility: hidden;
+    position:absolute; inset:0; padding:16px;
+  }
+  .card-back{
+    transform:rotateY(180deg);
+    border-radius:12px;
+    background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));
+    color:var(--muted);
+    display:flex;align-items:center;justify-content:center;
+    font-size:14px;
+  }
+  .card.flipped{ transform: rotateY(180deg); }
 
-    /* === Footer === */
-    footer {
-      text-align: center;
-      padding: 20px;
-      margin-top: 40px;
-      background: #111;
-      border-top: 2px solid #0ff;
-    }
-    .socials { margin-bottom: 10px; }
-    .socials img {
-      width: 30px;
-      margin: 0 10px;
-      filter: invert(100%) drop-shadow(0 0 4px #0ff);
-      transition: transform 0.2s;
-    }
-    .socials img:hover { transform: scale(1.2); }
+  .card h3{ margin:0 0 8px 0; color:var(--neon); font-size:16px}
+  .card p{ margin:0; color:var(--muted); font-size:13px }
 
-    /* === Cats === */
-    .cat {
-      font-size: 2rem;
-      opacity: 0.6;
-      position: fixed;
-      pointer-events: none;
-    }
-    .cat.top-left { top: 10px; left: 10px; }
-    .cat.bottom-right { bottom: 10px; right: 10px; }
-  </style>
+  /* make layout responsive: About (col span 12 on small), languages 12 wide etc */
+  @media (max-width:900px){
+    .card{ grid-column: span 12; }
+    .banner-right{ display:none; }
+  }
+
+  /* ---------- languages specific ---------- */
+  .lang-row{ display:flex; align-items:center; gap:12px; margin:12px 0; }
+  .lang-icon{width:36px;height:36px;display:grid;place-items:center;border-radius:6px;background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.03)}
+  .lang-name{width:120px;font-weight:700;color:#fff;font-size:14px}
+  .progress {
+    flex:1; height:12px; background:rgba(255,255,255,0.04); border-radius:999px; overflow:hidden; border:1px solid rgba(255,255,255,0.02)
+  }
+  .progress > i{
+    display:block; height:100%; width:0; background: linear-gradient(90deg,var(--neon), rgba(0,140,255,0.8)); box-shadow:0 0 12px rgba(0,238,255,0.15); border-radius:inherit;
+    transition: width 1.2s cubic-bezier(.2,.9,.3,1);
+  }
+
+  /* ---------- roles stacked look ---------- */
+  .roles-list{ display:flex; flex-direction:column; gap:12px }
+  .role-mini{
+    display:flex; align-items:center; gap:12px; padding:10px; border-radius:8px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));
+    border:1px solid rgba(255,255,255,0.03);
+    transition: transform .2s, box-shadow .2s;
+  }
+  .role-mini:hover{ transform: translateX(6px); box-shadow: var(--accent-shadow) }
+  .role-logo{ width:40px; height:40px; display:grid; place-items:center; background:rgba(255,255,255,0.02); border-radius:8px; color:var(--neon); font-weight:900 }
+
+  /* ---------- footer ---------- */
+  footer{
+    margin-top:40px;
+    color:var(--muted);
+    text-align:center;
+    padding:26px 10px 60px;
+  }
+  .socials{ display:flex; gap:18px; justify-content:center; margin-bottom:8px }
+  .sm{
+    width:36px;height:36px;border-radius:8px;display:grid;place-items:center;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03);transition:transform .15s, box-shadow .15s;
+  }
+  .sm:hover{ transform:scale(1.08); box-shadow: var(--accent-shadow) }
+
+  /* ---------- small utilities ---------- */
+  .muted{ color:var(--muted); font-size:13px }
+  .center{ text-align:center }
+
+  /* ---------- intro fade in ---------- */
+  .fade-in { opacity:0; transform: translateY(6px); transition:opacity .65s ease, transform .65s ease; }
+  .fade-in.show{ opacity:1; transform:none; }
+
+  /* ---------- accessibility focus ---------- */
+  .card:focus{ outline:2px solid rgba(0,238,255,0.12); outline-offset:4px }
+
+</style>
 </head>
 <body>
-  <!-- Header -->
+  <!-- header with typewriter -->
   <header>
-    Lensly | <span id="title-word" class="title-highlight">Developer</span>
+    <div class="title-wrap" aria-live="polite">
+      <div class="title-left">Lensly |</div>
+      <div class="title-right">
+        <div id="titleRot" class="title-rot" aria-hidden="false"></div>
+        <div class="caret" aria-hidden="true"></div>
+      </div>
+    </div>
   </header>
 
-  <!-- Cat Emojis for Retro Theme -->
-  <div class="cat top-left">🐱</div>
-  <div class="cat bottom-right">😺</div>
+  <!-- floating retro cats (SVGs embedded) -->
+  <svg class="floating-cat cat-1" viewBox="0 0 64 64" aria-hidden>
+    <!-- tiny pixel-cat 1 -->
+    <g transform="scale(1.1)">
+      <rect x="2" y="22" width="60" height="32" rx="6" fill="#111"/>
+      <rect x="10" y="8" width="12" height="12" fill="#111"/>
+      <!-- face -->
+      <rect x="24" y="18" width="6" height="6" fill="#00eeff"/>
+      <rect x="34" y="18" width="6" height="6" fill="#00eeff"/>
+      <rect x="28" y="26" width="8" height="2" fill="#00eeff"/>
+      <!-- ears -->
+      <rect x="10" y="6" width="6" height="6" fill="#00eeff"/>
+      <rect x="16" y="4" width="6" height="6" fill="#00eeff" opacity="0.85"/>
+    </g>
+  </svg>
 
-  <!-- Main -->
+  <svg class="floating-cat cat-2" viewBox="0 0 64 64" aria-hidden>
+    <g>
+      <rect x="6" y="26" width="52" height="26" rx="5" fill="#0b0b0b"/>
+      <rect x="16" y="12" width="28" height="20" rx="3" fill="#00eeff"/>
+      <rect x="20" y="18" width="6" height="6" fill="#071014"/>
+      <rect x="34" y="18" width="6" height="6" fill="#071014"/>
+      <rect x="26" y="26" width="12" height="3" fill="#071014"/>
+    </g>
+  </svg>
+
+  <svg class="floating-cat cat-3" viewBox="0 0 64 64" aria-hidden>
+    <g>
+      <rect x="10" y="16" width="44" height="36" rx="6" fill="#0b0b0b"/>
+      <rect x="22" y="6" width="8" height="10" fill="#00eeff"/>
+      <rect x="34" y="6" width="8" height="10" fill="#00eeff"/>
+      <rect x="26" y="28" width="12" height="6" fill="#00eeff"/>
+    </g>
+  </svg>
+
   <main>
-    <!-- About -->
-    <div class="section">
-      <h2>About</h2>
-      <p class="about-text">
-        Uhh, I'm a 15 year old dumbass that somehow knows how to code and make Scripts, Tools, Frameworks, Simple Games and Websites. 
-        (I also like cats, idk if that's important).
-      </p>
-    </div>
-
-    <!-- Programming Languages -->
-    <div class="section">
-      <h2>Programming Languages</h2>
-
-      <div class="language">
-        <div class="lang-label"><img src="https://img.icons8.com/color/48/000000/javascript.png"/> JavaScript</div>
-        <div class="progress-bar"><div class="progress-fill" data-width="100%"></div></div>
-      </div>
-
-      <div class="language">
-        <div class="lang-label"><img src="https://img.icons8.com/color/48/000000/python.png"/> Python</div>
-        <div class="progress-bar"><div class="progress-fill" data-width="100%"></div></div>
-      </div>
-
-      <div class="language">
-        <div class="lang-label"><img src="https://img.icons8.com/officel/40/000000/php-logo.png"/> PHP</div>
-        <div class="progress-bar"><div class="progress-fill" data-width="80%"></div></div>
-      </div>
-
-      <div class="language">
-        <div class="lang-label"><img src="https://img.icons8.com/color/48/000000/html-5.png"/> HTML</div>
-        <div class="progress-bar"><div class="progress-fill" data-width="75%"></div></div>
-      </div>
-
-      <div class="language">
-        <div class="lang-label"><img src="https://img.icons8.com/color/48/000000/css3.png"/> CSS</div>
-        <div class="progress-bar"><div class="progress-fill" data-width="60%"></div></div>
-      </div>
-    </div>
-
-    <!-- Roles -->
-    <div class="section">
-      <h2>Roles</h2>
-      <div class="roles">
-        <div class="role-box">
-          <img src="https://img.icons8.com/ios-filled/50/00ffff/code.png"/>
-          <h3>Software Developer</h3>
-          <p>Creating tools, apps and programs for real-world use.</p>
+    <!-- animated retro banner -->
+    <section class="banner fade-in" id="banner">
+      <div class="banner-inner">
+        <div class="banner-left">
+          <h1>Retro Cat Portfolio — Lensly</h1>
+          <p class="muted">Playful pixel cats • Neon-blue accents • Click boxes to interact — built with HTML, CSS & JS.</p>
         </div>
-        <div class="role-box">
-          <img src="https://img.icons8.com/ios-filled/50/00ffff/domain.png"/>
-          <h3>Website Developer</h3>
-          <p>Building websites that look cool and actually work.</p>
-        </div>
-        <div class="role-box">
-          <img src="https://img.icons8.com/ios-filled/50/00ffff/computer.png"/>
-          <h3>System Programmer</h3>
-          <p>Digging into the guts of systems and making them tick.</p>
+        <div class="banner-right" aria-hidden="true">
+          <!-- simple pixel cat animated using CSS/SVG — acts like a banner GIF -->
+          <svg class="scene" viewBox="0 0 360 180" preserveAspectRatio="xMidYMid meet" aria-hidden>
+            <defs>
+              <linearGradient id="g1" x1="0" x2="1">
+                <stop offset="0" stop-color="rgba(0,238,255,0.12)"/>
+                <stop offset="1" stop-color="rgba(0,120,255,0.06)"/>
+              </linearGradient>
+            </defs>
+            <!-- little pixel ground -->
+            <rect x="0" y="140" width="360" height="40" fill="#060607" />
+            <!-- bouncing cats group -->
+            <g id="cats">
+              <!-- cat A -->
+              <g class="p-cat" transform="translate(20,120)">
+                <rect x="0" y="-18" width="28" height="18" fill="#00eeff"></rect>
+                <rect x="6" y="-12" width="6" height="6" fill="#050606"></rect>
+                <rect x="16" y="-12" width="6" height="6" fill="#050606"></rect>
+              </g>
+              <!-- cat B -->
+              <g class="p-cat" transform="translate(110,120)">
+                <rect x="0" y="-18" width="28" height="18" fill="#00eeff" opacity="0.95"></rect>
+                <rect x="6" y="-12" width="6" height="6" fill="#050606"></rect>
+                <rect x="16" y="-12" width="6" height="6" fill="#050606"></rect>
+              </g>
+              <!-- cat C -->
+              <g class="p-cat" transform="translate(200,120)">
+                <rect x="0" y="-18" width="28" height="18" fill="#00eeff" opacity="0.9"></rect>
+                <rect x="6" y="-12" width="6" height="6" fill="#050606"></rect>
+                <rect x="16" y="-12" width="6" height="6" fill="#050606"></rect>
+              </g>
+              <!-- cat D small -->
+              <g class="p-cat" transform="translate(280,126) scale(0.9)">
+                <rect x="0" y="-12" width="22" height="12" fill="#00eeff"></rect>
+                <rect x="5" y="-8" width="4" height="4" fill="#050606"></rect>
+                <rect x="13" y="-8" width="4" height="4" fill="#050606"></rect>
+              </g>
+            </g>
+            <!-- tiny stars -->
+            <g fill="#0ff" opacity="0.06">
+              <rect x="48" y="18" width="2" height="2"/>
+              <rect x="96" y="36" width="2" height="2"/>
+              <rect x="152" y="22" width="2" height="2"/>
+              <rect x="232" y="32" width="2" height="2"/>
+            </g>
+            <style>
+              /* animate banner cats (CSS inside SVG) */
+              .p-cat{ transform-box: fill-box; animation: cat-bounce 2s ease-in-out infinite; }
+              .p-cat:nth-child(2){ animation-delay:.15s }
+              .p-cat:nth-child(3){ animation-delay:.28s }
+              .p-cat:nth-child(4){ animation-delay:.42s }
+              @keyframes cat-bounce {
+                0%{ transform: translateY(6px) }
+                50%{ transform: translateY(-18px) }
+                100%{ transform: translateY(6px) }
+              }
+            </style>
+          </svg>
         </div>
       </div>
-    </div>
+    </section>
+
+    <!-- the three main cards -->
+    <section class="grid" aria-label="Main content">
+      <!-- About (full width on desktop: span 12? user wanted rectangles under title; I'll lay them 4+4+4) -->
+      <article class="card fade-in" tabindex="0" id="aboutCard">
+        <div class="card-front">
+          <h3>About</h3>
+          <p class="muted">Uhh, I'm a 15 year old dumbass that somehow knows how to code and make Scripts, Tools, Frameworks, Simple Games and Websites. (I also like cats, idk if that's important).</p>
+        </div>
+        <div class="card-back">
+          <div class="center muted">Fun fact: I love pixel cats — click again to flip back!</div>
+        </div>
+      </article>
+
+      <!-- Programming Languages -->
+      <article class="card fade-in" tabindex="0" id="langCard">
+        <div class="card-front">
+          <h3>Programming Languages</h3>
+
+          <!-- JavaScript -->
+          <div class="lang-row">
+            <div class="lang-icon" aria-hidden>
+              <svg width="20" height="20" viewBox="0 0 128 128"><rect width="128" height="128" fill="#f7df1e"/><text x="50%" y="67%" font-size="58" text-anchor="middle" dominant-baseline="middle" fill="#000" font-family="monospace">JS</text></svg>
+            </div>
+            <div class="lang-name">JavaScript</div>
+            <div class="progress" data-target="100"><i></i></div>
+          </div>
+
+          <!-- Python -->
+          <div class="lang-row">
+            <div class="lang-icon" aria-hidden>
+              <svg width="20" height="20" viewBox="0 0 128 128"><rect width="128" height="128" fill="#3776ab"/><text x="50%" y="67%" font-size="46" text-anchor="middle" dominant-baseline="middle" fill="#fff" font-family="monospace">Py</text></svg>
+            </div>
+            <div class="lang-name">Python</div>
+            <div class="progress" data-target="100"><i></i></div>
+          </div>
+
+          <!-- PHP -->
+          <div class="lang-row">
+            <div class="lang-icon" aria-hidden>
+              <svg width="20" height="20" viewBox="0 0 128 128"><ellipse cx="64" cy="64" rx="52" ry="26" fill="#fff"/><text x="50%" y="67%" font-size="28" text-anchor="middle" dominant-baseline="middle" fill="#000" font-family="monospace">PHP</text></svg>
+            </div>
+            <div class="lang-name">PHP</div>
+            <div class="progress" data-target="80"><i></i></div>
+          </div>
+
+          <!-- HTML -->
+          <div class="lang-row">
+            <div class="lang-icon" aria-hidden>
+              <svg width="20" height="20" viewBox="0 0 128 128"><rect width="128" height="128" fill="#e34f26"/><text x="50%" y="67%" font-size="44" text-anchor="middle" dominant-baseline="middle" fill="#fff" font-family="monospace">H</text></svg>
+            </div>
+            <div class="lang-name">HTML</div>
+            <div class="progress" data-target="75"><i></i></div>
+          </div>
+
+          <!-- CSS -->
+          <div class="lang-row">
+            <div class="lang-icon" aria-hidden>
+              <svg width="20" height="20" viewBox="0 0 128 128"><rect width="128" height="128" fill="#264de4"/><text x="50%" y="67%" font-size="36" text-anchor="middle" dominant-baseline="middle" fill="#fff" font-family="monospace">CSS</text></svg>
+            </div>
+            <div class="lang-name">CSS</div>
+            <div class="progress" data-target="60"><i></i></div>
+          </div>
+
+        </div>
+        <div class="card-back">
+          <div class="center muted">Progress bars animate on scroll. Click again to go back.</div>
+        </div>
+      </article>
+
+      <!-- Roles -->
+      <article class="card fade-in" tabindex="0" id="rolesCard">
+        <div class="card-front">
+          <h3>Roles</h3>
+          <div class="roles-list">
+            <div class="role-mini"><div class="role-logo">SD</div><div><strong>Software Developer</strong><div class="muted">I build small-to-medium utilities, scripts and games.</div></div></div>
+            <div class="role-mini"><div class="role-logo">WD</div><div><strong>Website Developer</strong><div class="muted">I create modern, responsive & playful websites.</div></div></div>
+            <div class="role-mini"><div class="role-logo">SP</div><div><strong>System Programmer</strong><div class="muted">I tinker with systems and glue code for optimization.</div></div></div>
+          </div>
+        </div>
+        <div class="card-back">
+          <div class="center muted">Each role has its own mini-logo. Click to flip back.</div>
+        </div>
+      </article>
+    </section>
+
+    <!-- small projects / interactive area -->
+    <section style="margin-top:26px">
+      <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center">
+        <button id="projectDemo" style="background:transparent;border:1px solid rgba(255,255,255,0.04);padding:10px 14px;border-radius:10px;color:var(--muted);cursor:pointer">Projects • Demo</button>
+        <div class="muted">Click a card to flip it — hover to see neon glow.</div>
+      </div>
+    </section>
+
+    <!-- footer -->
+    <footer>
+      <div class="socials">
+        <a class="sm" href="https://www.tiktok.com/" target="_blank" rel="noreferrer" aria-label="TikTok">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M9 2v11.5A5.5 5.5 0 1014.5 8H17v3.5A8.5 8.5 0 119 2z"/></svg>
+        </a>
+        <a class="sm" href="https://github.com/" target="_blank" rel="noreferrer" aria-label="GitHub">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.7 5.6.7 11.9c0 5 3.3 9.2 7.9 10.7.6.1.8-.2.8-.6v-2.1c-3.2.7-3.9-1.4-3.9-1.4-.5-1.2-1.2-1.6-1.2-1.6-1-.7.1-.7.1-.7 1.1.1 1.7 1.1 1.7 1.1 1 .1.8 1.8 1.8 2.6 1.2.9 2.4.7 3 .5.1-.8.4-1.4.7-1.7-2.7-.3-5.5-1.3-5.5-5.8 0-1.3.5-2.3 1.2-3.2-.1-.3-.5-1.5.1-3.2 0 0 1-.3 3.3 1.2a11.3 11.3 0 016 0c2.3-1.6 3.3-1.2 3.3-1.2.6 1.7.2 2.9.1 3.2.8.9 1.2 2 1.2 3.2 0 4.5-2.9 5.5-5.6 5.8.4.3.8 1 .8 2v3c0 .4.2.7.8.6 4.6-1.5 7.9-5.7 7.9-10.7C23.3 5.6 18.3.5 12 .5z"/></svg>
+        </a>
+      </div>
+      <div class="muted">@ 2025 Lensly. All rights reserved.</div>
+    </footer>
   </main>
 
-  <!-- Footer -->
-  <footer>
-    <div class="socials">
-      <a href="https://www.tiktok.com/" target="_blank">
-        <img src="https://img.icons8.com/ios-filled/50/ffffff/tiktok.png"/>
-      </a>
-      <a href="https://github.com/" target="_blank">
-        <img src="https://img.icons8.com/ios-glyphs/50/ffffff/github.png"/>
-      </a>
-    </div>
-    <p>@ 2025 Lensly. All rights reserved.</p>
-  </footer>
-
-  <!-- JS -->
-  <script>
-    // Title word rotation
-    const words = ["Developer", "Programmer", "Scripter"];
-    let idx = 0;
-    setInterval(() => {
-      idx = (idx + 1) % words.length;
-      document.getElementById("title-word").textContent = words[idx];
-    }, 3000);
-
-    // Animate progress bars when visible
-    const fills = document.querySelectorAll(".progress-fill");
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.style.width = entry.target.getAttribute("data-width");
+<script>
+/* =========================
+   TYPEWRITER for titleRot
+   cycles through words with typing effect every 3s
+   ========================= */
+(() => {
+  const words = ["Developer","Programmer","Scripter"];
+  const el = document.getElementById('titleRot');
+  let wi = 0, ci = 0;
+  const typingSpeed = 45; //ms per char
+  const pauseAfter = 900; //ms pause after word typed
+  function typeWord(word){
+    return new Promise(res => {
+      el.textContent = "";
+      let k = 0;
+      (function step(){
+        if(k <= word.length){
+          el.textContent = word.slice(0,k);
+          k++;
+          setTimeout(step, typingSpeed);
+        } else {
+          setTimeout(res, pauseAfter);
         }
-      });
-    }, { threshold: 0.5 });
-    fills.forEach(fill => observer.observe(fill));
-  </script>
+      })();
+    });
+  }
+  function deleteWord(word){
+    return new Promise(res=>{
+      let k = word.length;
+      (function step(){
+        if(k >= 0){
+          el.textContent = word.slice(0,k);
+          k--;
+          setTimeout(step, typingSpeed/2);
+        } else res();
+      })();
+    });
+  }
+  async function loop(){
+    while(true){
+      const w = words[wi];
+      await typeWord(w);
+      await deleteWord(w);
+      wi = (wi+1) % words.length;
+    }
+  }
+  loop();
+})();
+
+/* =========================
+   Fade-in on scroll for elements with .fade-in
+   ========================= */
+(function(){
+  const list = document.querySelectorAll('.fade-in');
+  const obs = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('show');
+        obs.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.12});
+  list.forEach(n => obs.observe(n));
+})();
+
+/* =========================
+   Progress bars animation when visible
+   ========================= */
+(function(){
+  const progresses = document.querySelectorAll('.progress');
+  const obs = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        const el = entry.target;
+        const val = Number(el.dataset.target) || 0;
+        el.querySelector('i').style.width = val + '%';
+        obs.unobserve(el);
+      }
+    });
+  }, {threshold:0.35});
+  progresses.forEach(p=>obs.observe(p));
+})();
+
+/* =========================
+   Card flip on click (and Enter key)
+   ========================= */
+(function(){
+  const cards = document.querySelectorAll('.card');
+  cards.forEach(card=>{
+    card.addEventListener('click', ()=> card.classList.toggle('flipped'));
+    card.addEventListener('keydown', (ev)=>{
+      if(ev.key === 'Enter' || ev.key === ' '){
+        ev.preventDefault();
+        card.classList.toggle('flipped');
+      }
+    });
+  });
+})();
+
+/* =========================
+   Tiny playful interactivity: clicking project demo spawns a small cat hop
+   ========================= */
+(function(){
+  const btn = document.getElementById('projectDemo');
+  btn.addEventListener('click', ()=>{
+    // create a small transient cat that hops near the button
+    const c = document.createElement('div');
+    c.style.position='fixed';
+    c.style.width='56px';
+    c.style.height='56px';
+    c.style.zIndex=120;
+    const rect = btn.getBoundingClientRect();
+    c.style.left = (rect.left + rect.width + 8)+'px';
+    c.style.top = (rect.top)+'px';
+    c.innerHTML = `<svg viewBox="0 0 64 64" width="56" height="56"><g><rect x="8" y="20" width="48" height="32" rx="6" fill="#00eeff"/><rect x="18" y="8" width="6" height="10" fill="#071014"/><rect x="40" y="8" width="6" height="10" fill="#071014"/></g></svg>`;
+    document.body.appendChild(c);
+    // animate up and fade
+    c.animate([
+      { transform: 'translateY(0) scale(1)', opacity:1 },
+      { transform: 'translateY(-70px) scale(.9)', opacity:0.0 }
+    ], { duration:900, easing:'cubic-bezier(.22,.9,.3,1)'});
+    setTimeout(()=> c.remove(), 950);
+  });
+})();
+
+/* =========================
+   Small accessibility: allow keyboard focus outline for cards
+   ========================= */
+/* nothing else */
+
+</script>
 </body>
-                                                                                </html>
+</html>
